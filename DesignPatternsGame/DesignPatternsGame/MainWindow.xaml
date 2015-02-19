@@ -1,0 +1,19 @@
+﻿<Window x:Class="DesignPatternsGame.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Fuzzy Critter Battles" Height="911.194" Width="1256.343" WindowState="Maximized" ResizeMode="NoResize">
+    <Grid Background="#FF4FB29B">
+        <DockPanel Grid.ColumnSpan="2">
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_File">
+                    <MenuItem Header="_New Game" Click="Create_Click"/>
+                    <MenuItem Header="_Close" Click="Close_Click"/>
+                </MenuItem>
+            </Menu>
+            <StackPanel></StackPanel>
+        </DockPanel>
+        <Canvas x:Name="board" Margin="0,27,0,20" />
+
+
+    </Grid>
+</Window>

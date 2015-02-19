@@ -1,0 +1,88 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace DesignPatternsGame
+{
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        PathGen path;
+        Room[,] ara;
+        public MainWindow()
+        {
+            InitializeComponent();
+            path = new PathGen();
+            path.getPath();
+            ara = path.getPathToPrint();
+            printPath();
+        }
+
+        public void printPath()
+        {
+            int overlapLeft = 0;
+            int overlapTop = 0;
+
+            for (int i = 0; i < ara.GetLength(1); i++)
+            {
+                for (int j = 0; j < ara.GetLength(0); j++)
+                {
+                    Rectangle rect = new Rectangle();
+                    rect.Height = 86;
+                    rect.Width = 160;
+                    if (this.ara[i, j] != null)
+                    {
+                        if (this.ara[i, j].Entrance)
+                        {
+                            rect.Fill = new ImageBrush(new BitmapImage(new Uri(@"enter.png", UriKind.Relative)));
+                        }
+                        else if (this.ara[i, j].Exit)
+                        {
+                            rect.Fill = new ImageBrush(new BitmapImage(new Uri(@"exit.png", UriKind.Relative)));
+                        }
+                        else
+                        {
+                            rect.Fill = new ImageBrush(new BitmapImage(new Uri(@"path.png", UriKind.Relative)));
+                        }
+                    }
+                    else
+                    {
+                        rect.Fill = new ImageBrush(new BitmapImage(new Uri(@"wall.png", UriKind.Relative)));
+                    }
+                    board.Children.Add(rect);
+                    Canvas.SetLeft(rect, overlapLeft);
+                    Canvas.SetTop(rect, overlapTop);
+                    overlapLeft += 160;
+                }
+                overlapTop += 86;
+                overlapLeft = 0;
+            }
+        }
+        private void Create_Click(object sender, RoutedEventArgs e)
+        {
+            //Create a new game
+        }
+
+        private void Close_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = System.Windows.MessageBox.Show("Are you sure?", "Quit Game?", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.Yes)
+            {
+                this.Close();
+            }
+        }
+    }
+}
