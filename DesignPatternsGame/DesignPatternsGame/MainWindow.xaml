@@ -29,7 +29,7 @@
                 </TextBox>
                 <Image x:Name="enemyImg" Height="100" Canvas.Left="192" Canvas.Top="100" Width="100">
                     <Image.OpacityMask>
-                        <ImageBrush ImageSource="bin/debug/enemy.png"/>
+                        <ImageBrush ImageSource="Images/duck.png"/>
                     </Image.OpacityMask>
                 </Image>
                 <!--<Canvas x:Name="battleWindowTint" Height="battleWindox.Height" Width="100%" Opacity="0.5" Background="Black"></Canvas>-->

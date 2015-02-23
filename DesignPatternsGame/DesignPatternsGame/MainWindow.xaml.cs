@@ -48,20 +48,21 @@ namespace DesignPatternsGame
                     {
                         if (this.ara[i, j].Entrance)
                         {
-                            rect.Fill = new ImageBrush(new BitmapImage(new Uri(@"enter.png", UriKind.Relative)));
+                            //("pack://application:,,,/img/txtBackground.png", UriKind.Absolute));
+                            rect.Fill = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/enter.png", UriKind.Absolute)));
                         }
                         else if (this.ara[i, j].Exit)
                         {
-                            rect.Fill = new ImageBrush(new BitmapImage(new Uri(@"exit.png", UriKind.Relative)));
+                            rect.Fill = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/exit.png", UriKind.Absolute)));
                         }
                         else
                         {
-                            rect.Fill = new ImageBrush(new BitmapImage(new Uri(@"path.png", UriKind.Relative)));
+                            rect.Fill = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/path.png", UriKind.Absolute)));
                         }
                     }
                     else
                     {
-                        rect.Fill = new ImageBrush(new BitmapImage(new Uri(@"wall.png", UriKind.Relative)));
+                        rect.Fill = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/wall.png", UriKind.Absolute)));
                     }
                     board.Children.Add(rect);
                     Canvas.SetLeft(rect, overlapLeft);
