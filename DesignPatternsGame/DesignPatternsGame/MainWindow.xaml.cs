@@ -89,6 +89,8 @@ namespace DesignPatternsGame
 
         private void battle_Click(object sender, RoutedEventArgs e)
         {
+            BattleWindow bw = new BattleWindow();
+            bw.ShowDialog();
             HeroParty heroes = new HeroParty();
             heroes.initParty();
             HealthPotion potion = new HealthPotion(5);
@@ -104,14 +106,5 @@ namespace DesignPatternsGame
             Console.WriteLine("encounter complete");
         }
 
-        private void attackButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void battlePrompt_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
     }
 }

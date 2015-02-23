@@ -59,6 +59,9 @@
     <Compile Include="AttackAction.cs" />
     <Compile Include="Battle.cs" />
     <Compile Include="BattleTester.cs" />
+    <Compile Include="BattleWindow.xaml.cs">
+      <DependentUpon>BattleWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ChubbyChipmunk.cs" />
     <Compile Include="CrookedVulture.cs" />
     <Compile Include="CuddlyKitten.cs" />
@@ -88,6 +91,10 @@
     <Compile Include="StealthySpider.cs" />
     <Compile Include="TinyTurtle.cs" />
     <Compile Include="WiseOwl.cs" />
+    <Page Include="BattleWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -140,6 +147,9 @@
     <Resource Include="Images\puppy.png" />
     <Resource Include="Images\tinyTurtle.png" />
     <Resource Include="Images\wall.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\enemy.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -10,31 +10,11 @@
                     <MenuItem Header="_Close" Click="Close_Click"/>
                 </MenuItem>
             </Menu>
-            <StackPanel></StackPanel>
+            <StackPanel>
+                <Canvas x:Name="board" Height="100" Width="100"/>
+            </StackPanel>
         </DockPanel>
-        <Canvas x:Name="board" Margin="28,58,-28,-11" >
-            <Button x:Name="battle" Content="BATTLE!" Canvas.Left="80" Canvas.Top="150" Width="159" Height="69" FontSize="36" FontFamily="Rosewood Std Regular" Click="battle_Click"/>
-            <Canvas x:Name="battleWindow" Height="342" Canvas.Left="265" Canvas.Top="10" Width="479" Background="#FF2D5B61">
-                <Button x:Name="attackButton" Content="Attack" BorderBrush="Black" BorderThickness="1" Height="30" Canvas.Top="256" Width="100" Background="White" Canvas.Left="24" Click="attackButton_Click"/>
-                <Button x:Name="defendButton" Content="Defend" BorderBrush="Black" BorderThickness="1" Height="30" Canvas.Left="131" Canvas.Top="256" Width="100" Background="White"/>
-                <Button x:Name="specialButton" Content="Special" BorderBrush="Black" BorderThickness="1" Height="30" Canvas.Left="355" Canvas.Top="256" Width="100" Background="White"/>
-                <Button x:Name="itemButton" Content="Item" BorderBrush="Black" BorderThickness="1" Height="30" Canvas.Left="250" Canvas.Top="256" Width="100" Background="White"/>
-                <TextBox x:Name="battlePrompt" Height="23" Canvas.Left="24" TextWrapping="Wrap" Text="TextBox" Canvas.Top="22" Width="431" FontFamily="Segoe UI Semibold" BorderThickness="0" CaretBrush="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" TextChanged="battlePrompt_TextChanged">
-                    <TextBox.Background>
-                        <RadialGradientBrush>
-                            <GradientStop Color="#FF69C98E"/>
-                            <GradientStop Color="#FF326044" Offset="1"/>
-                        </RadialGradientBrush>
-                    </TextBox.Background>
-                </TextBox>
-                <Image x:Name="enemyImg" Height="100" Canvas.Left="192" Canvas.Top="100" Width="100">
-                    <Image.OpacityMask>
-                        <ImageBrush ImageSource="Images/duck.png"/>
-                    </Image.OpacityMask>
-                </Image>
-                <!--<Canvas x:Name="battleWindowTint" Height="battleWindox.Height" Width="100%" Opacity="0.5" Background="Black"></Canvas>-->
-            </Canvas>
-        </Canvas>
+        <Button x:Name="btnBattle" Content="BATTLE!" Canvas.Left="80" Canvas.Top="150" Width="159" Height="69" FontSize="36" FontFamily="Rosewood Std Regular" Click="battle_Click"/>
 
 
     </Grid>
