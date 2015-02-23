@@ -29,6 +29,7 @@ namespace DesignPatternsGame
             path.getPath();
             ara = path.getPathToPrint();
             printPath();
+
         }
 
         public void printPath()
@@ -42,7 +43,7 @@ namespace DesignPatternsGame
                 {
                     Rectangle rect = new Rectangle();
                     rect.Height = 86;
-                    rect.Width = 160;
+                    rect.Width = 86;
                     if (this.ara[i, j] != null)
                     {
                         if (this.ara[i, j].Entrance)
@@ -65,7 +66,7 @@ namespace DesignPatternsGame
                     board.Children.Add(rect);
                     Canvas.SetLeft(rect, overlapLeft);
                     Canvas.SetTop(rect, overlapTop);
-                    overlapLeft += 160;
+                    overlapLeft += 86;
                 }
                 overlapTop += 86;
                 overlapLeft = 0;
@@ -83,6 +84,33 @@ namespace DesignPatternsGame
             {
                 this.Close();
             }
+        }
+
+        private void battle_Click(object sender, RoutedEventArgs e)
+        {
+            HeroParty heroes = new HeroParty();
+            heroes.initParty();
+            HealthPotion potion = new HealthPotion(5);
+            heroes.addItem(potion);
+
+            MonsterParty monsters = new MonsterParty();
+            monsters.initParty();
+
+            Battle encounter = new Battle();
+            encounter.Heroes = heroes;
+            encounter.Monsters = monsters;
+            encounter.start();
+            Console.WriteLine("encounter complete");
+        }
+
+        private void attackButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void battlePrompt_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }
