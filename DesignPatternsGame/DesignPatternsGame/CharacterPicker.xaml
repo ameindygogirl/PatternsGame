@@ -1,0 +1,45 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="DesignPatternsGame.CharacterPicker"
+        Title="CharacterPicker" ResizeMode="NoResize" d:DesignWidth="633.865">
+    <Grid Background="#FF4FB29B">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="42*"/>
+            <RowDefinition Height="42*"/>
+            <RowDefinition Height="42*"/>
+            <RowDefinition Height="42*"/>
+            <RowDefinition Height="42*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="126.6*"/>
+            <ColumnDefinition Width="126.6*"/>
+            <ColumnDefinition Width="126.6*"/>
+        </Grid.ColumnDefinitions>
+        <Image x:Name="imgChipmunk" HorizontalAlignment="Center" Height="68" VerticalAlignment="Center" Width="214" Source="Images/chipmunk.png" />
+        <Image x:Name="imgKitten" Grid.Column="1" HorizontalAlignment="Center"  Width="214" VerticalAlignment="Center" Height="68" Source="Images/kitten.png"   />
+        <Image x:Name="imgDuck" Grid.Column="2" HorizontalAlignment="Center" Height="68"  VerticalAlignment="Center" Width="214" Source="Images/duck.png"  />
+        <Image x:Name="imgPuppy" HorizontalAlignment="Center" Height="68" Grid.Row="2"  VerticalAlignment="Center" Width="214" Source="Images/puppy.png" Margin="20,10,19,23"/>
+        <Image x:Name="imgTurtle" Grid.Column="1" HorizontalAlignment="Center" Height="68" Grid.Row="2" VerticalAlignment="Center" Width="214" Source="Images/tinyTurtle.png" Margin="20,10,19.5,23"/>
+        <Image x:Name="imgOwl" Grid.Column="2" HorizontalAlignment="Center" Height="68" Grid.Row="2" VerticalAlignment="Center" Width="214" Source="Images/owl.png" Margin="19.5,10,20,23"/>
+        <Button x:Name="btnChip" Content="Button" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="214" Height="68" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="btnChip_Click" Margin="20,25,19,33"/>
+        <Image x:Name="imgFirst" HorizontalAlignment="Center" Height="86" Grid.Row="4" VerticalAlignment="Center" Width="214" Margin="20,11,19,11"/>
+        <Rectangle HorizontalAlignment="Center" Height="86"  Grid.Row="4" Stroke="Black" VerticalAlignment="Center" Width="214" Margin="20,11,19,11"/>
+        <Rectangle Grid.Column="1" HorizontalAlignment="Center" Height="86" Grid.Row="4" Stroke="Black" VerticalAlignment="Center" Width="214" Margin="20,11"/>
+        <Rectangle Grid.Column="2" HorizontalAlignment="Center" Height="86" Grid.Row="4" Stroke="Black" VerticalAlignment="Center" Width="214" Margin="19,11,20,11"/>
+        <Image x:Name="imgSecond" Grid.Column="1" HorizontalAlignment="Center" Height="86" Grid.Row="4" VerticalAlignment="Center" Width="214" Margin="20,11"/>
+        <Image x:Name="imgThird" Grid.Column="2" HorizontalAlignment="Center" Height="86" Grid.Row="4" VerticalAlignment="Center" Width="214" Margin="19,11,20,11"/>
+        <Button x:Name="btnKitten" Content="Button" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="214" Height="86" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="btnKitten_Click"  />
+        <Button x:Name="btnDuck" Content="Button" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="214" Height="86" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="btnDuck_Click" />
+        <Button x:Name="btnDog" Content="Button" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Width="214" Height="86" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="btnDog_Click" Margin="20,10,19,5"/>
+        <Button x:Name="btnTurtle" Content="Button" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Width="214" Height="86" Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}" Click="btnTurtle_Click" Margin="20,10,19.5,5"/>
+        <Button x:Name="btnOwl" Content="Button" Grid.Column="2" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Width="214" Height="86" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="btnOwl_Click" Margin="19.5,10,20,5"/>
+        <Label Content="Chubby Chipmunk &#xA; Health Points: 100 &#xA; Attack Speed: &#xA; Maximum Damage: &#xA; Minimum Damage: &#xA; Hit Chance: &#xA; Defense Chance:" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#FF67759C" Height="132" Width="253" Margin="0,120,0,0" Grid.RowSpan="2"/>
+        <Label Content="Darling Duckling &#xA; Health Points: 100 &#xA; Attack Speed: &#xA; Maximum Damage: &#xA; Minimum Damage: &#xA; Hit Chance: &#xA; Defense Chance:" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#FF67759C" Height="132" Width="254" Margin="253,120,0,0" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+        <Label Content="Wise Owl&#xA; Health Points: 100 &#xA; Attack Speed: &#xA; Maximum Damage: &#xA; Minimum Damage: &#xA; Hit Chance: &#xA; Defense Chance:" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#FF67759C" Height="132" Width="253" Margin="253,72,1,99" Grid.Column="1" Grid.Row="2" Grid.RowSpan="3" Grid.ColumnSpan="2"/>
+        <Label Content="Fuzzy Puppy&#xA; Health Points: 100 &#xA; Attack Speed: &#xA; Maximum Damage: &#xA; Minimum Damage: &#xA; Hit Chance: &#xA; Defense Chance:" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#FF67759C" Height="132" Width="253" Margin="-3,70,3,0" Grid.Row="2" Grid.RowSpan="2"/>
+        <Label Content="Cuddly Kitten &#xA; Health Points: 100 &#xA; Attack Speed: &#xA; Maximum Damage: &#xA; Minimum Damage: &#xA; Hit Chance: &#xA; Defense Chance:" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#FF9BF5F9" Height="132" Width="253" Grid.Column="1" Margin="0,95,0.5,76" Grid.RowSpan="3" RenderTransformOrigin="0.824,0.547"/>
+        <Label Content="Tiny Turtle &#xA; Health Points: 100 &#xA; Attack Speed: &#xA; Maximum Damage: &#xA; Minimum Damage: &#xA; Hit Chance: &#xA; Defense Chance:" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#FF9BF5F9" Height="132" Width="252" Margin="249,72,5.5,99" Grid.Row="2" Grid.RowSpan="3" Grid.ColumnSpan="2"/>
+
+    </Grid>
+</Window>

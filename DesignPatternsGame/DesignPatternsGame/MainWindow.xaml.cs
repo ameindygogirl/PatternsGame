@@ -106,5 +106,11 @@ namespace DesignPatternsGame
             Console.WriteLine("encounter complete");
         }
 
+        private void btnPickCharacters_Click(object sender, RoutedEventArgs e)
+        {
+            CharacterPicker cp = new CharacterPicker();
+            cp.ShowDialog();
+        }
+
     }
 }

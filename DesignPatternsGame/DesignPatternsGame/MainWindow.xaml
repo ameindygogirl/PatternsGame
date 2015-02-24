@@ -15,6 +15,7 @@
             </StackPanel>
         </DockPanel>
         <Button x:Name="btnBattle" Content="BATTLE!" Canvas.Left="80" Canvas.Top="150" Width="159" Height="69" FontSize="36" FontFamily="Rosewood Std Regular" Click="battle_Click"/>
+        <Button x:Name="btnPickCharacters" Content="Pick Character" HorizontalAlignment="Left" Margin="194,430,0,0" VerticalAlignment="Top" Width="96" Click="btnPickCharacters_Click"/>
 
 
     </Grid>
