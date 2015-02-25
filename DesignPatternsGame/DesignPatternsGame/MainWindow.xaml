@@ -11,11 +11,13 @@
                 </MenuItem>
             </Menu>
             <StackPanel>
-                <Canvas x:Name="board" Height="100" Width="100"/>
+                <Canvas x:Name="board" Height="100" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10"/>
+
             </StackPanel>
         </DockPanel>
-        <Button x:Name="btnBattle" Content="BATTLE!" Canvas.Left="80" Canvas.Top="150" Width="159" Height="69" FontSize="36" FontFamily="Rosewood Std Regular" Click="battle_Click"/>
-        <Button x:Name="btnPickCharacters" Content="Pick Character" HorizontalAlignment="Left" Margin="194,430,0,0" VerticalAlignment="Top" Width="96" Click="btnPickCharacters_Click"/>
+        <Button x:Name="btnStartGame" Content="Start Game" Width="159" HorizontalAlignment="Right" Margin="0,78,113,740" RenderTransformOrigin="-1.095,-11.529" Click="btnStartGame_Click"/>
+        <Button x:Name="btnBattle" Content="BATTLE!" Canvas.Left="80" Canvas.Top="150" Width="159" Height="69" FontSize="36" FontFamily="Rosewood Std Regular" Click="battle_Click" Margin="978,168,113,645"/>
+        <Button x:Name="btnPickCharacters" Content="Pick Character" HorizontalAlignment="Left" Margin="1004,312,0,0" VerticalAlignment="Top" Width="96" Click="btnPickCharacters_Click"/>
 
 
     </Grid>

@@ -41,7 +41,7 @@ namespace DesignPatternsGame
             {
                 imgThird.Source = new BitmapImage(new Uri("pack://application:,,,/Images/chipmunk.png", UriKind.Absolute));
                 heros[2] = 1;
-                //enableDone();
+                enableDone();
             }
             else
             {
@@ -65,7 +65,7 @@ namespace DesignPatternsGame
             {
                 imgThird.Source = new BitmapImage(new Uri("pack://application:,,,/Images/kitten.png", UriKind.Absolute));
                 heros[2] = 1;
-                //enableDone();
+                enableDone();
             }
             else
             {
@@ -89,7 +89,7 @@ namespace DesignPatternsGame
             {
                 imgThird.Source = new BitmapImage(new Uri("pack://application:,,,/Images/duck.png", UriKind.Absolute));
                 heros[2] = 1;
-                //enableDone();
+                enableDone();
             }
             else
             {
@@ -113,7 +113,7 @@ namespace DesignPatternsGame
             {
                 imgThird.Source = new BitmapImage(new Uri("pack://application:,,,/Images/puppy.png", UriKind.Absolute));
                 heros[2] = 1;
-                //enableDone();
+                enableDone();
             }
             else
             {
@@ -137,7 +137,7 @@ namespace DesignPatternsGame
             {
                 imgThird.Source = new BitmapImage(new Uri("pack://application:,,,/Images/tinyTurtle.png", UriKind.Absolute));
                 heros[2] = 1;
-                //enableDone();
+                enableDone();
             }
             else
             {
@@ -161,12 +161,23 @@ namespace DesignPatternsGame
             {
                 imgThird.Source = new BitmapImage(new Uri("pack://application:,,,/Images/owl.png", UriKind.Absolute));
                 heros[2] = 1;
-                //enableDone();
+                enableDone();
             }
             else
             {
                 //Nothing occurs, all spots filled
             }
+        }
+
+        private void btnDone_Click(object sender, RoutedEventArgs e)
+        {
+            this.DialogResult = true;
+        }
+
+        private void enableDone()
+        {
+            //btnDone.BackColor = Color.Green;
+            btnDone.IsEnabled = true;
         }
     }
 }

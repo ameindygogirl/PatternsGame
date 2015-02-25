@@ -25,10 +25,7 @@ namespace DesignPatternsGame
         public MainWindow()
         {
             InitializeComponent();
-            path = new PathGen();
-            path.getPath();
-            ara = path.getPathToPrint();
-            printPath();
+            
 
         }
 
@@ -42,8 +39,8 @@ namespace DesignPatternsGame
                 for (int j = 0; j < ara.GetLength(0); j++)
                 {
                     Rectangle rect = new Rectangle();
-                    rect.Height = 86;
-                    rect.Width = 86;
+                    rect.Height = 70;
+                    rect.Width = 70;
                     if (this.ara[i, j] != null)
                     {
                         if (this.ara[i, j].Entrance)
@@ -67,9 +64,9 @@ namespace DesignPatternsGame
                     board.Children.Add(rect);
                     Canvas.SetLeft(rect, overlapLeft);
                     Canvas.SetTop(rect, overlapTop);
-                    overlapLeft += 86;
+                    overlapLeft += 70;
                 }
-                overlapTop += 86;
+                overlapTop += 70;
                 overlapLeft = 0;
             }
         }
@@ -109,7 +106,18 @@ namespace DesignPatternsGame
         private void btnPickCharacters_Click(object sender, RoutedEventArgs e)
         {
             CharacterPicker cp = new CharacterPicker();
-            cp.ShowDialog();
+            if (cp.ShowDialog() == true)
+            {
+                //New up the characters here
+            }
+        }
+
+        private void btnStartGame_Click(object sender, RoutedEventArgs e)
+        {
+            path = new PathGen(2);
+            path.getPath();
+            ara = path.getPathToPrint();
+            printPath();
         }
 
     }

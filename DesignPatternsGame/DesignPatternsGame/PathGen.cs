@@ -15,10 +15,21 @@ namespace DesignPatternsGame
         int tempRooms;
         int goalRooms;
 
-        public PathGen()
+        public PathGen(int type)
         {
             this.entrance = null;
-            setEasy();
+            if(type == 0)
+            {
+                setEasy();
+            }
+            else if(type == 1)
+            {
+                setMedium();
+            }
+            else
+            {
+                setHard();
+            }        
         }
 
         public void setEasy()
