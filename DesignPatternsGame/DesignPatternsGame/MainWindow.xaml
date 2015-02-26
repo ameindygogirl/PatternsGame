@@ -11,13 +11,56 @@
                 </MenuItem>
             </Menu>
             <StackPanel>
+
+
                 <Canvas x:Name="board" Height="100" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10"/>
+
 
             </StackPanel>
         </DockPanel>
-        <Button x:Name="btnStartGame" Content="Start Game" Width="159" HorizontalAlignment="Right" Margin="0,78,113,740" RenderTransformOrigin="-1.095,-11.529" Click="btnStartGame_Click"/>
-        <Button x:Name="btnBattle" Content="BATTLE!" Canvas.Left="80" Canvas.Top="150" Width="159" Height="69" FontSize="36" FontFamily="Rosewood Std Regular" Click="battle_Click" Margin="978,168,113,645"/>
-        <Button x:Name="btnPickCharacters" Content="Pick Character" HorizontalAlignment="Left" Margin="1004,312,0,0" VerticalAlignment="Top" Width="96" Click="btnPickCharacters_Click"/>
+        <GroupBox Header="Movement Controls" Width="516" Margin="0,141,107,193" Foreground="#FFFFFEFE" FontSize="20" HorizontalAlignment="Right">
+            <Grid Margin="0,0,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="125*"/>
+                    <ColumnDefinition Width="127*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="260*"/>
+                    <RowDefinition Height="259*"/>
+                </Grid.RowDefinitions>
+                <Button Content="Button" Margin="216,74,0,0" Width="75" HorizontalAlignment="Left" VerticalAlignment="Top" Height="145" Grid.ColumnSpan="2"/>
+                <Button Content="Button" Margin="216,36,0,0" Width="75" HorizontalAlignment="Left" VerticalAlignment="Top" Height="145" Grid.ColumnSpan="2" Grid.Row="1"/>
+                <Button Content="Button" Margin="76,183,0,0" Width="75" HorizontalAlignment="Left" VerticalAlignment="Top" Height="145" Grid.Column="1" Grid.RowSpan="2" RenderTransformOrigin="0.5,0.5">
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="89.815"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                </Button>
+                <Button Content="Button" Margin="108,183,0,0" Width="75" HorizontalAlignment="Left" VerticalAlignment="Top" Height="145" Grid.RowSpan="2" RenderTransformOrigin="0.5,0.5">
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="89.815"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                </Button>
+            </Grid>
+        </GroupBox>
+        <ComboBox x:Name="cbSize" Width="120" Margin="0,102,399,746" HorizontalAlignment="Right">
+            <ComboBoxItem Content="Easy"/>
+            <ComboBoxItem Content="Medium"/>
+            <ComboBoxItem Content="Hard"/>
+        </ComboBox>
+        <Label Content="Fuzzy Critter Battles" Margin="0,28,10,785" FontSize="60" FontFamily="Rosewood Std Regular" HorizontalAlignment="Right" Width="688"/>
+        <Button x:Name="btnStartGame" Content="Start Game" Width="159" HorizontalAlignment="Right" Margin="0,102,201,746" RenderTransformOrigin="-1.095,-11.529" Click="btnStartGame_Click" Background="#FF3DD810" IsEnabled="False"/>
+        <Button x:Name="btnBattle" Content="BATTLE!" Canvas.Left="80" Canvas.Top="150" Width="159" Height="69" FontSize="36" FontFamily="Rosewood Std Regular" Click="battle_Click" Margin="1024,775,67,38"/>
+        <Button x:Name="btnPickCharacters" Content="Pick Character" HorizontalAlignment="Left" Margin="871,824,0,0" VerticalAlignment="Top" Width="96" Click="btnPickCharacters_Click"/>
 
 
     </Grid>

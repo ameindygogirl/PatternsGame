@@ -25,8 +25,19 @@ namespace DesignPatternsGame
         public MainWindow()
         {
             InitializeComponent();
-            
+            cbSize.SelectionChanged += cbSize_SelectionChanged;
+        }
 
+        void cbSize_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(cbSize.SelectedIndex != -1)
+            {
+                btnStartGame.IsEnabled = true;
+            }
+            else
+            {
+                btnStartGame.IsEnabled = false;
+            }           
         }
 
         public void printPath()
@@ -105,6 +116,11 @@ namespace DesignPatternsGame
 
         private void btnPickCharacters_Click(object sender, RoutedEventArgs e)
         {
+            pickCharacters();
+        }
+
+        private static void pickCharacters()
+        {
             CharacterPicker cp = new CharacterPicker();
             if (cp.ShowDialog() == true)
             {
@@ -114,10 +130,26 @@ namespace DesignPatternsGame
 
         private void btnStartGame_Click(object sender, RoutedEventArgs e)
         {
-            path = new PathGen(2);
+            if(cbSize.SelectedIndex == 0)
+            {
+                path = new PathGen(0);
+            }
+            else if(cbSize.SelectedIndex == 1)
+            {
+                path = new PathGen(1);
+            }
+            else
+            {
+                path = new PathGen(2);
+            }
+            
             path.getPath();
             ara = path.getPathToPrint();
             printPath();
+
+            cbSize.IsEnabled = false;
+            btnStartGame.IsEnabled = false;
+            pickCharacters();
         }
 
     }
