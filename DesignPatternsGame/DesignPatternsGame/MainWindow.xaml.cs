@@ -20,12 +20,15 @@ namespace DesignPatternsGame
     /// </summary>
     public partial class MainWindow : Window
     {
+        HeroParty hparty = new HeroParty();
+        MonsterParty mparty;
         PathGen path;
         Room[,] ara;
         public MainWindow()
         {
             InitializeComponent();
             cbSize.SelectionChanged += cbSize_SelectionChanged;
+
         }
 
         void cbSize_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -97,21 +100,16 @@ namespace DesignPatternsGame
 
         private void battle_Click(object sender, RoutedEventArgs e)
         {
-            BattleWindow bw = new BattleWindow();
-            bw.ShowDialog();
-            HeroParty heroes = new HeroParty();
-            heroes.initParty();
-            HealthPotion potion = new HealthPotion(5);
-            heroes.addItem(potion);
+            HeroFactory hf = new HeroFactory();
+            GameCharacter h1 = hf.createCharacter(1);
+            GameCharacter h2 = hf.createCharacter(2);
+            GameCharacter h3 = hf.createCharacter(3);
+            hparty.Characters.AddLast(h1);
+            hparty.Characters.AddLast(h2);
+            hparty.Characters.AddLast(h3);
 
-            MonsterParty monsters = new MonsterParty();
-            monsters.initParty();
-
-            Battle encounter = new Battle();
-            encounter.Heroes = heroes;
-            encounter.Monsters = monsters;
-            encounter.start();
-            Console.WriteLine("encounter complete");
+            //BattleWindow bw = new BattleWindow();
+            //bw.Show();
         }
 
         private void btnPickCharacters_Click(object sender, RoutedEventArgs e)

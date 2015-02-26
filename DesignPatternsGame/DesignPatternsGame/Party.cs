@@ -7,7 +7,7 @@ namespace DesignPatternsGame
 {
     public abstract class Party
     {
-        private GameCharacterList characters;
+        protected GameCharacterList characters;
 
         public GameCharacterList Characters
         {

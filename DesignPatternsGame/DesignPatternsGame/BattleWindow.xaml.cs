@@ -19,9 +19,21 @@ namespace DesignPatternsGame
     /// </summary>
     public partial class BattleWindow : Window
     {
-        public BattleWindow()
+        public BattleWindow() //incoming parameter = parties?
         {
             InitializeComponent();
+            HeroParty heroes = new HeroParty();
+            heroes.initParty();
+            HealthPotion potion = new HealthPotion(5);
+            heroes.addItem(potion);
+
+            MonsterParty monsters = new MonsterParty();
+            monsters.initParty();
+
+            Battle encounter = new Battle();
+            encounter.Heroes = heroes;
+            encounter.Monsters = monsters;
+            encounter.start();
         }
         private void attackButton_Click(object sender, RoutedEventArgs e)
         {

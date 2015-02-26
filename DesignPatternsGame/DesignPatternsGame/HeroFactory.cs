@@ -31,8 +31,6 @@ namespace DesignPatternsGame
                     hero = new WiseOwl();
                     break;
             }
-            //Console.Write("Please give " + hero.Name + " a name: ");
-            //hero.Name = getName();
             return hero;
         }
 
