@@ -84,19 +84,7 @@ namespace DesignPatternsGame
                 overlapLeft = 0;
             }
         }
-        private void Create_Click(object sender, RoutedEventArgs e)
-        {
-            //Create a new game
-        }
-
-        private void Close_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBoxResult result = System.Windows.MessageBox.Show("Are you sure?", "Quit Game?", MessageBoxButton.YesNo);
-            if (result == MessageBoxResult.Yes)
-            {
-                this.Close();
-            }
-        }
+       
 
         private void battle_Click(object sender, RoutedEventArgs e)
         {
@@ -150,5 +138,27 @@ namespace DesignPatternsGame
             pickCharacters();
         }
 
+        private void Create_Click(object sender, RoutedEventArgs e)
+        {
+            //Create a new game
+        }
+
+        private void Close_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            MessageBoxResult result = System.Windows.MessageBox.Show("Are you sure?", "Quit Game?", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.Yes)
+            {
+                e.Cancel = false;
+            }
+            else
+            {
+                e.Cancel = true;
+            }
+        }
     }
 }

@@ -20,147 +20,65 @@ namespace DesignPatternsGame
     public partial class CharacterPicker : Window
     {
         public int[] heros = new int[3];
+        BitmapImage chipmunk = new BitmapImage(new Uri("pack://application:,,,/Images/chipmunk.png", UriKind.Absolute));
+        BitmapImage kitten = new BitmapImage(new Uri("pack://application:,,,/Images/kitten.png", UriKind.Absolute));
+        BitmapImage duck = new BitmapImage(new Uri("pack://application:,,,/Images/duck.png", UriKind.Absolute));
+        BitmapImage dog = new BitmapImage(new Uri("pack://application:,,,/Images/puppy.png", UriKind.Absolute));
+        BitmapImage turtle = new BitmapImage(new Uri("pack://application:,,,/Images/tinyTurtle.png", UriKind.Absolute));
+        BitmapImage owl = new BitmapImage(new Uri("pack://application:,,,/Images/owl.png", UriKind.Absolute));
         public CharacterPicker()
         {
             InitializeComponent();
         }
 
-        private void btnChip_Click(object sender, RoutedEventArgs e)
+        private void picture_Click(Object sender, RoutedEventArgs e)
         {
-            if (imgFirst.Source == null)
+            BitmapImage img;
+            Button b = (Button)sender;
+            if(b.Name == "btnChip")
             {
-                imgFirst.Source = new BitmapImage(new Uri("pack://application:,,,/Images/chipmunk.png", UriKind.Absolute));
-                heros[0] = 1;
+                img = chipmunk;
             }
-            else if (imgSecond.Source == null)
+            else if(b.Name == "btnKitten")
             {
-                imgSecond.Source = new BitmapImage(new Uri("pack://application:,,,/Images/chipmunk.png", UriKind.Absolute));
-                heros[1] = 1;
+                img = kitten;
             }
-            else if (imgThird.Source == null)
+            else if(b.Name == "btnDuck")
             {
-                imgThird.Source = new BitmapImage(new Uri("pack://application:,,,/Images/chipmunk.png", UriKind.Absolute));
-                heros[2] = 1;
-                enableDone();
+                img = duck;
+            }
+            else if(b.Name == "btnTurtle")
+            {
+                img = turtle;
+            }
+            else if(b.Name == "btnOwl")
+            {
+                img = owl;
             }
             else
             {
-                //Nothing occurs, all spots filled
+                img = dog;
             }
-        }
 
-        private void btnKitten_Click(object sender, RoutedEventArgs e)
-        {
             if (imgFirst.Source == null)
             {
-                imgFirst.Source = new BitmapImage(new Uri("pack://application:,,,/Images/kitten.png", UriKind.Absolute));
+                imgFirst.Source = img;
                 heros[0] = 1;
-            }
-            else if (imgSecond.Source == null)
-            {
-                imgSecond.Source = new BitmapImage(new Uri("pack://application:,,,/Images/kitten.png", UriKind.Absolute));
-                heros[1] = 1;
-            }
-            else if (imgThird.Source == null)
-            {
-                imgThird.Source = new BitmapImage(new Uri("pack://application:,,,/Images/kitten.png", UriKind.Absolute));
-                heros[2] = 1;
+                btnDeleteFirst.IsEnabled = true;
                 enableDone();
             }
-            else
-            {
-                //Nothing occurs, all spots filled
-            }
-        }
-
-        private void btnDuck_Click(object sender, RoutedEventArgs e)
-        {
-            if (imgFirst.Source == null)
-            {
-                imgFirst.Source = new BitmapImage(new Uri("pack://application:,,,/Images/duck.png", UriKind.Absolute));
-                heros[0] = 1;
-            }
             else if (imgSecond.Source == null)
             {
-                imgSecond.Source = new BitmapImage(new Uri("pack://application:,,,/Images/duck.png", UriKind.Absolute));
+                imgSecond.Source = img;
                 heros[1] = 1;
-            }
-            else if (imgThird.Source == null)
-            {
-                imgThird.Source = new BitmapImage(new Uri("pack://application:,,,/Images/duck.png", UriKind.Absolute));
-                heros[2] = 1;
+                btnDeleteSecond.IsEnabled = true;
                 enableDone();
             }
-            else
-            {
-                //Nothing occurs, all spots filled
-            }
-        }
-
-        private void btnDog_Click(object sender, RoutedEventArgs e)
-        {
-            if (imgFirst.Source == null)
-            {
-                imgFirst.Source = new BitmapImage(new Uri("pack://application:,,,/Images/puppy.png", UriKind.Absolute));
-                heros[0] = 1;
-            }
-            else if (imgSecond.Source == null)
-            {
-                imgSecond.Source = new BitmapImage(new Uri("pack://application:,,,/Images/puppy.png", UriKind.Absolute));
-                heros[1] = 1;
-            }
             else if (imgThird.Source == null)
             {
-                imgThird.Source = new BitmapImage(new Uri("pack://application:,,,/Images/puppy.png", UriKind.Absolute));
+                imgThird.Source = img;
                 heros[2] = 1;
-                enableDone();
-            }
-            else
-            {
-                //Nothing occurs, all spots filled
-            }
-        }
-
-        private void btnTurtle_Click(object sender, RoutedEventArgs e)
-        {
-            if (imgFirst.Source == null)
-            {
-                imgFirst.Source = new BitmapImage(new Uri("pack://application:,,,/Images/tinyTurtle.png", UriKind.Absolute));
-                heros[0] = 1;
-            }
-            else if (imgSecond.Source == null)
-            {
-                imgSecond.Source = new BitmapImage(new Uri("pack://application:,,,/Images/tinyTurtle.png", UriKind.Absolute));
-                heros[1] = 1;
-            }
-            else if (imgThird.Source == null)
-            {
-                imgThird.Source = new BitmapImage(new Uri("pack://application:,,,/Images/tinyTurtle.png", UriKind.Absolute));
-                heros[2] = 1;
-                enableDone();
-            }
-            else
-            {
-                //Nothing occurs, all spots filled
-            }
-        }
-
-        private void btnOwl_Click(object sender, RoutedEventArgs e)
-        {
-            if (imgFirst.Source == null)
-            {
-                imgFirst.Source = new BitmapImage(new Uri("pack://application:,,,/Images/owl.png", UriKind.Absolute));
-                heros[0] = 1;
-            }
-            else if (imgSecond.Source == null)
-            {
-                imgSecond.Source = new BitmapImage(new Uri("pack://application:,,,/Images/owl.png", UriKind.Absolute));
-                heros[1] = 1;
-            }
-            else if (imgThird.Source == null)
-            {
-                imgThird.Source = new BitmapImage(new Uri("pack://application:,,,/Images/owl.png", UriKind.Absolute));
-                heros[2] = 1;
+                btnDeleteThird.IsEnabled = true;
                 enableDone();
             }
             else
@@ -176,8 +94,35 @@ namespace DesignPatternsGame
 
         private void enableDone()
         {
-            //btnDone.BackColor = Color.Green;
-            btnDone.IsEnabled = true;
+            if(imgFirst.Source != null && imgSecond.Source != null && imgThird.Source != null)
+            {
+                btnDone.IsEnabled = true;
+            }
+            else
+            {
+                btnDone.IsEnabled = false;
+            }   
+        }
+
+        private void btnDeleteFirst_Click(object sender, RoutedEventArgs e)
+        {
+            imgFirst.Source = null;
+            btnDeleteFirst.IsEnabled = false;
+            enableDone();
+        }
+
+        private void btnDeleteSecond_Click(object sender, RoutedEventArgs e)
+        {
+            imgSecond.Source = null;
+            btnDeleteSecond.IsEnabled = false;
+            enableDone();
+        }
+
+        private void btnDeleteThird_Click(object sender, RoutedEventArgs e)
+        {
+            imgThird.Source = null;
+            btnDeleteThird.IsEnabled = false;
+            enableDone();
         }
     }
 }

@@ -17,7 +17,7 @@
             <ColumnDefinition Width="126.6*"/>
         </Grid.ColumnDefinitions>
 
-        <Button x:Name="btnChip" Content="Button" Width="209" Height="66" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="btnChip_Click" Margin="10,39,0,39" >
+        <Button x:Name="btnChip" Content="Button" Width="209" Height="66" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="picture_Click" Margin="10,39,0,39" >
             <Button.Background>
                 <ImageBrush ImageSource="Images/chipmunk.png"/>
             </Button.Background>
@@ -28,27 +28,27 @@
         <Rectangle Grid.Column="2" Height="86" Grid.Row="4" Stroke="Black" Width="214" Margin="3,28,2,20"/>
         <Image x:Name="imgSecond" Height="86" Grid.Row="4" Width="214" Margin="200,28,202.5,20" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <Image x:Name="imgThird" Grid.Column="2" Height="86" Grid.Row="4" Width="214" Margin="10,29,21,20" />
-        <Button x:Name="btnKitten" Content="Button" Width="214" Height="86" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="btnKitten_Click" Grid.ColumnSpan="3" Margin="200,38,202.5,20"  >
+        <Button x:Name="btnKitten" Content="Button" Width="214" Height="86" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="picture_Click" Grid.ColumnSpan="3" Margin="200,38,202.5,20"  >
             <Button.Background>
                 <ImageBrush ImageSource="Images/kitten.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="btnDuck" Content="Button" Grid.Column="2" Width="208" Height="86" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="btnDuck_Click" Margin="2,38,9,20"  >
+        <Button x:Name="btnDuck" Content="Button" Grid.Column="2" Width="208" Height="86" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="picture_Click" Margin="2,38,9,20"  >
             <Button.Background>
                 <ImageBrush ImageSource="Images/duck.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="btnDog" Content="Button" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Width="214" Height="86" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="btnDog_Click" Margin="5,19,0,27" >
+        <Button x:Name="btnDog" Content="Button" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Width="214" Height="86" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="picture_Click" Margin="5,19,0,27" >
             <Button.Background>
                 <ImageBrush ImageSource="Images/puppy.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="btnTurtle" Content="Button" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Width="214" Height="86" Foreground="{x:Null}" BorderBrush="{x:Null}" Click="btnTurtle_Click" Grid.ColumnSpan="3" Margin="200,19,202.5,27">
+        <Button x:Name="btnTurtle" Content="Button" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Width="214" Height="86" Foreground="{x:Null}" BorderBrush="{x:Null}" Click="picture_Click" Grid.ColumnSpan="3" Margin="200,19,202.5,27">
             <Button.Background>
                 <ImageBrush ImageSource="Images/tinyTurtle.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="btnOwl" Content="Button" Grid.Column="2" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Width="214" Height="86" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="btnOwl_Click" Margin="0,19,5,27" >
+        <Button x:Name="btnOwl" Content="Button" Grid.Column="2" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Width="214" Height="86" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="picture_Click" Margin="0,19,5,27" >
             <Button.Background>
                 <ImageBrush ImageSource="Images/owl.png"/>
             </Button.Background>
@@ -61,6 +61,9 @@
         <Label Content="Tiny Turtle &#xA; Health Points: 100 &#xA; Attack Speed: &#xA; Maximum Damage: &#xA; Minimum Damage: &#xA; Hit Chance: &#xA; Defense Chance:" Background="#FF9BF5F9" Width="207" Margin="7.5,0,3.5,2" Grid.Row="3"  Grid.Column="1" />
         <Label Content="Choose three heros by clicking on their pictures." HorizontalAlignment="Center" Margin="94,0,127.5,0" VerticalAlignment="Top" Width="395" Grid.ColumnSpan="3" FontSize="18" Height="34"/>
         <Button x:Name="btnDone" Content="Done" Grid.Column="2" HorizontalAlignment="Left" Margin="77,9,0,0" VerticalAlignment="Top" Width="75" Cursor="None" BorderThickness="0" BorderBrush="{x:Null}" Background="#FF51F32D" IsEnabled="False" Click="btnDone_Click"/>
+        <Button x:Name="btnDeleteFirst" Content="Delete" HorizontalAlignment="Left" Margin="164,4,0,0" Grid.Row="4" VerticalAlignment="Top" Width="75" Background="#FFE81717" Foreground="White" Grid.ColumnSpan="2" Click="btnDeleteFirst_Click" IsEnabled="False"/>
+        <Button x:Name="btnDeleteSecond" Content="Delete" Grid.Column="1" HorizontalAlignment="Left" Margin="158,4,0,0" Grid.Row="4" VerticalAlignment="Top" Width="75" Foreground="White" Background="#FFE81717" Grid.ColumnSpan="2" Click="btnDeleteSecond_Click" IsEnabled="False"/>
+        <Button x:Name="btnDeleteThird" Content="Delete" Grid.Column="2" HorizontalAlignment="Left" Margin="166,4,-22,0" Grid.Row="4" VerticalAlignment="Top" Width="75" Background="#FFE81717" Foreground="#FFFFFEFE" Click="btnDeleteThird_Click" IsEnabled="False"/>
 
     </Grid>
 </Window>
