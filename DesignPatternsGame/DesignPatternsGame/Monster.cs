@@ -15,5 +15,6 @@ namespace DesignPatternsGame
             return Actions.getData(index);
         }
         public override abstract void useSpecial(GameCharacter target);
+        public bool isHero() { return false; }
     }
 }

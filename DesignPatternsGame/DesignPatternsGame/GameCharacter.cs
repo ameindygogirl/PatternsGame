@@ -70,9 +70,8 @@ namespace DesignPatternsGame
             set { actions = value; }
         }
 
-        public abstract Action takeAction();
         public abstract void useSpecial(GameCharacter target);
-
+        public abstract bool isHero();
         /*public bool defense(GameCharacter d)
         {
             if (defenseChance >= new Random().NextDouble())

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DesignPatternsGame
 {
-    public class GameCharacterList: LinkedList<GameCharacter>
+    public class GameCharacterList: LinkedList<GameCharacter>, IEnumerable<GameCharacter>
     {
         public void sort() // based on attackSpeed
         {

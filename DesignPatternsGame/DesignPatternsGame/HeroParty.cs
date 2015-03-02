@@ -51,22 +51,5 @@ namespace DesignPatternsGame
 
             Characters = list;
         }
-
-        public Boolean isDead()
-        {
-            int i, j = 0;
-            LinkedListNode<GameCharacter> heroNode = Characters.First;
-            for (i = 0; i < Characters.Count; i++)
-            {
-                if (heroNode.Value.HP <= 0)
-                {
-                    j++;
-                }
-            }
-            if (j >= Characters.Count)
-                return true;
-
-            return false;
-        }
     }
 }

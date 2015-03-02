@@ -21,5 +21,19 @@ namespace DesignPatternsGame
         {
             return characters.Count <= 0;
         }
+
+        public bool isDead()
+        {
+            int j = 0;
+            LinkedListNode<GameCharacter> cur = characters.First;
+            while (cur != characters.Last.Next)
+            {
+                if (cur.Value.HP <= 0)
+                    j++;
+            }
+            if (j == characters.Count)
+                return true;
+            return false;
+        }
     }
 }
