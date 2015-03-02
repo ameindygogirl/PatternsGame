@@ -143,6 +143,16 @@ namespace DesignPatternsGame.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap lost {
+            get {
+                object obj = ResourceManager.GetObject("lost", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap owl {
             get {
                 object obj = ResourceManager.GetObject("owl", resourceCulture);
@@ -206,6 +216,16 @@ namespace DesignPatternsGame.Properties {
         internal static System.Drawing.Bitmap wall {
             get {
                 object obj = ResourceManager.GetObject("wall", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap won {
+            get {
+                object obj = ResourceManager.GetObject("won", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

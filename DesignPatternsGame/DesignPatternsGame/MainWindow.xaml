@@ -19,10 +19,11 @@
             </StackPanel>
         </DockPanel>
         <Grid Name="rightContainer" Width=" 516" HorizontalAlignment="Right">
-            <Label Content="Fuzzy Critter Battles" Margin="0,28,0,0" Canvas.Right ="10" FontSize="36" FontFamily="Rosewood Std Regular" Width="400" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+            <Label Content="Fuzzy Critter Battles" Margin="31,28,33,0" Canvas.Right ="10" FontSize="41" FontFamily="Rosewood Std Regular" Width="452" VerticalAlignment="Top" HorizontalAlignment="Center"/>
             <Button x:Name="btnStartGame" Content="Start Game" Width="159" HorizontalAlignment="Right" Margin="0,102,50,0" RenderTransformOrigin="-1.095,-11.529" Click="btnStartGame_Click" Background="#FF3DD810" IsEnabled="False" VerticalAlignment="Top"/>
             <Button x:Name="btnBattle" Content="BATTLE!" Margin="0,10,0,70" Canvas.Left="80" Canvas.Top="150" Width="159" Height="69" FontSize="36" FontFamily="Rosewood Std Regular" Click="battle_Click" VerticalAlignment="Bottom" HorizontalAlignment="Center" />
             <Button x:Name="btnPickCharacters" Content="Pick Character" HorizontalAlignment="Center" Margin="0,0,0,40" VerticalAlignment="Bottom" Width="96" Click="btnPickCharacters_Click"/>
+            <Button x:Name="btnResults" Content="Result Tester" HorizontalAlignment="Center" Margin="220,0,220,150" VerticalAlignment="Bottom" Width="76" Click="btnResults_Click"/>
             <GroupBox Header="Movement Controls" Width="450" Margin="0,141,0,0" Foreground="#FFFFFEFE" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Height="450">
                 <Grid Margin="0" HorizontalAlignment="Center" Width="310" VerticalAlignment="Center" Height="380">
                     <Grid.ColumnDefinitions>
@@ -77,6 +78,7 @@
                 <ComboBoxItem Content="Hard"/>
             </ComboBox>
         </Grid>
+
 
 
 

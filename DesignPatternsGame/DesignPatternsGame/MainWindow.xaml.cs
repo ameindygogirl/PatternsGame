@@ -43,7 +43,7 @@ namespace DesignPatternsGame
             }           
         }
 
-        public void printPath()
+        public void printPath(int tile)
         {
             int overlapLeft = 0;
             int overlapTop = 0;
@@ -53,8 +53,8 @@ namespace DesignPatternsGame
                 for (int j = 0; j < ara.GetLength(0); j++)
                 {
                     Rectangle rect = new Rectangle();
-                    rect.Height = 70;
-                    rect.Width = 70;
+                    rect.Height = tile;
+                    rect.Width = tile;
                     if (this.ara[i, j] != null)
                     {
                         if (this.ara[i, j].Entrance)
@@ -78,9 +78,9 @@ namespace DesignPatternsGame
                     board.Children.Add(rect);
                     Canvas.SetLeft(rect, overlapLeft);
                     Canvas.SetTop(rect, overlapTop);
-                    overlapLeft += 70;
+                    overlapLeft += tile;
                 }
-                overlapTop += 70;
+                overlapTop += tile;
                 overlapLeft = 0;
             }
         }
@@ -116,22 +116,26 @@ namespace DesignPatternsGame
 
         private void btnStartGame_Click(object sender, RoutedEventArgs e)
         {
+            int tile;
             if(cbSize.SelectedIndex == 0)
             {
                 path = new PathGen(0);
+                tile = 167;
             }
             else if(cbSize.SelectedIndex == 1)
             {
                 path = new PathGen(1);
+                tile = 105;
             }
             else
             {
                 path = new PathGen(2);
+                tile = 70;
             }
             
             path.getPath();
             ara = path.getPathToPrint();
-            printPath();
+            printPath(tile);
 
             cbSize.IsEnabled = false;
             btnStartGame.IsEnabled = false;
@@ -141,6 +145,9 @@ namespace DesignPatternsGame
         private void Create_Click(object sender, RoutedEventArgs e)
         {
             //Create a new game
+            cbSize.SelectedIndex = -1;
+            cbSize.IsEnabled = true;
+            board.Children.Clear();
         }
 
         private void Close_Click(object sender, RoutedEventArgs e)
@@ -159,6 +166,12 @@ namespace DesignPatternsGame
             {
                 e.Cancel = true;
             }
+        }
+
+        private void btnResults_Click(object sender, RoutedEventArgs e)
+        {
+            Results r = new Results(false);
+            r.ShowDialog();
         }
     }
 }
