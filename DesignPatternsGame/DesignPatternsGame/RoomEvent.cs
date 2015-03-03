@@ -9,6 +9,6 @@ namespace DesignPatternsGame
     interface RoomEvent
     {
 
-        abstract public void execute();
+        void execute();
     }
 }

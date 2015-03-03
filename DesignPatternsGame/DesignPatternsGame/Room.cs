@@ -19,20 +19,10 @@ namespace DesignPatternsGame
         public Room()
         {
             Random rand = new Random();
-            int randResult = rand.Next(3);
-            if (randResult == 1)
-            { }
-                //baddies = new Party();
-            else
-                baddies = null;
+            
+            
+            
 
-            randResult = rand.Next(3);
-            if (randResult == 1)
-                item = null;
-            else
-                item = null;
-
-            item = null;
             north = null;
             south = null;
             east = null;
