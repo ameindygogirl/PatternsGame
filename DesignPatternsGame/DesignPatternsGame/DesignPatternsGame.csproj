@@ -66,6 +66,7 @@
       <DependentUpon>CharacterPicker.xaml</DependentUpon>
     </Compile>
     <Compile Include="ChubbyChipmunk.cs" />
+    <Compile Include="ActionFactory.cs" />
     <Compile Include="CrookedVulture.cs" />
     <Compile Include="CuddlyKitten.cs" />
     <Compile Include="DarlingDuckling.cs" />

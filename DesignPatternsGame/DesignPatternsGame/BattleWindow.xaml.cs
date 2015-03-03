@@ -19,54 +19,70 @@ namespace DesignPatternsGame
     /// </summary>
     public partial class BattleWindow : Window
     {
-        public BattleWindow(HeroParty heroes, MonsterParty monsters) //incoming parameter = parties?
+        TextBlock battlePrompt = new TextBlock();
+        Action action;
+        HeroParty heroes;
+        MonsterParty monsters;
+        GameCharacter myTurn;
+        GameCharacter target;
+        GameCharacterList turnList;
+        LinkedListNode<GameCharacter> cur;
+
+        public BattleWindow(HeroParty heroes2, MonsterParty monsters2) //incoming parameter = parties?
         {
+            battlePrompt.Text = "Let the battle begin!";
             HealthPotion potion = new HealthPotion(5);
-            heroes.addItem(potion);
+            heroes2.addItem(potion);
 
-            start(heroes, monsters);
+            heroes = heroes2;
+            monsters = monsters2;
+
+            turnList = initTurnList(heroes, monsters);
+            cur = turnList.First;
+            action = null;
+            
+            start();
+            //InitializeComponent();
         }
-        private void attackButton_Click(object sender, RoutedEventArgs e)
+
+        // Need "You win" pop up with "collect loot" button
+
+        private void start()
         {
-
-        }
-
-        private void battlePrompt_TextChanged(object sender, TextChangedEventArgs e, String message)
-        {
-
-        }
-
-        public void start(HeroParty heroes, MonsterParty monsters)
-        {
-            GameCharacterList turnList = initTurnList(heroes, monsters);
-            LinkedListNode<GameCharacter> myTurn = turnList.First;
-            Action action = null;
-
+            Monster m;
             while(heroes.isDead() == false && monsters.isDead() == false)
             {
-                if(myTurn == turnList.Last.Next)
-                   myTurn = turnList.First;
+                if(cur == turnList.Last.Next)
+                   cur= turnList.First;
 
-                if (myTurn.Value.isHero())
-                    action = takeAction(myTurn);
+                myTurn = cur.Value;
 
+                if (myTurn is Monster)
+                {
+                    m = (Monster)myTurn;
+                    action = m.pickAction();
+                    action.Target = m.pickTarget(heroes.Characters);
+                }
                 else
                 {
-                    //monster's truen
+                    while (action == null) ;
+                    action.Characters = monsters.Characters;
                 }
-                action.Characters = turnList;
-                action.Target = chooseTarget();
+                
+                if (action.Target == null)
+                    while (action.Target == null) ;
+
                 action.execute();
-                myTurn = myTurn.Next; 
+                action = null;
             }
 
             if (heroes.isDead())
             {
-                Console.WriteLine("Game Over");
+                battlePrompt.Text = "Game Over";
             }
             else
             {
-                Console.WriteLine("Enemies defeated");
+                battlePrompt.Text = "Enemies defeated";
             }
         }
 
@@ -88,33 +104,56 @@ namespace DesignPatternsGame
             return allCharacters;
         }
 
-        private Boolean confirmAction(Action action)
+        //make sure that enemyImg is disabled after killed
+        private void chooseTarget(object sender, TextChangedEventArgs e)
         {
-            if(action.Primary is Monster)
-                return true;
-
-            Console.WriteLine(action.ToString() + "? (y/n)");
-            String confirm = Console.ReadLine();
-            if (confirm.ToLower().CompareTo("y") == 0)
-                return true;
-
-            return false;
+            target = null;
+            Image i = (Image)sender;
+            switch (i.Name)
+            {
+                case "enemyImg1":
+                    action.Target = monsters.Characters.First.Value;
+                    break;
+                case "enemyImg2":
+                    action.Target = monsters.Characters.First.Next.Value;
+                    break;
+                case "enemyImg3":
+                    action.Target = monsters.Characters.First.Next.Next.Value;
+                    break;
+            }
         }
 
-        private Action takeAction(object sender, TextChangedEventArgs e, Hero hero)
+        private void action_click(object sender, TextChangedEventArgs e)
         {
-            int option = 0;
-            int limit = hero.Actions.Count;
-            String s = null;
-
-            Console.WriteLine(Name);
-            s = "\n" + hero.Name + ", please choose an action";
-            battlePrompt_TextChanged(sender, e, s);
-            //option = clicked button
-            Action selected = actions.getData(option);
-            selected.Primary = hero;
-            return selected;
+            action = null;
+            Button b = (Button)sender;
+            switch(b.Name)
+            {
+                case "attackButton":
+                    action = new AttackAction();
+                    battlePrompt.Text = "Please choose a target";
+                    break;
+                case "defendButton":
+                    action = new DefendAction();
+                    battlePrompt.Text = myTurn.Name + " defends";
+                    break;
+                case "specialButton":
+                    action = new SpecialAction();
+                    battlePrompt.Text = "Currently unavailable";
+                    break;
+                case "itemButton":
+                    action = new ItemAction();
+                    battlePrompt.Text = "Please choose a target";
+                    break;
+            }
+            System.Threading.Thread.Sleep(1000);
         }
+
+        //private void battlePrompt(object sender, TextChangedEventArgs e)
+        //{
+        //    TextBlock battlePrompt = new TextBlock();
+        //    battlePrompt.Text = battlePrompt.Text;
+        //}
     }
 }
 

@@ -21,7 +21,7 @@ namespace DesignPatternsGame
     public partial class MainWindow : Window
     {
         HeroParty hparty = new HeroParty();
-        MonsterParty mparty;
+        MonsterParty mparty = new MonsterParty();
         PathGen path;
         Room[,] ara;
         public MainWindow()
@@ -88,16 +88,11 @@ namespace DesignPatternsGame
 
         private void battle_Click(object sender, RoutedEventArgs e)
         {
-            HeroFactory hf = new HeroFactory();
-            GameCharacter h1 = hf.createCharacter(1);
-            GameCharacter h2 = hf.createCharacter(2);
-            GameCharacter h3 = hf.createCharacter(3);
-            hparty.Characters.AddLast(h1);
-            hparty.Characters.AddLast(h2);
-            hparty.Characters.AddLast(h3);
+            hparty.initParty();
+            mparty.initParty();
 
-            //BattleWindow bw = new BattleWindow();
-            //bw.Show();
+            BattleWindow bw = new BattleWindow(hparty, mparty);
+            bw.Show();
         }
 
         private void btnPickCharacters_Click(object sender, RoutedEventArgs e)

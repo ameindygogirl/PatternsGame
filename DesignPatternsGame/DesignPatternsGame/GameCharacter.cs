@@ -71,7 +71,6 @@ namespace DesignPatternsGame
         }
 
         public abstract void useSpecial(GameCharacter target);
-        public abstract bool isHero();
         /*public bool defense(GameCharacter d)
         {
             if (defenseChance >= new Random().NextDouble())

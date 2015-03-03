@@ -23,15 +23,14 @@ namespace DesignPatternsGame
 
         public override void initParty()
         {
-            GameCharacterList list = null;
-            ActionList alist = null;
+            GameCharacterList list = new GameCharacterList();
+            ActionList alist       = new ActionList() ;
 
             ItemAction item       = new ItemAction();
             SpecialAction special = new SpecialAction();
             DefendAction defend   = new DefendAction();
             AttackAction attack   = new AttackAction();
 
-            //TODO Set createCharacter to user chosen character
             GameCharacter gc1 = makeHero.createCharacter(0);
             GameCharacter gc2 = makeHero.createCharacter(1);
             GameCharacter gc3 = makeHero.createCharacter(2);

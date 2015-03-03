@@ -35,7 +35,7 @@ namespace DesignPatternsGame
 
             while(heroes.isDead() == false && monsters.isEmpty() == false)
             {
-                action = myTurn.Value.takeAction();
+                //action = myTurn.Value.takeAction();
                 action.Characters = turnList;
                 action.chooseTarget();
                 
