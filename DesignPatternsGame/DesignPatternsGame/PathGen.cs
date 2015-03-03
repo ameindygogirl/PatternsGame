@@ -68,7 +68,7 @@ namespace DesignPatternsGame
 
         }
 
-        public Room getPath()
+        public Room[,] getPath()
         {
             this.tempRooms = 0;
             this.entrance = new Room();
@@ -83,7 +83,7 @@ namespace DesignPatternsGame
                 buildPath(this.entrance, i, j);
             }
 
-            return this.entrance;
+            return this.grid;
         }
 
         private void buildPath(Room cur, int i, int j)

@@ -128,8 +128,8 @@ namespace DesignPatternsGame
                 tile = 70;
             }
             
-            path.getPath();
-            ara = path.getPathToPrint();
+            
+            ara = path.getPath();
             printPath(tile);
 
             cbSize.IsEnabled = false;
