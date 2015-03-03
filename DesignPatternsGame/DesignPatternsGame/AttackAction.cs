@@ -14,20 +14,20 @@ namespace DesignPatternsGame
 
         public override void execute()
         {
-            if (Primary.HitChance >= new Random().NextDouble())
+            if (primary.HitChance >= new Random().NextDouble())
             {
-                int hit = new Random().Next(Primary.MaxDamage - Primary.MinDamage + 1) + Primary.MinDamage;
+                int hit = new Random().Next(primary.MaxDamage - primary.MinDamage + 1) + primary.MinDamage;
                 int result = Target.HP - hit;
                 
                 //if (Target.PrevAction = instance(Defend))
                 //   result = result / 2;
 
                 Target.HP = result;
-                Console.WriteLine(Primary.Name + " hits " + Target.Name + " for " + result + " points of damage");
+                Console.WriteLine(primary.Name + " hits " + target.Name + " for " + result + " points of damage");
             }
             else
             {
-                Console.WriteLine(Primary.Name + " missed!");
+                Console.WriteLine(primary.Name + " missed!");
             }
         }
 

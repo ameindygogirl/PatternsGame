@@ -24,26 +24,28 @@ namespace DesignPatternsGame
         public override void initParty()
         {
             GameCharacterList list = new GameCharacterList();
-            ActionList alist       = new ActionList() ;
+            ActionList alist       = new ActionList();
 
             ItemAction item       = new ItemAction();
             SpecialAction special = new SpecialAction();
             DefendAction defend   = new DefendAction();
             AttackAction attack   = new AttackAction();
 
-            GameCharacter gc1 = makeHero.createCharacter(0);
-            GameCharacter gc2 = makeHero.createCharacter(1);
-            GameCharacter gc3 = makeHero.createCharacter(2);
+            GameCharacter gc1 = makeHero.createCharacter(1);
+            GameCharacter gc2 = makeHero.createCharacter(2);
+            GameCharacter gc3 = makeHero.createCharacter(3);
             
             alist.AddFirst(item);
             alist.AddFirst(special);
             alist.AddFirst(defend);
             alist.AddFirst(attack);
 
-            gc1.Actions = alist;
-            gc2.Actions = alist;
-            gc3.Actions = alist;
-
+            if(alist != null)
+            {
+                gc1.Actions = alist;
+                gc2.Actions = alist;
+                gc3.Actions = alist;
+            }
             list.AddFirst(gc3);
             list.AddFirst(gc2);
             list.AddFirst(gc1);

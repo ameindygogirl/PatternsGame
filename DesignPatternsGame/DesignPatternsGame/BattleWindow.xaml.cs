@@ -41,8 +41,9 @@ namespace DesignPatternsGame
             cur = turnList.First;
             action = null;
             
+            InitializeComponent();
+            this.Show();
             start();
-            //InitializeComponent();
         }
 
         // Need "You win" pop up with "collect loot" button
@@ -52,8 +53,10 @@ namespace DesignPatternsGame
             Monster m;
             while(heroes.isDead() == false && monsters.isDead() == false)
             {
+                action = null;
+
                 if(cur == turnList.Last.Next)
-                   cur= turnList.First;
+                   cur = turnList.First;
 
                 myTurn = cur.Value;
 
@@ -93,11 +96,13 @@ namespace DesignPatternsGame
             while (cur != heroes.Characters.Last.Next)
             {
                 allCharacters.AddFirst(cur.Value);
+                cur = cur.Next;
             }
             cur = monsters.Characters.First;
             while (cur != monsters.Characters.Last.Next)
             {
                 allCharacters.AddFirst(cur.Value);
+                cur = cur.Next;
             }
             cur = null;
             allCharacters.sort();
@@ -147,6 +152,11 @@ namespace DesignPatternsGame
                     break;
             }
             System.Threading.Thread.Sleep(1000);
+        }
+
+        private void attackButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
         //private void battlePrompt(object sender, TextChangedEventArgs e)

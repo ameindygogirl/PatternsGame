@@ -7,7 +7,7 @@ namespace DesignPatternsGame
 {
     public abstract class Party
     {
-        protected GameCharacterList characters;
+        protected GameCharacterList characters = new GameCharacterList();
 
         public GameCharacterList Characters
         {
@@ -30,6 +30,8 @@ namespace DesignPatternsGame
             {
                 if (cur.Value.HP <= 0)
                     j++;
+
+                cur = cur.Next;
             }
             if (j == characters.Count)
                 return true;

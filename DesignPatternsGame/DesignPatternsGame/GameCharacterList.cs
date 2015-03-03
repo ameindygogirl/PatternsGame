@@ -13,20 +13,20 @@ namespace DesignPatternsGame
                 return;
 
             LinkedListNode<GameCharacter> start = null;
-            LinkedListNode<GameCharacter> lastSorted = null;
+            GameCharacter nextUnsorted = null;
             LinkedListNode<GameCharacter> sortedWalker = null;
 
-            for (start = First; start != Last; start = start.Next)
+            for (start = this.First; start != this.Last; start = start.Next)
             {
-                lastSorted = start;
-                for (sortedWalker = start.Next; sortedWalker != First.Previous; sortedWalker = sortedWalker.Previous)
+                nextUnsorted = start.Next.Value;
+                for (sortedWalker = start.Next; sortedWalker != this.First; sortedWalker = sortedWalker.Previous)
                 {
-                    if(sortedWalker.Value.Speed >= lastSorted.Value.Speed)
+                    if(sortedWalker.Value.Speed <= start.Value.Speed)
                         break;
 
-                    lastSorted = sortedWalker;
+                    sortedWalker.Value = sortedWalker.Previous.Value;
                 }
-                sortedWalker = start;
+                sortedWalker.Value = nextUnsorted;
             }
         }
     }

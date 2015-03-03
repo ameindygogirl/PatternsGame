@@ -4,7 +4,7 @@
         Title="BattleWindow" Height="386.512" Width="481.395">
 
     <Canvas x:Name="battleWindow1"  Background="#FF2D5B61">
-        <Button x:Name="attackButton" Content="Attack" BorderBrush="Black" BorderThickness="1" Height="30" Canvas.Top="256" Width="100" Background="White" Canvas.Left="24" />
+        <Button x:Name="attackButton" Content="Attack" BorderBrush="Black" BorderThickness="1" Height="30" Canvas.Top="256" Width="100" Background="White" Canvas.Left="24" Click="attackButton_Click" />
         <Button x:Name="defendButton" Content="Defend" BorderBrush="Black" BorderThickness="1" Height="30" Canvas.Left="131" Canvas.Top="256" Width="100" Background="White"/>
         <Button x:Name="specialButton" Content="Special" BorderBrush="Black" BorderThickness="1" Height="30" Canvas.Left="355" Canvas.Top="256" Width="100" Background="White"/>
         <Button x:Name="itemButton" Content="Item" BorderBrush="Black" BorderThickness="1" Height="30" Canvas.Left="250" Canvas.Top="256" Width="100" Background="White"/>
