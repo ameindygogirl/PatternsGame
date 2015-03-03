@@ -8,8 +8,7 @@ namespace DesignPatternsGame
 {
     class Room
     {
-        private Party baddies;
-        private Item item;
+        private RoomEvent roomEvent;
         private Room north;
         private Room south;
         private Room east;

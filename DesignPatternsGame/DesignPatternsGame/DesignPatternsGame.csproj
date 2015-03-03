@@ -92,6 +92,7 @@
       <DependentUpon>Results.xaml</DependentUpon>
     </Compile>
     <Compile Include="Room.cs" />
+    <Compile Include="RoomEvent.cs" />
     <Compile Include="ScaryShark.cs" />
     <Compile Include="SlitheringSnake.cs" />
     <Compile Include="SpecialAction.cs" />
