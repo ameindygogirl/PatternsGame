@@ -16,6 +16,12 @@ namespace DesignPatternsGame
             items = new ItemList();
         }
 
+        public Items
+        {
+            get { return this.items; }
+            set { this.items = value; }
+        }
+
         public void addItem(Item item)
         {
             items.AddFirst(item);

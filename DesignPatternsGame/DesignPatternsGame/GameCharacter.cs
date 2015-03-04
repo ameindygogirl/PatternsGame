@@ -70,6 +70,8 @@ namespace DesignPatternsGame
             set { actions = value; }
         }
 
+        public abstract ItemList getItems();
+
         public abstract void useSpecial(GameCharacter target);
         /*public bool defense(GameCharacter d)
         {

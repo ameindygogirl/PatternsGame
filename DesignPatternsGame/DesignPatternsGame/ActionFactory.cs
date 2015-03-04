@@ -14,7 +14,8 @@ namespace DesignPatternsGame
         {
             get { return this.COUNT; }
         }
-        public Action makeAction(int i)
+
+        public Action makeAction(GameCharacter gc, int i)
         {
             switch(i)
             {
@@ -25,6 +26,7 @@ namespace DesignPatternsGame
                 case 2:
                     return new SpecialAction();
                 case 3:
+                    Item item = gc.getItems(); //should Itemlist be singleton?
                     return new ItemAction();
             }
             return null;
