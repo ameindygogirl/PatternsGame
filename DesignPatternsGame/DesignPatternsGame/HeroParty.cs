@@ -16,7 +16,7 @@ namespace DesignPatternsGame
             items = new ItemList();
         }
 
-        public Items
+        public ItemList Items
         {
             get { return this.items; }
             set { this.items = value; }
@@ -32,7 +32,7 @@ namespace DesignPatternsGame
             GameCharacterList list = new GameCharacterList();
             ActionList alist       = new ActionList();
 
-            ItemAction item       = new ItemAction();
+            ItemAction item       = null;
             SpecialAction special = new SpecialAction();
             DefendAction defend   = new DefendAction();
             AttackAction attack   = new AttackAction();

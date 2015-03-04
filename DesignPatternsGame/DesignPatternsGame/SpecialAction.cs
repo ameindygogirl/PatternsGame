@@ -9,7 +9,6 @@ namespace DesignPatternsGame
     {
         public override void execute()
         {
-            chooseTarget();
             Primary.useSpecial(Target);
         }
     }

@@ -20,8 +20,8 @@ namespace DesignPatternsGame
                 int hit = new Random().Next(primary.MinDamage, primary.MaxDamage);
                 int result = Target.HP - hit;
 
-                //if (Target.PrevAction = instance(Defend))
-                //   result = result / 2;
+                if (Target.Action is DefendAction)
+                    result = result / 2;
 
                 Target.HP = result;
             }

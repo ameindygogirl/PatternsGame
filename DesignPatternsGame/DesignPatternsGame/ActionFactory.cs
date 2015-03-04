@@ -26,8 +26,13 @@ namespace DesignPatternsGame
                 case 2:
                     return new SpecialAction();
                 case 3:
-                    Item item = gc.getItems(); //should Itemlist be singleton?
-                    return new ItemAction();
+                    ItemList items = gc.getItems();
+                    if (items == null)
+                        return new AttackAction();
+
+                    int random = new Random().Next(0, items.Count);
+                    Item item = items.ElementAt(random);
+                    return new ItemAction(item);
             }
             return null;
         }

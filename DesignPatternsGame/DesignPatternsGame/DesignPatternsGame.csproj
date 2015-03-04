@@ -57,8 +57,6 @@
     <Compile Include="Action.cs" />
     <Compile Include="ActionList.cs" />
     <Compile Include="AttackAction.cs" />
-    <Compile Include="Battle.cs" />
-    <Compile Include="BattleTester.cs" />
     <Compile Include="BattleWindow.xaml.cs">
       <DependentUpon>BattleWindow.xaml</DependentUpon>
     </Compile>
@@ -67,6 +65,7 @@
     </Compile>
     <Compile Include="ChubbyChipmunk.cs" />
     <Compile Include="ActionFactory.cs" />
+    <Compile Include="Class1.cs" />
     <Compile Include="CrookedVulture.cs" />
     <Compile Include="CuddlyKitten.cs" />
     <Compile Include="DarlingDuckling.cs" />

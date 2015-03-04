@@ -8,7 +8,9 @@
         <Button x:Name="defendButton" Content="Defend" BorderBrush="Black" BorderThickness="1" Height="30" Canvas.Left="131" Canvas.Top="256" Width="100" Background="White"/>
         <Button x:Name="specialButton" Content="Special" BorderBrush="Black" BorderThickness="1" Height="30" Canvas.Left="355" Canvas.Top="256" Width="100" Background="White"/>
         <Button x:Name="itemButton" Content="Item" BorderBrush="Black" BorderThickness="1" Height="30" Canvas.Left="250" Canvas.Top="256" Width="100" Background="White"/>
-        <Image x:Name="enemyImg1" Height="100" Canvas.Left="192" Canvas.Top="100" Width="100" Source="Images/enemy.png"/>
+        <Image x:Name="enemyImg1" Height="100" Canvas.Left="192" Canvas.Top="100" Width="100" Source="Images/enemy.png" Visibility="Hidden"/>
+        <Image x:Name="enemyImg2" Height="100" Canvas.Left="304" Canvas.Top="100" Width="100" Source="Images/enemy.png" Visibility="Hidden"/>
+        <Image x:Name="enemyImg3" Height="100" Canvas.Left="80" Canvas.Top="100" Width="100" Source="Images/enemy.png" HorizontalAlignment="Left" Visibility="Hidden"/>
         <TextBlock Name="battle_prompt" Canvas.Left="68" TextWrapping="Wrap" Text="//monster names" Canvas.Top="23" Width="340" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0">
             <TextBlock.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">

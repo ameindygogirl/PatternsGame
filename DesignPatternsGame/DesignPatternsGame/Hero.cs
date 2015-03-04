@@ -9,13 +9,15 @@ namespace DesignPatternsGame
     {
         HeroParty heroes;
 
-        public Hero(HeroParty heroes)
+        public HeroParty Heroes
         {
-            this.heroes = heroes;
+            get { return heroes; }
+            set { heroes = value; }
         }
+
         public override abstract void useSpecial(GameCharacter target);
     
-        public ItemList getItems()
+        public override ItemList getItems()
         {
             return this.heroes.Items;
         }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
 
 namespace DesignPatternsGame
 {
@@ -18,6 +19,8 @@ namespace DesignPatternsGame
             MinDamage = 20;
             HitChance = 90;
             Defense = 5;
+
+            items = null;
         }
 
         public override void useSpecial(GameCharacter target)

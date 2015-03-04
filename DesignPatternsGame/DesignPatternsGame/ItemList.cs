@@ -30,30 +30,15 @@ namespace DesignPatternsGame
             }
         }
 
-        public Item getItem(int index) // 1 base indexing
+        public String showItems()
         {
-            if (this.Count <= 0 || index > this.Count || index < 1)
-                throw new NullReferenceException();
-
-            int i = 1;
-            LinkedListNode<Item> cur = this.First;
-
-            while (i != index)
-            {
-                cur = cur.Next;
-                i++;
-            }
-            return (Item) cur.Value;
-        }
-
-        public void printList()
-        {
-            int i = 1;
+            String s = "";
             LinkedListNode<Item> cur = this.First;
             while(cur != this.Last.Next)
             {
-                Console.WriteLine(i + ". " + cur.Value.Name);
+                s = cur.Value.Name + "\t\t" + cur.Value.Amount + "\n";
             }
+            return s;
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Media.Imaging;
 
 namespace DesignPatternsGame
 {
@@ -16,6 +17,8 @@ namespace DesignPatternsGame
         protected double hitChance;
         protected double defense;
         protected ActionList actions;
+        protected Action action;
+        protected BitmapImage img;
 
         public string Name
         {
@@ -64,10 +67,17 @@ namespace DesignPatternsGame
             get { return defense; }
             set { defense = value; }
         }
+        
         public ActionList Actions
         {
             get { return actions; }
             set { actions = value; }
+        }
+
+        public Action Action
+        {
+            get { return action; }
+            set { action = value; }
         }
 
         public abstract ItemList getItems();

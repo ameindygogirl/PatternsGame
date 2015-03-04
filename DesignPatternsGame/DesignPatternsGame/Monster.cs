@@ -7,6 +7,8 @@ namespace DesignPatternsGame
 {
     public abstract class Monster: GameCharacter
     {
+        protected ItemList items;
+
         public Action takeAction()
         {
             double random = new Random().NextDouble();
@@ -16,12 +18,17 @@ namespace DesignPatternsGame
         }
         public override abstract void useSpecial(GameCharacter target);
         
+        public override ItemList getItems()
+        {
+            return items;
+        }
+
         public Action pickAction()
         {
             Action a;
             ActionFactory af = new ActionFactory();
             int random = new Random().Next(0, af.Count);
-            a = af.makeAction(random);
+            a = af.makeAction(this, random);
             return a;
         }
 

@@ -40,7 +40,8 @@ namespace DesignPatternsGame
             turnList = initTurnList(heroes, monsters);
             cur = turnList.First;
             action = null;
-            
+            //showMonsters();
+
             InitializeComponent();
             this.Show();
             start();
@@ -147,11 +148,35 @@ namespace DesignPatternsGame
                     battlePrompt.Text = "Currently unavailable";
                     break;
                 case "itemButton":
-                    action = new ItemAction();
+                    battlePrompt.Text = "Please choose an item";
+                    //menu for items
+                    Item item = new HealthPotion(5);
+                    action = new ItemAction(item);
                     battlePrompt.Text = "Please choose a target";
                     break;
             }
             System.Threading.Thread.Sleep(1000);
+        }
+
+        public void showMonsters()
+        {
+            if (monsters.Characters.Count == 1)
+            {
+                //enemyImg1.Source = monsters.Characters.ElementAt(1).img;
+                enemyImg1.Visibility = Visibility.Visible;
+            }
+            else if (monsters.Characters.Count == 2)
+            {
+                //enemyImg1.Source = monsters.Characters.ElementAt(1).img;
+                enemyImg1.Visibility = Visibility.Visible;
+            }
+            else if (monsters.Characters.Count == 3)
+            {
+                //enemyImg1.Source = monsters.Characters.ElementAt(1).img;
+                enemyImg1.Visibility = Visibility.Visible;
+            }
+            else
+                Environment.Exit(1);
         }
 
         private void attackButton_Click(object sender, RoutedEventArgs e)
