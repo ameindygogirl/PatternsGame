@@ -88,6 +88,7 @@
     <Compile Include="MonsterFactory.cs" />
     <Compile Include="MonsterParty.cs" />
     <Compile Include="Party.cs" />
+    <Compile Include="Player.cs" />
     <Compile Include="Results.xaml.cs">
       <DependentUpon>Results.xaml</DependentUpon>
     </Compile>
@@ -182,6 +183,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Resource Include="Images\party.png" />
     <Content Include="Sounds\Lost.mp3" />
     <Content Include="Sounds\Won.mp3" />
   </ItemGroup>

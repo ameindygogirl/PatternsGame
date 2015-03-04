@@ -34,17 +34,17 @@
                         <RowDefinition Height="260*"/>
                         <RowDefinition Height="259*"/>
                     </Grid.RowDefinitions>
-                    <Button x:Name="btnUp" Content="Button" Margin="0" Width="75" HorizontalAlignment="Center" VerticalAlignment="Top" Height="145" Grid.ColumnSpan="2" Foreground="{x:Null}" BorderBrush="{x:Null}">
+                    <Button x:Name="btnUp" Content="" Margin="0" Width="75" HorizontalAlignment="Center" VerticalAlignment="Top" Height="145" Grid.ColumnSpan="2" Foreground="{x:Null}" BorderBrush="{x:Null}" Click="btnUp_Click" Visibility="Hidden">
                         <Button.Background>
                             <ImageBrush ImageSource="Images/up.png"/>
                         </Button.Background>
                     </Button>
-                    <Button x:Name="btnDown" Content="" Margin="0" Width="75" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="145" Grid.ColumnSpan="2" Grid.Row="1" BorderBrush="{x:Null}" Foreground="{x:Null}">
+                    <Button x:Name="btnDown" Content="" Margin="0" Width="75" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="145" Grid.ColumnSpan="2" Grid.Row="1" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="btnDown_Click" Visibility="Hidden">
                         <Button.Background>
                             <ImageBrush ImageSource="Images/down.png"/>
                         </Button.Background>
                     </Button>
-                    <Button x:Name="btnRight" Content="Button" Margin="0,152,-30,152" Width="145" HorizontalAlignment="Right" VerticalAlignment="Center" Height="76" Grid.Column="1" Grid.RowSpan="2" RenderTransformOrigin="0.5,0.5" BorderBrush="{x:Null}" Foreground="{x:Null}">
+                    <Button x:Name="btnRight" Content="" Margin="0,152,-30,152" Width="145" HorizontalAlignment="Right" VerticalAlignment="Center" Height="76" Grid.Column="1" Grid.RowSpan="2" RenderTransformOrigin="0.5,0.5" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="btnRight_Click" Visibility="Hidden">
                         <Button.Background>
                             <ImageBrush ImageSource="Images/right.png"/>
                         </Button.Background>
@@ -57,7 +57,7 @@
                             </TransformGroup>
                         </Button.RenderTransform>
                     </Button>
-                    <Button x:Name="btnLeft" Content="Button" Margin="-26,152,0,152" Width="145" HorizontalAlignment="Left" VerticalAlignment="Center" Height="76" Grid.RowSpan="2" RenderTransformOrigin="0.5,0.5" BorderBrush="{x:Null}" Foreground="{x:Null}">
+                    <Button x:Name="btnLeft" Content="" Margin="-26,152,0,152" Width="145" HorizontalAlignment="Left" VerticalAlignment="Center" Height="76" Grid.RowSpan="2" RenderTransformOrigin="0.5,0.5" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="btnLeft_Click" Visibility="Hidden">
                         <Button.Background>
                             <ImageBrush ImageSource="Images/left.png"/>
                         </Button.Background>

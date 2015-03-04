@@ -20,15 +20,22 @@ namespace DesignPatternsGame
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly int SMALL_MAZE = 167;
+        private readonly int MEDIUM_MAZE = 105;
+        private readonly int LARGE_MAZE = 70;
+
+        Ellipse partyMarker;
         HeroParty hparty = new HeroParty();
         MonsterParty mparty = new MonsterParty();
         PathGen path;
         Room[,] ara;
+        Player player;
+        int mazeSize;
         public MainWindow()
         {
             InitializeComponent();
             cbSize.SelectionChanged += cbSize_SelectionChanged;
-
+            createPartyMarker();
         }
 
         void cbSize_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -42,9 +49,16 @@ namespace DesignPatternsGame
                 btnStartGame.IsEnabled = false;
             }           
         }
-
+        private void createPartyMarker()
+        {
+            partyMarker = new Ellipse();
+            partyMarker.Height = 65;
+            partyMarker.Width = 65;
+            partyMarker.Fill = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/party.png", UriKind.Absolute)));
+        }
         public void printPath(int tile)
         {
+            bool enter = false;
             int overlapLeft = 0;
             int overlapTop = 0;
 
@@ -59,8 +73,8 @@ namespace DesignPatternsGame
                     {
                         if (this.ara[i, j].Entrance)
                         {
-                            //("pack://application:,,,/img/txtBackground.png", UriKind.Absolute));
                             rect.Fill = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/enter.png", UriKind.Absolute)));
+                            enter = true;
                         }
                         else if (this.ara[i, j].Exit)
                         {
@@ -78,6 +92,14 @@ namespace DesignPatternsGame
                     board.Children.Add(rect);
                     Canvas.SetLeft(rect, overlapLeft);
                     Canvas.SetTop(rect, overlapTop);
+                    if(enter)
+                    {
+                        board.Children.Add(partyMarker);
+                        Canvas.SetLeft(partyMarker, overlapLeft);
+                        Canvas.SetTop(partyMarker, overlapTop);
+                        enter = false;
+                        player = new Player(i, j, overlapLeft, overlapTop);
+                    }
                     overlapLeft += tile;
                 }
                 overlapTop += tile;
@@ -115,17 +137,20 @@ namespace DesignPatternsGame
             if(cbSize.SelectedIndex == 0)
             {
                 path = new PathGen(0);
-                tile = 167;
+                tile = SMALL_MAZE;
+                mazeSize = 0;
             }
             else if(cbSize.SelectedIndex == 1)
             {
                 path = new PathGen(1);
-                tile = 105;
+                tile = MEDIUM_MAZE;
+                mazeSize = 1;
             }
             else
             {
                 path = new PathGen(2);
-                tile = 70;
+                tile = LARGE_MAZE;
+                mazeSize = 2; 
             }
             
             
@@ -135,6 +160,16 @@ namespace DesignPatternsGame
             cbSize.IsEnabled = false;
             btnStartGame.IsEnabled = false;
             pickCharacters();
+
+            enableNavigation();
+        }
+
+        private void enableNavigation()
+        {
+            btnUp.Visibility = System.Windows.Visibility.Visible;
+            btnDown.Visibility = System.Windows.Visibility.Visible;
+            btnLeft.Visibility = System.Windows.Visibility.Visible;
+            btnRight.Visibility = System.Windows.Visibility.Visible;
         }
 
         private void Create_Click(object sender, RoutedEventArgs e)
@@ -167,6 +202,114 @@ namespace DesignPatternsGame
         {
             Results r = new Results(false);
             r.ShowDialog();
+        }
+
+        private void btnUp_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Moving up!");
+            int move;
+            if (mazeSize == 0)
+            {
+                move = player.CurTop - SMALL_MAZE;
+                Canvas.SetTop(partyMarker, move);
+                Canvas.SetZIndex(partyMarker, 1);
+                player.CurTop = move;
+            }
+            else if (mazeSize == 1)
+            {
+                move = player.CurTop - MEDIUM_MAZE;
+                Canvas.SetTop(partyMarker, move);
+                Canvas.SetZIndex(partyMarker, 1);
+                player.CurTop = move;
+            }
+            else
+            {
+                move = player.CurTop - LARGE_MAZE;
+                Canvas.SetTop(partyMarker, move);
+                Canvas.SetZIndex(partyMarker, 1);
+                player.CurTop = move;
+            }
+        }
+
+        private void btnRight_Click(object sender, RoutedEventArgs e)
+        {
+            int move;
+            MessageBox.Show("Moving right!");
+            if (mazeSize == 0)
+            {
+                move = player.CurLeft + SMALL_MAZE;
+                Canvas.SetLeft(partyMarker, move);
+                Canvas.SetZIndex(partyMarker, 1);
+                player.CurLeft = move;
+            }
+            else if (mazeSize == 1)
+            {
+                move = player.CurLeft + MEDIUM_MAZE;
+                Canvas.SetLeft(partyMarker, move);
+                Canvas.SetZIndex(partyMarker, 1);
+                player.CurLeft = move;
+            }
+            else
+            {
+                move = player.CurLeft + LARGE_MAZE;
+                Canvas.SetLeft(partyMarker, move);
+                Canvas.SetZIndex(partyMarker, 1);
+                player.CurLeft = move;
+            }
+        }
+
+        private void btnLeft_Click(object sender, RoutedEventArgs e)
+        {
+            int move;
+            MessageBox.Show("Moving left!");
+            if (mazeSize == 0)
+            {
+                move = player.CurLeft - SMALL_MAZE;
+                Canvas.SetLeft(partyMarker, move);
+                Canvas.SetZIndex(partyMarker, 1);
+                player.CurLeft = move;
+            }
+            else if (mazeSize == 1)
+            {
+                move = player.CurLeft - MEDIUM_MAZE;
+                Canvas.SetLeft(partyMarker, move);
+                Canvas.SetZIndex(partyMarker, 1);
+                player.CurLeft = move;
+            }
+            else
+            {
+                move = player.CurLeft - LARGE_MAZE;
+                Canvas.SetLeft(partyMarker, move);
+                Canvas.SetZIndex(partyMarker, 1);
+                player.CurLeft = move;
+            }
+        }
+
+        private void btnDown_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Moving down!");
+            int move;
+            if (mazeSize == 0)
+            {
+                move = player.CurTop + SMALL_MAZE;
+                Canvas.SetTop(partyMarker, move);
+                Canvas.SetZIndex(partyMarker, 1);
+                player.CurTop = move;
+            }
+            else if (mazeSize == 1)
+            {
+                move = player.CurTop + MEDIUM_MAZE;
+                Canvas.SetTop(partyMarker, move);
+                Canvas.SetZIndex(partyMarker, 1);
+                player.CurTop = move;
+            }
+            else
+            {
+                move = player.CurTop + LARGE_MAZE;
+                Canvas.SetTop(partyMarker, move);
+                Canvas.SetZIndex(partyMarker, 1);
+                player.CurTop = move;
+            }
         }
     }
 }
