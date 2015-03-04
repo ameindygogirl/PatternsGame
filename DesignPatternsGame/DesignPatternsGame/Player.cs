@@ -12,6 +12,7 @@ namespace DesignPatternsGame
         private int column;
         private int curLeft;
         private int curTop;
+        private bool hasRobot;
 
         public int Row
         {
@@ -37,12 +38,19 @@ namespace DesignPatternsGame
             set { curTop = value; }
         }
 
+        public bool HasRobot
+        {
+            get { return hasRobot; }
+            set { hasRobot = value; }
+        }
+
         public Player(int row, int column, int curLeft, int curTop)
         {
             this.row = row;
             this.column = column;
             this.curLeft = curLeft;
             this.curTop = curTop;
+            hasRobot = true;
         }
     }
 }

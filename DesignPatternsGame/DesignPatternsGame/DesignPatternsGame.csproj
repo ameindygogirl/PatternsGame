@@ -182,7 +182,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Resource Include="Images\party.png" />
+    <Resource Include="Images\partyLarge.png" />
+    <Resource Include="Images\partyMedium.png" />
+    <Resource Include="Images\partySmall.png" />
     <Content Include="Sounds\Lost.mp3" />
     <Content Include="Sounds\Won.mp3" />
   </ItemGroup>

@@ -163,9 +163,29 @@ namespace DesignPatternsGame.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap party {
+        internal static System.Drawing.Bitmap partyLarge {
             get {
-                object obj = ResourceManager.GetObject("party", resourceCulture);
+                object obj = ResourceManager.GetObject("partyLarge", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap partyMedium {
+            get {
+                object obj = ResourceManager.GetObject("partyMedium", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap partySmall {
+            get {
+                object obj = ResourceManager.GetObject("partySmall", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
