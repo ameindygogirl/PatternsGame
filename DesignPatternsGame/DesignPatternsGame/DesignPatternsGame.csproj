@@ -186,6 +186,12 @@
     <Resource Include="Images\partyLarge.png" />
     <Resource Include="Images\partyMedium.png" />
     <Resource Include="Images\partySmall.png" />
+    <Resource Include="Images\lion.png" />
+    <Resource Include="Images\shark.png" />
+    <Resource Include="Images\snake.png" />
+    <Resource Include="Images\spider.png" />
+    <Resource Include="Images\vulture.png" />
+    <Resource Include="Images\dinosaur.png" />
     <Content Include="Sounds\Lost.mp3" />
     <Content Include="Sounds\Won.mp3" />
   </ItemGroup>

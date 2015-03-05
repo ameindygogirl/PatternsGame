@@ -19,7 +19,6 @@ namespace DesignPatternsGame
     /// </summary>
     public partial class BattleWindow : Window
     {
-        TextBlock battlePrompt = new TextBlock();
         Action action;
         HeroParty heroes;
         MonsterParty monsters;
@@ -30,7 +29,6 @@ namespace DesignPatternsGame
 
         public BattleWindow(HeroParty heroes2, MonsterParty monsters2) //incoming parameter = parties?
         {
-            battlePrompt.Text = "Let the battle begin!";
             HealthPotion potion = new HealthPotion(5);
             heroes2.addItem(potion);
 
@@ -40,54 +38,63 @@ namespace DesignPatternsGame
             turnList = initTurnList(heroes, monsters);
             cur = turnList.First;
             action = null;
-            showMonsters();
 
             InitializeComponent();
+            battlePrompt.Text = "Let the battle begin!";
+            showMonsters();
             this.Show();
-            start();
-        }
-
-        // Need "You win" pop up with "collect loot" button
-
-        private void start()
-        {
-            Monster m;
-            while(heroes.isDead() == false && monsters.isDead() == false)
+            System.Threading.Thread.Sleep(1000);
+            while (heroes.isDead() == false && monsters.isDead() == false)
             {
                 action = null;
 
-                if(cur == turnList.Last.Next)
-                   cur = turnList.First;
+                if (cur == turnList.Last.Next)
+                    cur = turnList.First;
 
                 myTurn = cur.Value;
 
+                battlePrompt.Text.Remove(0);
+                battlePrompt.Text = myTurn.Name;
+
                 if (myTurn is Monster)
-                {
-                    m = (Monster)myTurn;
-                    action = m.pickAction();
-                    action.Target = m.pickTarget(heroes.Characters);
-                }
+                    monsterStart();
                 else
-                {
-                    while (action == null) ;
-                    action.Characters = monsters.Characters;
-                }
-
-                if (action.Target == null)
-                    while (action.Target == null) ;
-
-                action.execute();
-                action = null;
+                    Environment.Exit(0);
+                    //playerStart();
             }
 
             if (heroes.isDead())
             {
                 battlePrompt.Text = "Game Over";
             }
+
             else
             {
                 battlePrompt.Text = "Enemies defeated";
             }
+        }
+
+        // Need "You win" pop up with "collect loot" button
+
+        private void monsterStart()
+        {
+            Monster m = (Monster)myTurn;
+            action = m.pickAction();
+            action.Target = m.pickTarget(heroes.Characters);
+            target = action.Target;
+            
+            //while (action == null) ;
+            //action.Characters = monsters.Characters;
+
+            //while (action.Target == null) ;
+
+            action.execute();
+            action = null;
+        }
+
+        private void playerStart()
+        {
+
         }
 
         private GameCharacterList initTurnList(Party heroes, Party monsters)
@@ -161,26 +168,31 @@ namespace DesignPatternsGame
 
         public void showMonsters()
         {
-            if (monsters.Characters.Count == 1)
+            if (monsters.Characters.Count >= 1)
             {
-                enemyImg1.Source = monsters.Characters.ElementAt(1).Img;
+                enemyImg1.Background = new ImageBrush(monsters.Characters.ElementAt(0).Img);
                 enemyImg1.Visibility = Visibility.Visible;
             }
-            else if (monsters.Characters.Count == 2)
+            if (monsters.Characters.Count >= 2)
             {
-                enemyImg1.Source = monsters.Characters.ElementAt(1).Img;
-                enemyImg1.Visibility = Visibility.Visible;
+                enemyImg2.Background = new ImageBrush(monsters.Characters.ElementAt(1).Img);
+                enemyImg2.Visibility = Visibility.Visible;
             }
-            else if (monsters.Characters.Count == 3)
+            if (monsters.Characters.Count == 3)
             {
-                enemyImg1.Source = monsters.Characters.ElementAt(1).Img;
-                enemyImg1.Visibility = Visibility.Visible;
+                enemyImg3.Background = new ImageBrush(monsters.Characters.ElementAt(2).Img);
+                enemyImg3.Visibility = Visibility.Visible;
             }
             else
                 Environment.Exit(1);
         }
 
         private void attackButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void enemyImg1_Click(object sender, RoutedEventArgs e)
         {
 
         }

@@ -24,7 +24,8 @@ namespace DesignPatternsGame
                 case 1:
                     return new DefendAction();
                 case 2:
-                    return new SpecialAction();
+                    //return new SpecialAction();
+                    return new AttackAction();
                 case 3:
                     ItemList items = gc.getItems();
                     if (items == null)
