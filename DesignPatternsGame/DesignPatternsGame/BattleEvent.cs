@@ -6,8 +6,13 @@ using System.Threading.Tasks;
 
 namespace DesignPatternsGame
 {
-    interface RoomEvent
+    class BattleEvent : RoomEvent
     {
-        void execute();
+        MonsterParty party;
+
+        void RoomEvent.execute()
+        {
+            Console.Write("");
+        }
     }
 }

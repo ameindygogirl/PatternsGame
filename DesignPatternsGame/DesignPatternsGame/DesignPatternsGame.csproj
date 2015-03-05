@@ -57,6 +57,7 @@
     <Compile Include="Action.cs" />
     <Compile Include="ActionList.cs" />
     <Compile Include="AttackAction.cs" />
+    <Compile Include="BattleEvent.cs" />
     <Compile Include="BattleWindow.xaml.cs">
       <DependentUpon>BattleWindow.xaml</DependentUpon>
     </Compile>

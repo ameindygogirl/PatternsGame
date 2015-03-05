@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace DesignPatternsGame
 {
-    interface RoomEvent
+    class BossEvent : RoomEvent
     {
-        void execute();
+        void RoomEvent.execute()
+        {
+            int i = 0;
+        }
     }
 }
