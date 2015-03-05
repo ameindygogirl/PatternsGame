@@ -19,8 +19,7 @@ namespace DesignPatternsGame
             MinDamage = 20;
             HitChance = 90;
             Defense = 5;
-
-            items = null;
+            img = ImageFactory.findImage("shark");
         }
 
         public override void useSpecial(GameCharacter target)

@@ -80,6 +80,11 @@ namespace DesignPatternsGame
             set { action = value; }
         }
 
+        public BitmapImage Img
+        {
+            get { return img; }
+        }
+
         public abstract ItemList getItems();
 
         public abstract void useSpecial(GameCharacter target);

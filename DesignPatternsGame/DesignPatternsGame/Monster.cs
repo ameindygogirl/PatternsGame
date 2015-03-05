@@ -29,6 +29,7 @@ namespace DesignPatternsGame
             ActionFactory af = new ActionFactory();
             int random = new Random().Next(0, af.Count);
             a = af.makeAction(this, random);
+            a.Primary = this;
             return a;
         }
 

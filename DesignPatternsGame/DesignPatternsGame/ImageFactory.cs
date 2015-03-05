@@ -9,7 +9,7 @@ namespace DesignPatternsGame
 {
     class ImageFactory
     {
-        public BitmapImage findImage(String s)
+        public static BitmapImage findImage(String s)
         {
             BitmapImage img = null;
             
@@ -34,6 +34,7 @@ namespace DesignPatternsGame
                 case "owl":
                     img = new BitmapImage(new Uri("pack://application:,,,/Images/owl.png", UriKind.Absolute));
                     break;
+
                 //monsters
                 case "dinosaur":
                     img = new BitmapImage(new Uri("pack://application:,,,/Images/dinosaur.png", UriKind.Absolute));
@@ -42,16 +43,16 @@ namespace DesignPatternsGame
                     img = new BitmapImage(new Uri("pack://application:,,,/Images/vulture.png", UriKind.Absolute));
                     break;
                 case "lion":
-                    //img =
+                    img = new BitmapImage(new Uri("pack://application:,,,/Images/lion.png", UriKind.Absolute));
                     break;
                 case "shark":
-                    //img =
+                    img = new BitmapImage(new Uri("pack://application:,,,/Images/shark.png", UriKind.Absolute));
                     break;
                 case "snake":
-                    //img =
+                    img = new BitmapImage(new Uri("pack://application:,,,/Images/snake.png", UriKind.Absolute));
                     break;
                 case "spider":
-                    //img =
+                    img = new BitmapImage(new Uri("pack://application:,,,/Images/spider.png", UriKind.Absolute));
                     break;
             }
             return img;

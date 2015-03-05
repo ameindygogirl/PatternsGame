@@ -40,7 +40,7 @@ namespace DesignPatternsGame
             turnList = initTurnList(heroes, monsters);
             cur = turnList.First;
             action = null;
-            //showMonsters();
+            showMonsters();
 
             InitializeComponent();
             this.Show();
@@ -72,7 +72,7 @@ namespace DesignPatternsGame
                     while (action == null) ;
                     action.Characters = monsters.Characters;
                 }
-                
+
                 if (action.Target == null)
                     while (action.Target == null) ;
 
@@ -155,6 +155,7 @@ namespace DesignPatternsGame
                     battlePrompt.Text = "Please choose a target";
                     break;
             }
+            action.Primary = myTurn;
             System.Threading.Thread.Sleep(1000);
         }
 
@@ -162,17 +163,17 @@ namespace DesignPatternsGame
         {
             if (monsters.Characters.Count == 1)
             {
-                //enemyImg1.Source = monsters.Characters.ElementAt(1).img;
+                enemyImg1.Source = monsters.Characters.ElementAt(1).Img;
                 enemyImg1.Visibility = Visibility.Visible;
             }
             else if (monsters.Characters.Count == 2)
             {
-                //enemyImg1.Source = monsters.Characters.ElementAt(1).img;
+                enemyImg1.Source = monsters.Characters.ElementAt(1).Img;
                 enemyImg1.Visibility = Visibility.Visible;
             }
             else if (monsters.Characters.Count == 3)
             {
-                //enemyImg1.Source = monsters.Characters.ElementAt(1).img;
+                enemyImg1.Source = monsters.Characters.ElementAt(1).Img;
                 enemyImg1.Visibility = Visibility.Visible;
             }
             else
@@ -191,4 +192,3 @@ namespace DesignPatternsGame
         //}
     }
 }
-

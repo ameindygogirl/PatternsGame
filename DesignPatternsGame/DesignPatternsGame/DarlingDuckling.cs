@@ -19,7 +19,7 @@ namespace DesignPatternsGame
             MinDamage = 20;
             HitChance = 90;
             Defense = 5;
-            img = new BitmapImage(new Uri("pack://application:,,,/Images/duck.png", UriKind.Absolute));
+            img = ImageFactory.findImage("duck");
         }
 
         public override void useSpecial(GameCharacter target)
