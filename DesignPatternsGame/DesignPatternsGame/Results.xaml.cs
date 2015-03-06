@@ -21,16 +21,23 @@ namespace DesignPatternsGame
     {
         public Results(bool win)
         {
+            MediaElement me = new MediaElement();
+            me.Volume = 1;
             InitializeComponent();
             if(win == true)
             {
                 lblResults.Content = "Congratulations!";
                 img.Source = new BitmapImage(new Uri("pack://application:,,,/Images/won.png", UriKind.Absolute));
+                me.Source = new Uri(@"Won.mp3", UriKind.Relative);
+                res.Children.Add(me);
             }
             else
             {
                 lblResults.Content = "Party Defeated!";
                 img.Source = new BitmapImage(new Uri("pack://application:,,,/Images/lost.png", UriKind.Absolute));
+                me.Source = new Uri(@"Lost.mp3", UriKind.Relative);
+                res.Children.Add(me);
+
             }
            
         }
