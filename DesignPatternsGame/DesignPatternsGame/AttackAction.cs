@@ -7,6 +7,8 @@ namespace DesignPatternsGame
 {
     public class AttackAction: Action
     {
+        private int damage;
+
         public AttackAction()
         {
             this.name = "Attack";
@@ -18,18 +20,21 @@ namespace DesignPatternsGame
             if (primary.HitChance >= random)
             {
                 int hit = new Random().Next(primary.MinDamage, primary.MaxDamage);
-                int result = Target.HP - hit;
+                damage = Target.HP - hit;
 
                 if (Target.Action is DefendAction)
-                    result = result / 2;
+                    damage = damage / 2;
 
-                Target.HP = result;
+                Target.HP = damage;
             }
         }
 
-        public override string ToString()
+        public override String toString()
         {
-            return primary.Name + " attacks " + target.Name;
+            if(damage == 0)
+                return primary.Name + " missed!";
+
+            return primary.Name + " deals " + damage + " to " + target.Name;
         }
 
         public void undo()

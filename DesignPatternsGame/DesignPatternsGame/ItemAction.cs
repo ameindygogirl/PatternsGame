@@ -20,7 +20,7 @@ namespace DesignPatternsGame
             this.item.use();
         }
 
-        public override string ToString()
+        public override String toString()
         {
             return Primary.Name + " uses " + item.Name + " on " + item.Target.Name;
         }

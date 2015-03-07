@@ -96,6 +96,7 @@
     <Compile Include="RoomEvent.cs" />
     <Compile Include="ScaryShark.cs" />
     <Compile Include="SlitheringSnake.cs" />
+    <Compile Include="FireBallSpecial.cs" />
     <Compile Include="SpecialAction.cs" />
     <Compile Include="StealthySpider.cs" />
     <Compile Include="TinyTurtle.cs" />

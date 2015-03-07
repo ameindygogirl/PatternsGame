@@ -12,7 +12,7 @@ namespace DesignPatternsGame
             //Primary.Defends = true;
         }
 
-        public override String ToString()
+        public override String toString()
         {
             return Primary.Name + " defends";
         }

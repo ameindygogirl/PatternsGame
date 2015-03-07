@@ -33,7 +33,7 @@ namespace DesignPatternsGame
             ActionList alist       = new ActionList();
 
             ItemAction item       = null;
-            SpecialAction special = new SpecialAction();
+            SpecialAction special = null;
             DefendAction defend   = new DefendAction();
             AttackAction attack   = new AttackAction();
 

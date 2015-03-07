@@ -5,11 +5,12 @@ using System.Text;
 
 namespace DesignPatternsGame
 {
-    public class SpecialAction: Action
+    public abstract class SpecialAction: Action
     {
-        public override void execute()
-        {
-            Primary.useSpecial(Target);
-        }
+        protected int dmg;
+        protected int hpUp;
+
+        public abstract override void execute();
+        public abstract override String toString();
     }
 }

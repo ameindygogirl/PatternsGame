@@ -34,6 +34,6 @@ namespace DesignPatternsGame
         }
 
         public abstract void execute();
-        //public abstract void undo();
+        public abstract String toString();
     }
 }
