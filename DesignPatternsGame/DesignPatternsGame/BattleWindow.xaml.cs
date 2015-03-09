@@ -60,7 +60,7 @@ namespace DesignPatternsGame
             {
                 cur = cur.Next;
                 if (cur == turnList.Last.Next)
-                    cur = turnList.First;    
+                    cur = turnList.First;
             }
             myTurn = cur.Value;
 
@@ -166,19 +166,29 @@ namespace DesignPatternsGame
             if (i > 0)
             {
                 if (heroes.Characters.ElementAt(0).HP > 0)
-                    heroImg1.IsEnabled = true;
-
+                {
+                    heroB1.Visibility = Visibility.Visible;
+                    heroImg1.Visibility = Visibility.Hidden;
+                }
                 if (heroes.Characters.ElementAt(1).HP > 0)
-                    heroImg2.IsEnabled = true;
-
+                {
+                    heroB2.Visibility = Visibility.Visible;
+                    heroImg2.Visibility = Visibility.Hidden;
+                }
                 if (heroes.Characters.ElementAt(2).HP > 0)
-                    heroImg3.IsEnabled = true;
+                {
+                    heroB3.Visibility = Visibility.Visible;
+                    heroImg3.Visibility = Visibility.Hidden;
+                }
             }
             else
             {
-                heroImg1.IsEnabled = false;
-                heroImg2.IsEnabled = false;
-                heroImg3.IsEnabled = false;
+                heroImg1.Visibility = Visibility.Visible;
+                heroImg2.Visibility = Visibility.Visible;
+                heroImg3.Visibility = Visibility.Visible;
+                heroB1.Visibility = Visibility.Hidden;
+                heroB2.Visibility = Visibility.Hidden;
+                heroB3.Visibility = Visibility.Hidden;
             }
         }
 
@@ -188,19 +198,29 @@ namespace DesignPatternsGame
             if(i > 0)
             {
                 if (monsters.Characters.ElementAt(0).HP > 0)
-                    enemyB1.IsEnabled = true;
-
+                {
+                    enemyImg1.Visibility = Visibility.Hidden;
+                    enemyB1.Visibility = Visibility.Visible;
+                }
                 if (monsters.Characters.ElementAt(1).HP > 0)
-                    enemyB2.IsEnabled = true;
-
+                {
+                    enemyImg2.Visibility = Visibility.Hidden;
+                    enemyB2.Visibility = Visibility.Visible;
+                }
                 if (monsters.Characters.ElementAt(2).HP > 0)
-                    enemyB3.IsEnabled = true;
+                {
+                    enemyImg3.Visibility = Visibility.Hidden;
+                    enemyB3.Visibility = Visibility.Visible;
+                }
             }
             else
             {
-                enemyB1.IsEnabled = false;
-                enemyB2.IsEnabled = false;
-                enemyB3.IsEnabled = false;
+                enemyB1.Visibility = Visibility.Hidden;
+                enemyB2.Visibility = Visibility.Hidden;
+                enemyB3.Visibility = Visibility.Hidden;
+                enemyImg1.Visibility = Visibility.Visible;
+                enemyImg2.Visibility = Visibility.Visible;
+                enemyImg3.Visibility = Visibility.Visible;
             }
         }
 
@@ -209,22 +229,23 @@ namespace DesignPatternsGame
         {
             if (heroes.Characters.Count >= 1)
             {
-                heroImg1.Background = new ImageBrush(heroes.Characters.ElementAt(0).Img);
+                heroB1.Background = new ImageBrush(heroes.Characters.ElementAt(0).Img);
                 heroImg1.Visibility = Visibility.Visible;
-                heroImg1.IsEnabled  = false;
+                heroImg1.Source = heroes.Characters.ElementAt(0).Img;
+                
                 
             }
             if (heroes.Characters.Count >= 2)
             {
-                heroImg2.Background = new ImageBrush(heroes.Characters.ElementAt(1).Img);
+                heroB2.Background = new ImageBrush(heroes.Characters.ElementAt(1).Img);
                 heroImg2.Visibility = Visibility.Visible;
-                heroImg2.IsEnabled  = false;
+                heroImg2.Source = heroes.Characters.ElementAt(1).Img;
             }
             if (heroes.Characters.Count == 3)
             {
-                heroImg3.Background = new ImageBrush(heroes.Characters.ElementAt(2).Img);
+                heroB3.Background = new ImageBrush(heroes.Characters.ElementAt(2).Img);
                 heroImg3.Visibility = Visibility.Visible;
-                heroImg3.IsEnabled  = false;
+                heroImg3.Source = heroes.Characters.ElementAt(2).Img;
             }
         }
 
@@ -233,19 +254,19 @@ namespace DesignPatternsGame
         {
             if (monsters.Characters.Count >= 1)
             {
-                enemyB1.IsEnabled = false;
+                enemyB1.Background = new ImageBrush(monsters.Characters.ElementAt(0).Img);
                 enemyImg1.Source = monsters.Characters.ElementAt(0).Img;
                 enemyImg1.Visibility = Visibility.Visible;
             }
             if (monsters.Characters.Count >= 2)
             {
-                enemyB2.IsEnabled = false;
+                enemyB2.Background = new ImageBrush(monsters.Characters.ElementAt(1).Img);
                 enemyImg2.Source = monsters.Characters.ElementAt(1).Img;
                 enemyImg2.Visibility = Visibility.Visible;
             }
             if (monsters.Characters.Count == 3)
             {
-                enemyB3.IsEnabled = false;
+                enemyB3.Background = new ImageBrush(monsters.Characters.ElementAt(2).Img);
                 enemyImg3.Source = monsters.Characters.ElementAt(2).Img;
                 enemyImg3.Visibility = Visibility.Visible;
             }
@@ -296,19 +317,53 @@ namespace DesignPatternsGame
         // ENEMYB1_CLICK
         private void enemyB1_Click(object sender, RoutedEventArgs e)
         {
-            selectEnemy(0);
+            monsterSwitch(0);
+            myTurn.Action.Target = monsters.Characters.ElementAt(0);
+            myTurn.Action.execute(); 
+            
+            if (myTurn.Action.Target.HP <= 0)
+                enemyTint1.Visibility = Visibility.Visible;
+            enemyClick();
         }
 
         // ENEMYB2_CLICK
         private void enemyB2_Click(object sender, RoutedEventArgs e)
         {
-            selectEnemy(1);
+            monsterSwitch(0);
+            myTurn.Action.Target = monsters.Characters.ElementAt(1);
+            myTurn.Action.execute();
+
+            if (myTurn.Action.Target.HP <= 0)
+                enemyTint2.Visibility = Visibility.Visible;
+            
+            enemyClick();
         }
 
         // ENEMYB3_CLICK
         private void enemyB3_Click(object sender, RoutedEventArgs e)
         {
-            selectEnemy(2);
+            monsterSwitch(0);
+            myTurn.Action.Target = monsters.Characters.ElementAt(2);
+            myTurn.Action.execute();
+
+            if (myTurn.Action.Target.HP <= 0)
+                enemyTint3.Visibility = Visibility.Visible;
+            
+            enemyClick();
+        }
+
+        // ENEMYCLICK
+        private void enemyClick()
+        {
+            battlePrompt.Text = myTurn.Action.toString();
+            System.Threading.Thread.Sleep(PAUSE);
+
+            if (myTurn.Action.Target.HP <= 0)
+                battlePrompt.Text = myTurn.Action.Target.Name + " is slain!";
+
+            System.Threading.Thread.Sleep(PAUSE);
+            endCondition();
+            beginTurn();
         }
 
         // HEROIMG1_CLICK
@@ -327,25 +382,6 @@ namespace DesignPatternsGame
         private void heroImg3_Click(object sender, RoutedEventArgs e)
         {
             selectHero(2);
-        }
-
-        // SELECTENEMY
-        private void selectEnemy(int i)
-        {
-            monsterSwitch(0);
-            myTurn.Action.Target = monsters.Characters.ElementAt(i);
-            myTurn.Action.execute();
-            battlePrompt.Text = myTurn.Action.toString();
-            System.Threading.Thread.Sleep(PAUSE);
-
-            if (myTurn.Action.Target.HP <= 0)
-            {
-                battlePrompt.Text = myTurn.Action.Target.Name + " is slain!";
-                enemyTint1.Visibility = Visibility.Visible;
-            }
-            System.Threading.Thread.Sleep(PAUSE);
-            endCondition();
-            beginTurn();
         }
 
         // SELECTHERO
