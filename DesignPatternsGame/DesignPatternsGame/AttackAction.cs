@@ -9,7 +9,7 @@ namespace DesignPatternsGame
     {
         private int damage;
 
-        public AttackAction()
+        public AttackAction() : base()
         {
             this.name = "Attack";
         }

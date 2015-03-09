@@ -15,16 +15,16 @@ using System.Windows.Shapes;
 namespace DesignPatternsGame
 {
     /// <summary>
+    /// @author The Nikola Teslas
     /// Interaction logic for BattleWindow.xaml
     /// </summary>
+
     public partial class BattleWindow : Window
     {
-        int PAUSE = 1000;
-        Action action;
+        int PAUSE = 500;
         HeroParty heroes;
         MonsterParty monsters;
         GameCharacter myTurn;
-        GameCharacter target;
         GameCharacterList turnList;
         LinkedListNode<GameCharacter> cur;
 
@@ -49,42 +49,53 @@ namespace DesignPatternsGame
             beginTurn();
         }
 
+        // BEGINTURN
         public void beginTurn()
         {
-            if (heroes.isDead() == false && monsters.isDead() == false)
+            cur = cur.Next;
+            if (cur == turnList.Last.Next)
+                cur = turnList.First;
+
+            while(cur.Value.HP <= 0)
             {
                 cur = cur.Next;
                 if (cur == turnList.Last.Next)
-                    cur = turnList.First;
-
-                myTurn = cur.Value;
-
-                battlePrompt.Text.Remove(0);
-                battlePrompt.Text = myTurn.Name;
-
-                if (myTurn is Monster)
-                    monsterStart();
-                else
-                {
-                    battlePrompt.Text = "Please choose an action";
-                    actionSwitch(1);
-                }
+                    cur = turnList.First;    
             }
-            
+            myTurn = cur.Value;
+
+
+            if (myTurn is Monster)
+            {
+                battlePrompt.Text = myTurn.Name;
+                System.Threading.Thread.Sleep(PAUSE/2);
+                monsterStart();
+            }
+            else
+            {
+                battlePrompt.Text = myTurn.Name + ": please choose an action";
+                actionSwitch(1);
+            }
+        }
+
+        // ENDCONDITION
+        private void endCondition()
+        {
             if (heroes.isDead())
             {
                 battlePrompt.Text = "Game Over";
-                System.Threading.Thread.Sleep(PAUSE);
+                System.Threading.Thread.Sleep(PAUSE * 2);
                 Environment.Exit(0);
             }
-            else if(monsters.isDead())
+            else if (monsters.isDead())
             {
                 battlePrompt.Text = "Enemies defeated";
-                System.Threading.Thread.Sleep(PAUSE);
+                System.Threading.Thread.Sleep(PAUSE*2);
                 Environment.Exit(0);
             }
         }
 
+        // INITTURNLIST
         private GameCharacterList initTurnList(Party heroes, Party monsters)
         {
             GameCharacterList allCharacters = new GameCharacterList();
@@ -105,29 +116,32 @@ namespace DesignPatternsGame
             return allCharacters;
         }
 
-        // Recursive until hero's turn
+        // MONSTERSTART
         private void monsterStart()
         {
             Monster m = (Monster)myTurn;
-            action = m.pickAction();
-            action.Target = m.pickTarget(heroes.Characters);
-            target = action.Target;
-            action.execute();
-            action.toString();
+            myTurn.Action = m.pickAction();
+            myTurn.Action.Target = m.pickTarget(heroes.Characters);
+            myTurn.Action.execute();
+            myTurn.Action.toString();
             System.Threading.Thread.Sleep(PAUSE);
+            
+            if(myTurn.Action.Target.HP <= 0)
+            {
+                battlePrompt.Text = myTurn.Action.Target.Name + " has collapsed!";
+            }
             myTurn = null;
-            target = null;
-            action = null;
+            endCondition();
             beginTurn();
         }
 
+        // PICKITEM
         private void pickItem()
         {
 
         }
 
-        //Switches --------------------------------------->
-
+        // ACTIONSWITCH
         private void actionSwitch(int i)
         {
             if (i < 0)
@@ -146,9 +160,10 @@ namespace DesignPatternsGame
             }
         }
 
+        // HEROSWITCH
         private void heroSwitch(int i)
         {
-            if (i >= 0)
+            if (i > 0)
             {
                 if (heroes.Characters.ElementAt(0).HP > 0)
                     heroImg1.IsEnabled = true;
@@ -167,180 +182,180 @@ namespace DesignPatternsGame
             }
         }
 
+        // MONSTERSWITCH
         private void monsterSwitch(int i)
         {
-            if(i >= 0)
+            if(i > 0)
             {
                 if (monsters.Characters.ElementAt(0).HP > 0)
-                    enemyImg1.IsEnabled = true;
+                    enemyB1.IsEnabled = true;
 
                 if (monsters.Characters.ElementAt(1).HP > 0)
-                    enemyImg2.IsEnabled = true;
+                    enemyB2.IsEnabled = true;
 
                 if (monsters.Characters.ElementAt(2).HP > 0)
-                    enemyImg3.IsEnabled = true;
+                    enemyB3.IsEnabled = true;
             }
             else
             {
-                enemyImg1.IsEnabled = false;
-                enemyImg2.IsEnabled = false;
-                enemyImg3.IsEnabled = false;
+                enemyB1.IsEnabled = false;
+                enemyB2.IsEnabled = false;
+                enemyB3.IsEnabled = false;
             }
         }
 
-        //Images ----------------------------------------------->
-
+        // SHOWHEROES
         public void showHeroes()
         {
             if (heroes.Characters.Count >= 1)
             {
                 heroImg1.Background = new ImageBrush(heroes.Characters.ElementAt(0).Img);
-                heroImg1.IsEnabled = false;
                 heroImg1.Visibility = Visibility.Visible;
+                heroImg1.IsEnabled  = false;
+                
             }
             if (heroes.Characters.Count >= 2)
             {
                 heroImg2.Background = new ImageBrush(heroes.Characters.ElementAt(1).Img);
-                heroImg2.IsEnabled = false;
                 heroImg2.Visibility = Visibility.Visible;
+                heroImg2.IsEnabled  = false;
             }
             if (heroes.Characters.Count == 3)
             {
                 heroImg3.Background = new ImageBrush(heroes.Characters.ElementAt(2).Img);
-                heroImg3.IsEnabled = false;
                 heroImg3.Visibility = Visibility.Visible;
+                heroImg3.IsEnabled  = false;
             }
         }
 
+        // SHOWMONSTERS
         public void showMonsters()
         {
             if (monsters.Characters.Count >= 1)
             {
-                enemyImg1.Background = new ImageBrush(monsters.Characters.ElementAt(0).Img);
-                enemyImg1.IsEnabled  = false;
+                enemyB1.IsEnabled = false;
+                enemyImg1.Source = monsters.Characters.ElementAt(0).Img;
                 enemyImg1.Visibility = Visibility.Visible;
             }
             if (monsters.Characters.Count >= 2)
             {
-                enemyImg2.Background = new ImageBrush(monsters.Characters.ElementAt(1).Img);
-                enemyImg2.IsEnabled  = false;
+                enemyB2.IsEnabled = false;
+                enemyImg2.Source = monsters.Characters.ElementAt(1).Img;
                 enemyImg2.Visibility = Visibility.Visible;
             }
             if (monsters.Characters.Count == 3)
             {
-                enemyImg3.Background = new ImageBrush(monsters.Characters.ElementAt(2).Img);
-                enemyImg3.IsEnabled  = false;
+                enemyB3.IsEnabled = false;
+                enemyImg3.Source = monsters.Characters.ElementAt(2).Img;
                 enemyImg3.Visibility = Visibility.Visible;
             }
         }
 
-        //Buttons ----------------------------------------------->
-
+        // ATTACKBUTTON_CLICK
         private void attackButton_Click(object sender, RoutedEventArgs e)
         {
             heroSwitch(0);
-            action = new AttackAction();
+            myTurn.Action = new AttackAction();
             battlePrompt.Text = "Please choose a target";
             monsterSwitch(1);
         }
 
+        // DEFENDBUTTON_CLICK
         private void defendButton_Click(object sender, RoutedEventArgs e)
         {
             heroSwitch(0);
             monsterSwitch(0);
-            action = new DefendAction();
+            myTurn.Action = new DefendAction();
+            myTurn.Action.execute();
+            battlePrompt.Text = myTurn.Action.toString();
+            System.Threading.Thread.Sleep(PAUSE);
             beginTurn();
         }
 
+        // SPECIALBUTTON_CLICK
         private void specialButton_Click(object sender, RoutedEventArgs e)
         {
             heroSwitch(0);
-            action = new FireBallSpecial();
+            myTurn.Action = new FireBallSpecial();
             battlePrompt.Text = "Please choose a target";
             monsterSwitch(1);
         }
 
+        // ITEMBUTTON_CLICK
         private void itemButton_Click(object sender, RoutedEventArgs e)
         {
             monsterSwitch(0);
             heroSwitch(0);
             battlePrompt.Text = "Please select an item";
             Item item = new HealthPotion(1);
-            action = new ItemAction(item);
+            myTurn.Action = new ItemAction(item);
             battlePrompt.Text = "Please choose a target";
             heroSwitch(1);
         }
 
-        // Enemy Buttons ------------------------------------->
-
-        private void enemyImg1_Click(object sender, RoutedEventArgs e)
+        // ENEMYB1_CLICK
+        private void enemyB1_Click(object sender, RoutedEventArgs e)
         {
-            monsterSwitch(0);
-            target = monsters.Characters.ElementAt(0);
-            action.execute();
-            action.toString();
-            if (target.HP <= 0)
-            {
-                battlePrompt.Text = target.Name + " is slain!";
-                enemyTint1.Visibility = Visibility.Visible;
-                turnList.Remove(target);
-            }
-            beginTurn();
+            selectEnemy(0);
         }
 
-        private void enemyImg2_Click(object sender, RoutedEventArgs e)
+        // ENEMYB2_CLICK
+        private void enemyB2_Click(object sender, RoutedEventArgs e)
         {
-            monsterSwitch(0);
-            target = monsters.Characters.ElementAt(1);
-            action.execute();
-            action.toString();
-            if (target.HP <= 0)
-            {
-                battlePrompt.Text = target.Name + " is slain!";
-                enemyTint1.Visibility = Visibility.Visible;
-                turnList.Remove(target);
-            }
-            beginTurn();
+            selectEnemy(1);
         }
 
-        private void enemyImg3_Click(object sender, RoutedEventArgs e)
+        // ENEMYB3_CLICK
+        private void enemyB3_Click(object sender, RoutedEventArgs e)
         {
-            monsterSwitch(0);
-            target = monsters.Characters.ElementAt(2);
-            action.execute();
-            action.toString();
-            if (target.HP <= 0)
-            {
-                battlePrompt.Text = target.Name + " is slain!";
-                enemyTint1.Visibility = Visibility.Visible;
-                turnList.Remove(target);
-            }
-            beginTurn();
+            selectEnemy(2);
         }
 
-        // Hero Buttons ------------------------------------------>
-
+        // HEROIMG1_CLICK
         private void heroImg1_Click(object sender, RoutedEventArgs e)
         {
             selectHero(0);
         }
 
+        // HEROIMG2_CLICK
         private void heroImg2_Click(object sender, RoutedEventArgs e)
         {
             selectHero(1);
         }
 
+        // HEROIMG3_CLICK
         private void heroImg3_Click(object sender, RoutedEventArgs e)
         {
             selectHero(2);
         }
 
+        // SELECTENEMY
+        private void selectEnemy(int i)
+        {
+            monsterSwitch(0);
+            myTurn.Action.Target = monsters.Characters.ElementAt(i);
+            myTurn.Action.execute();
+            battlePrompt.Text = myTurn.Action.toString();
+            System.Threading.Thread.Sleep(PAUSE);
+
+            if (myTurn.Action.Target.HP <= 0)
+            {
+                battlePrompt.Text = myTurn.Action.Target.Name + " is slain!";
+                enemyTint1.Visibility = Visibility.Visible;
+            }
+            System.Threading.Thread.Sleep(PAUSE);
+            endCondition();
+            beginTurn();
+        }
+
+        // SELECTHERO
         private void selectHero(int i)
         {
             heroSwitch(0);
-            target = heroes.Characters.ElementAt(i);
-            action.execute();
-            action.toString();
+            myTurn.Action.Target = heroes.Characters.ElementAt(i);
+            myTurn.Action.execute();
+            battlePrompt.Text = myTurn.Action.toString();
+            System.Threading.Thread.Sleep(PAUSE);
             beginTurn();
         }
     }

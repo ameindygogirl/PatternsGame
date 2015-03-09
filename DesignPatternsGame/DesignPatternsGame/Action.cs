@@ -12,7 +12,7 @@ namespace DesignPatternsGame
         protected GameCharacter target;
         protected GameCharacterList characters;
 
-        public string Name
+        public String Name
         {
             get { return name; }
             set { name = value; }
@@ -22,7 +22,7 @@ namespace DesignPatternsGame
             get { return primary; }
             set { primary = (GameCharacter)value; }
         }
-        public GameCharacter Target
+        public virtual GameCharacter Target
         {
             get { return target; }
             set { target = value; }

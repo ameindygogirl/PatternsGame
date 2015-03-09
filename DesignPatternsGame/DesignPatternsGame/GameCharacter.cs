@@ -77,7 +77,11 @@ namespace DesignPatternsGame
         public Action Action
         {
             get { return action; }
-            set { action = value; }
+            set 
+            { 
+                action = value;
+                action.Primary = this;
+            }
         }
 
         public BitmapImage Img

@@ -15,6 +15,16 @@ namespace DesignPatternsGame
             item.Target = this.target;
         }
 
+        public override GameCharacter Target
+        {
+            set
+            {
+                this.target = value;
+                this.item.Target = target;
+            }
+            get { return target; }
+        }
+
         public override void execute()
         {
             this.item.use();

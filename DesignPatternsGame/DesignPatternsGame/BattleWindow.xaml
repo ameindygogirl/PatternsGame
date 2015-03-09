@@ -8,21 +8,13 @@
         <Button x:Name="defendButton" Content="Defend" BorderBrush="Black" BorderThickness="1" Height="30" Canvas.Left="135" Canvas.Top="180" Width="100" Background="White" Click="defendButton_Click"/>
         <Button x:Name="specialButton" Content="Special" BorderBrush="Black" BorderThickness="1" Height="30" Canvas.Left="355" Canvas.Top="180" Width="100" Background="White"/>
         <Button x:Name="itemButton" Content="Item" BorderBrush="Black" BorderThickness="1" Height="30" Canvas.Left="245" Canvas.Top="180" Width="100" Background="White" Click="itemButton_Click"/>
-        <Button x:Name="enemyImg1" Height="100" Canvas.Left="192" Canvas.Top="59" Width="100" Visibility="Hidden">
-            <Button.Background>
-                <ImageBrush ImageSource="Images/enemy.png"/>
-            </Button.Background>
-        </Button>
-        <Button x:Name="enemyImg2" Height="100" Canvas.Left="304" Canvas.Top="59" Width="100" Visibility="Hidden" >
-            <Button.Background>
-                <ImageBrush ImageSource="Images/enemy.png"/>
-            </Button.Background>
-        </Button>
-        <Button x:Name="enemyImg3" Height="100" Canvas.Left="80" Canvas.Top="59" Width="100" HorizontalAlignment="Left" Visibility="Hidden" >
-            <Button.Background>
-                <ImageBrush ImageSource="Images/enemy.png"/>
-            </Button.Background>
-        </Button>
+        <Image x:Name="enemyImg1" Height="100" Canvas.Left="192" Canvas.Top="59" Width="100" Visibility="Hidden" />
+        <Image x:Name="enemyImg2" Height="100" Canvas.Left="304" Canvas.Top="59" Width="100" Visibility="Hidden" />
+        <Image x:Name="enemyImg3" Height="100" Canvas.Left="80" Canvas.Top="59" Width="100" Visibility="Hidden" />
+        <Button x:Name="enemyB1" Height="100" Canvas.Left="192" Canvas.Top="59" Width="100" Visibility="Hidden" Click="enemyB1_Click" />
+        <Button x:Name="enemyB2" Height="100" Canvas.Left="304" Canvas.Top="59" Width="100" Visibility="Hidden" Click="enemyB2_Click" />
+        <Button x:Name="enemyB3" Height="100" Canvas.Left="80" Canvas.Top="59" Width="100" Visibility="Hidden" Click="enemyB3_Click" />
+
         <TextBlock Name="battlePrompt" Canvas.Left="68" TextWrapping="Wrap" Canvas.Top="23" Width="340" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0">
             <TextBlock.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -31,9 +23,9 @@
                 </LinearGradientBrush>
             </TextBlock.Background>
         </TextBlock>
-        <Button Name="heroImg1" Content="Button" Canvas.Left="24" Canvas.Top="226" Width="100" Height="100" Visibility="Hidden"/>
-        <Button Name="heroImg2" Content="Button" Canvas.Left="192" Canvas.Top="226" Width="100" Height="100" Visibility="Hidden"/>
-        <Button Name="heroImg3" Content="Button" Canvas.Left="355" Canvas.Top="226" Width="100" Height="100" Visibility="Hidden"/>
+        <Button Name="heroImg1" Content="Button" Canvas.Left="24" Canvas.Top="226" Width="100" Height="100" Visibility="Hidden" Click="heroImg1_Click"/>
+        <Button Name="heroImg2" Content="Button" Canvas.Left="192" Canvas.Top="226" Width="100" Height="100" Visibility="Hidden" Click="heroImg2_Click"/>
+        <Button Name="heroImg3" Content="Button" Canvas.Left="355" Canvas.Top="226" Width="100" Height="100" Visibility="Hidden" Click="heroImg3_Click"/>
         <Rectangle x:Name="enemyTint1" Height="100" Canvas.Left="192" Canvas.Top="59" Width="100" Fill="Black" Opacity="0.5" Visibility="Hidden"/>
         <Rectangle x:Name="enemyTint2" Height="100" Canvas.Left="304" Canvas.Top="59" Width="100" Fill="Black" Opacity="0.5" Visibility="Hidden"/>
         <Rectangle x:Name="enemyTint3" Height="100" Canvas.Left="80" Canvas.Top="59" Width="100" Fill="Black" Opacity="0.5" Visibility="Hidden"/>
