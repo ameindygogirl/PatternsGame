@@ -77,6 +77,7 @@
                 <ComboBoxItem Content="Medium"/>
                 <ComboBoxItem Content="Hard"/>
             </ComboBox>
+            <Label Content="Maze Difficulty" HorizontalAlignment="Left" Margin="85,76,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.474,-0.077"/>
         </Grid>
 
 

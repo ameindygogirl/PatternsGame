@@ -31,6 +31,7 @@ namespace DesignPatternsGame
         Room[,] ara;
         Player player;
         int mazeSize;
+        int level = 3;
         public MainWindow()
         {
             InitializeComponent();
@@ -85,21 +86,21 @@ namespace DesignPatternsGame
                     {
                         if (this.ara[i, j].Entrance)
                         {
-                            rect.Fill = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/enter.png", UriKind.Absolute)));
+                            rect.Fill = new ImageBrush(ImageFactory.findImage("enter_"+level));
                             enter = true;
                         }
                         else if (this.ara[i, j].Exit)
                         {
-                            rect.Fill = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/exit.png", UriKind.Absolute)));
+                            rect.Fill = new ImageBrush(ImageFactory.findImage("exit_"+level));
                         }
                         else
                         {
-                            rect.Fill = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/path.png", UriKind.Absolute)));
+                            rect.Fill = new ImageBrush(ImageFactory.findImage("path_"+level));
                         }
                     }
                     else
                     {
-                        rect.Fill = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/wall.png", UriKind.Absolute)));
+                        rect.Fill = new ImageBrush(ImageFactory.findImage("wall_"+level));
                     }
                     board.Children.Add(rect);
                     Canvas.SetLeft(rect, overlapLeft);

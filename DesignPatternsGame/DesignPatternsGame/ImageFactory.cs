@@ -54,6 +54,45 @@ namespace DesignPatternsGame
                 case "spider":
                     img = new BitmapImage(new Uri("pack://application:,,,/Images/spider.png", UriKind.Absolute));
                     break;
+
+                //Maze pieces
+                case "wall_1":
+                    img = new BitmapImage(new Uri("pack://application:,,,/Images/wall.png", UriKind.Absolute));
+                    break;
+                case "path_1":
+                    img = new BitmapImage(new Uri("pack://application:,,,/Images/path.png", UriKind.Absolute));
+                    break;
+                case "enter_1":
+                    img = new BitmapImage(new Uri("pack://application:,,,/Images/enter.png", UriKind.Absolute));
+                    break;
+                case "exit_1":
+                    img = new BitmapImage(new Uri("pack://application:,,,/Images/exit.png", UriKind.Absolute));
+                    break;
+                case "wall_2":
+                    img = new BitmapImage(new Uri("pack://application:,,,/Images/roof.png", UriKind.Absolute));
+                    break;
+                case "path_2":
+                    img = new BitmapImage(new Uri("pack://application:,,,/Images/road.png", UriKind.Absolute));
+                    break;
+                case "enter_2":
+                    img = new BitmapImage(new Uri("pack://application:,,,/Images/enterMan.png", UriKind.Absolute));
+                    break;
+                case "exit_2":
+                    img = new BitmapImage(new Uri("pack://application:,,,/Images/exitMan.png", UriKind.Absolute));
+                    break;
+                case "wall_3":
+                    img = new BitmapImage(new Uri("pack://application:,,,/Images/waves.png", UriKind.Absolute));
+                    break;
+                case "path_3":
+                    img = new BitmapImage(new Uri("pack://application:,,,/Images/sand.png", UriKind.Absolute));
+                    break;
+                case "enter_3":
+                    img = new BitmapImage(new Uri("pack://application:,,,/Images/beachEnter.png", UriKind.Absolute));
+                    break;
+                case "exit_3":
+                    img = new BitmapImage(new Uri("pack://application:,,,/Images/beachExit.png", UriKind.Absolute));
+                    break;
+
             }
             return img;
         }

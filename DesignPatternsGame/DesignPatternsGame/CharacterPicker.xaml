@@ -27,7 +27,7 @@
         <Rectangle Height="86" Grid.Row="4" Stroke="Black" Width="214" Margin="200,28,202.5,20" Grid.ColumnSpan="3"/>
         <Rectangle Grid.Column="2" Height="86" Grid.Row="4" Stroke="Black" Width="214" Margin="3,28,2,20"/>
         <Image x:Name="imgSecond" Height="86" Grid.Row="4" Width="214" Margin="200,28,202.5,20" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Image x:Name="imgThird" Grid.Column="2" Height="86" Grid.Row="4" Width="214" Margin="10,29,21,20" />
+        <Image x:Name="imgThird" Grid.Column="2" Height="86" Grid.Row="4" Width="214" Margin="3,29,2,20" />
         <Button x:Name="btnKitten" Content="Button" Width="214" Height="86" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="picture_Click" Grid.ColumnSpan="3" Margin="200,38,202.5,20"  >
             <Button.Background>
                 <ImageBrush ImageSource="Images/kitten.png"/>

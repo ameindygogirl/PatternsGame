@@ -193,6 +193,14 @@
     <Resource Include="Images\spider.png" />
     <Resource Include="Images\vulture.png" />
     <Resource Include="Images\dinosaur.png" />
+    <Resource Include="Images\enterMan.png" />
+    <Resource Include="Images\exitMan.png" />
+    <Resource Include="Images\road.png" />
+    <Resource Include="Images\roof.png" />
+    <Resource Include="Images\beachEnter.png" />
+    <Resource Include="Images\beachExit.png" />
+    <Resource Include="Images\sand.png" />
+    <Resource Include="Images\waves.png" />
     <Content Include="Sounds\Lost.mp3" />
     <Content Include="Sounds\Won.mp3" />
   </ItemGroup>

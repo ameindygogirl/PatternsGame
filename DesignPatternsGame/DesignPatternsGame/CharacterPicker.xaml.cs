@@ -29,12 +29,12 @@ namespace DesignPatternsGame
         private static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
 
         public int[] heros = new int[3];
-        BitmapImage chipmunk = new BitmapImage(new Uri("pack://application:,,,/Images/chipmunk.png", UriKind.Absolute));
-        BitmapImage kitten = new BitmapImage(new Uri("pack://application:,,,/Images/kitten.png", UriKind.Absolute));
-        BitmapImage duck = new BitmapImage(new Uri("pack://application:,,,/Images/duck.png", UriKind.Absolute));
-        BitmapImage dog = new BitmapImage(new Uri("pack://application:,,,/Images/puppy.png", UriKind.Absolute));
-        BitmapImage turtle = new BitmapImage(new Uri("pack://application:,,,/Images/tinyTurtle.png", UriKind.Absolute));
-        BitmapImage owl = new BitmapImage(new Uri("pack://application:,,,/Images/owl.png", UriKind.Absolute));
+        BitmapImage chipmunk = ImageFactory.findImage("chipmunk");
+        BitmapImage kitten = ImageFactory.findImage("kitten");
+        BitmapImage duck = ImageFactory.findImage("duck");
+        BitmapImage dog = ImageFactory.findImage("dog");
+        BitmapImage turtle = ImageFactory.findImage("turtle"); 
+        BitmapImage owl = ImageFactory.findImage("owl");
         int chip = 1;
         int kit = 2;
         int duckling = 3;
