@@ -41,11 +41,19 @@ namespace DesignPatternsGame
         int dg = 4;
         int trt = 5;
         int ow = 6;
+       // HeroParty hparty;
+
         public CharacterPicker()
         {
             InitializeComponent();
             
         }
+
+        /*public CharacterPicker(HeroParty hparty)
+        {
+            this.hparty = hparty;
+            InitializeComponent();
+        }*/
 
         private void picture_Click(Object sender, RoutedEventArgs e)
         {
@@ -112,6 +120,8 @@ namespace DesignPatternsGame
 
         private void btnDone_Click(object sender, RoutedEventArgs e)
         {
+            /*this.hparty = new HeroParty();
+            this.hparty.initParty(heros[0], heros[1], heros[2]);*/
             this.DialogResult = true;
         }
 

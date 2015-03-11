@@ -97,6 +97,8 @@ namespace DesignPatternsGame
 
             if (tempRooms < goalRooms)
             {
+                setEvent(cur);
+
                 r = rand.Next(2);
                 if (r == 0 && isValidIndex(i + 1, j))
                 {
@@ -130,6 +132,26 @@ namespace DesignPatternsGame
                 cur.Exit = true;
             }
             
+        }
+
+        private void setEvent(Room cur)
+        {
+            Random rand = new Random();
+            int r = 0;
+
+            r = rand.Next(4);
+
+            switch (r)
+            {
+                case 0:
+                    cur.Event = new BattleEvent();
+                    break;
+                case 1:
+                    cur.Event = new ItemEvent();
+                    break;
+                default:
+                    break;
+            }
         }
 
         private Room attachNorth(Room cur, int i, int j)

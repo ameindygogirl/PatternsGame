@@ -8,6 +8,6 @@ namespace DesignPatternsGame
 {
     interface RoomEvent
     {
-        void execute();
+        void execute(HeroParty hparty);
     }
 }

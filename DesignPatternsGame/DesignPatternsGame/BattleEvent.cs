@@ -8,11 +8,20 @@ namespace DesignPatternsGame
 {
     class BattleEvent : RoomEvent
     {
-        MonsterParty party;
+        
+        MonsterParty mparty;
 
-        void RoomEvent.execute()
+        public BattleEvent()
         {
-            Console.Write("");
+            
+
+            this.mparty = new MonsterParty();
+            this.mparty.initParty();
+        }
+
+        void RoomEvent.execute(HeroParty hparty)
+        {
+            BattleWindow battle = new BattleWindow(hparty, this.mparty);
         }
     }
 }

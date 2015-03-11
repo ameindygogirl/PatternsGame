@@ -54,6 +54,13 @@ namespace DesignPatternsGame
             set { this.west = value; }
         }
 
+        public RoomEvent Event
+        {
+            get { return this.roomEvent; }
+            set { this.roomEvent = value; }
+        }
+
+
         public bool Entrance
         {
             get { return this.entrance; }

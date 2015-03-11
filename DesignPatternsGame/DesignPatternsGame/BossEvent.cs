@@ -8,7 +8,7 @@ namespace DesignPatternsGame
 {
     class BossEvent : RoomEvent
     {
-        void RoomEvent.execute()
+        void RoomEvent.execute(HeroParty hparty)
         {
             int i = 0;
         }

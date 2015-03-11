@@ -61,6 +61,7 @@
     <Compile Include="BattleWindow.xaml.cs">
       <DependentUpon>BattleWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BossEvent.cs" />
     <Compile Include="CharacterPicker.xaml.cs">
       <DependentUpon>CharacterPicker.xaml</DependentUpon>
     </Compile>
@@ -83,6 +84,7 @@
     <Compile Include="HeroParty.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="ItemAction.cs" />
+    <Compile Include="ItemEvent.cs" />
     <Compile Include="ItemList.cs" />
     <Compile Include="Monster.cs" />
     <Compile Include="MonsterFactory.cs" />

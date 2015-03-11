@@ -32,8 +32,12 @@ namespace DesignPatternsGame
         Player player;
         int mazeSize;
         int level = 3;
+
         public MainWindow()
         {
+
+            
+
             InitializeComponent();
             cbSize.SelectionChanged += cbSize_SelectionChanged;
            
@@ -151,6 +155,7 @@ namespace DesignPatternsGame
         private void btnPickCharacters_Click(object sender, RoutedEventArgs e)
         {
             pickCharacters();
+            this.hparty.initParty();
         }
 
         private static void pickCharacters()
@@ -267,6 +272,10 @@ namespace DesignPatternsGame
                 Canvas.SetZIndex(partyMarker, 1);
                 player.CurTop = move;
                 player.Row = newCord;
+
+                if (this.ara[this.player.Row, this.player.Column].Event != null)
+                    this.ara[this.player.Row, this.player.Column].Event.execute(this.hparty);
+
                 checkWon();
             }       
         }
