@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -19,14 +20,17 @@ namespace DesignPatternsGame
     /// Interaction logic for BattleWindow.xaml
     /// </summary>
 
-    public partial class BattleWindow : Window
+    public partial class BattleWindow : Window, INotifyPropertyChanged
     {
+        delegate void PromptDelegate(string s);
+        //PromptDelegate prompt = updatePrompt;
         int PAUSE = 500;
         HeroParty heroes;
         MonsterParty monsters;
         GameCharacter myTurn;
         GameCharacterList turnList;
         LinkedListNode<GameCharacter> cur;
+        String prompt = "";
 
         public BattleWindow(HeroParty heroes2, MonsterParty monsters2) //incoming parameter = parties?
         {
@@ -41,7 +45,8 @@ namespace DesignPatternsGame
 
             InitializeComponent();
             actionSwitch(0);
-            battlePrompt.Text = "Let the battle begin!";
+            prompt = "Let the battle begin!";
+            addPrompt(prompt);
             showHeroes();
             showMonsters();
             this.Show();
@@ -67,13 +72,12 @@ namespace DesignPatternsGame
 
             if (myTurn is Monster)
             {
-                battlePrompt.Text = myTurn.Name;
-                System.Threading.Thread.Sleep(PAUSE/2);
                 monsterStart();
             }
             else
             {
-                battlePrompt.Text = myTurn.Name + ": please choose an action";
+                prompt += "\n" + myTurn.Name + ": please choose an action";
+                addPrompt(prompt);
                 actionSwitch(1);
             }
         }
@@ -83,13 +87,15 @@ namespace DesignPatternsGame
         {
             if (heroes.isDead())
             {
-                battlePrompt.Text = "Game Over";
+                prompt += "Game Over";
+                addPrompt(prompt);
                 System.Threading.Thread.Sleep(PAUSE * 2);
                 Environment.Exit(0);
             }
             else if (monsters.isDead())
             {
-                battlePrompt.Text = "Enemies defeated";
+                prompt += "Enemies defeated";
+                addPrompt(prompt);
                 System.Threading.Thread.Sleep(PAUSE*2);
                 Environment.Exit(0);
             }
@@ -123,12 +129,11 @@ namespace DesignPatternsGame
             myTurn.Action = m.pickAction();
             myTurn.Action.Target = m.pickTarget(heroes.Characters);
             myTurn.Action.execute();
-            myTurn.Action.toString();
-            System.Threading.Thread.Sleep(PAUSE);
+            prompt += myTurn.Action.toString();
             
             if(myTurn.Action.Target.HP <= 0)
             {
-                battlePrompt.Text = myTurn.Action.Target.Name + " has collapsed!";
+                prompt += myTurn.Action.Target.Name + " has collapsed!";
             }
             myTurn = null;
             endCondition();
@@ -167,17 +172,17 @@ namespace DesignPatternsGame
             {
                 if (heroes.Characters.ElementAt(0).HP > 0)
                 {
-                    heroB1.Visibility = Visibility.Visible;
+                    heroB1.Visibility   = Visibility.Visible;
                     heroImg1.Visibility = Visibility.Hidden;
                 }
                 if (heroes.Characters.ElementAt(1).HP > 0)
                 {
-                    heroB2.Visibility = Visibility.Visible;
+                    heroB2.Visibility   = Visibility.Visible;
                     heroImg2.Visibility = Visibility.Hidden;
                 }
                 if (heroes.Characters.ElementAt(2).HP > 0)
                 {
-                    heroB3.Visibility = Visibility.Visible;
+                    heroB3.Visibility   = Visibility.Visible;
                     heroImg3.Visibility = Visibility.Hidden;
                 }
             }
@@ -186,9 +191,9 @@ namespace DesignPatternsGame
                 heroImg1.Visibility = Visibility.Visible;
                 heroImg2.Visibility = Visibility.Visible;
                 heroImg3.Visibility = Visibility.Visible;
-                heroB1.Visibility = Visibility.Hidden;
-                heroB2.Visibility = Visibility.Hidden;
-                heroB3.Visibility = Visibility.Hidden;
+                heroB1.Visibility   = Visibility.Hidden;
+                heroB2.Visibility   = Visibility.Hidden;
+                heroB3.Visibility   = Visibility.Hidden;
             }
         }
 
@@ -277,7 +282,7 @@ namespace DesignPatternsGame
         {
             heroSwitch(0);
             myTurn.Action = new AttackAction();
-            battlePrompt.Text = "Please choose a target";
+            prompt = "Please choose a target";
             monsterSwitch(1);
         }
 
@@ -288,7 +293,8 @@ namespace DesignPatternsGame
             monsterSwitch(0);
             myTurn.Action = new DefendAction();
             myTurn.Action.execute();
-            battlePrompt.Text = myTurn.Action.toString();
+            prompt = myTurn.Action.toString();
+            addPrompt(prompt);
             System.Threading.Thread.Sleep(PAUSE);
             beginTurn();
         }
@@ -298,7 +304,7 @@ namespace DesignPatternsGame
         {
             heroSwitch(0);
             myTurn.Action = new FireBallSpecial();
-            battlePrompt.Text = "Please choose a target";
+            prompt = "Please choose a target";
             monsterSwitch(1);
         }
 
@@ -307,10 +313,10 @@ namespace DesignPatternsGame
         {
             monsterSwitch(0);
             heroSwitch(0);
-            battlePrompt.Text = "Please select an item";
+            prompt = "Please select an item";
             Item item = new HealthPotion(1);
             myTurn.Action = new ItemAction(item);
-            battlePrompt.Text = "Please choose a target";
+            prompt = "Please choose a target";
             heroSwitch(1);
         }
 
@@ -355,11 +361,10 @@ namespace DesignPatternsGame
         // ENEMYCLICK
         private void enemyClick()
         {
-            battlePrompt.Text = myTurn.Action.toString();
-            System.Threading.Thread.Sleep(PAUSE);
-
+            prompt = myTurn.Action.toString();
+            
             if (myTurn.Action.Target.HP <= 0)
-                battlePrompt.Text = myTurn.Action.Target.Name + " is slain!";
+                prompt += "\n" + myTurn.Action.Target.Name + " is slain!";
 
             System.Threading.Thread.Sleep(PAUSE);
             endCondition();
@@ -390,9 +395,53 @@ namespace DesignPatternsGame
             heroSwitch(0);
             myTurn.Action.Target = heroes.Characters.ElementAt(i);
             myTurn.Action.execute();
-            battlePrompt.Text = myTurn.Action.toString();
+            prompt = myTurn.Action.toString();
+            addPrompt(prompt);
             System.Threading.Thread.Sleep(PAUSE);
             beginTurn();
         }
+
+        // UPDATEPROMPT
+        //public void updatePrompt(string s)
+        //{
+        //    battlePrompt.Text = s;
+        //    battleWindow1.UpdateLayout();
+        //    //System.Threading.Thread.Sleep(PAUSE / 2);
+        //}
+
+        public void addPrompt(string s)
+        {
+            //UpdatePrompt up = new UpdatePrompt();
+            //up.Prompt = s;
+            //OnUpdatePrompt(up);
+            System.Threading.Thread.Sleep(100);
+            PromptData = s;
+
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged = delegate { };
+
+        public virtual void RaisePropertyChanged(String propName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propName));
+            }
+        }
+
+        private string promptData;
+        public string PromptData
+        {
+            get { return promptData; }
+            set { promptData = value; RaisePropertyChanged("PromptData"); }
+        }
+
+        // PROMPTCALLBACK
+        //public void promptCallBack(UpdatePrompt up)
+        //{
+        //    callback("Hello World");
+        //}
+
+
     }
 }

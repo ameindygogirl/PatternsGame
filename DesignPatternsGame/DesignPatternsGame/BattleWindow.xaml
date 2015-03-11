@@ -1,9 +1,9 @@
 ﻿<Window x:Class="DesignPatternsGame.BattleWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="BattleWindow" Height="386.512" Width="481.395">
+        Title="BattleWindow" Height="439.012" Width="487.395">
 
-    <Canvas x:Name="battleWindow1"  Background="#FF2D5B61">
+    <Canvas x:Name="battleWindow1"  Background="#FF2D5B61" HorizontalAlignment="Left" Width="487" Margin="0,0,0,0">
         <Button x:Name="attackButton" Content="Attack" BorderBrush="Black" BorderThickness="1" Height="30" Canvas.Top="180" Width="100" Background="White" Canvas.Left="24" Click="attackButton_Click" />
         <Button x:Name="defendButton" Content="Defend" BorderBrush="Black" BorderThickness="1" Height="30" Canvas.Left="135" Canvas.Top="180" Width="100" Background="White" Click="defendButton_Click"/>
         <Button x:Name="specialButton" Content="Special" BorderBrush="Black" BorderThickness="1" Height="30" Canvas.Left="355" Canvas.Top="180" Width="100" Background="White"/>
@@ -15,14 +15,15 @@
         <Button x:Name="enemyB2" Height="100" Canvas.Left="304" Canvas.Top="59" Width="100" Visibility="Hidden" Click="enemyB2_Click" />
         <Button x:Name="enemyB3" Height="100" Canvas.Left="80" Canvas.Top="59" Width="100" Visibility="Hidden" Click="enemyB3_Click" />
 
-        <TextBlock Name="battlePrompt" Canvas.Left="68" TextWrapping="Wrap" Canvas.Top="23" Width="340" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0">
-            <TextBlock.Background>
+        <Border BorderThickness="1" BorderBrush="White" Width="330" Height="57" Canvas.Left="74" Canvas.Top="10">
+            <Border.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FF104757" Offset="0"/>
                     <GradientStop Color="#FF4B7885" Offset="1"/>
                 </LinearGradientBrush>
-            </TextBlock.Background>
-        </TextBlock>
+            </Border.Background>
+            <TextBlock x:Name="battlePrompt" Canvas.Left="67" TextWrapping="Wrap" Canvas.Top="23"  Margin="5" Foreground="White" Text="{Binding Path=PromptData, UpdateSourceTrigger=PropertyChanged}" />
+        </Border>
         <Button Name="heroB1" Content="Button" Canvas.Left="24" Canvas.Top="226" Width="100" Height="100" Visibility="Hidden" Click="heroImg1_Click"/>
         <Button Name="heroB2" Content="Button" Canvas.Left="192" Canvas.Top="226" Width="100" Height="100" Visibility="Hidden" Click="heroImg2_Click"/>
         <Button Name="heroB3" Content="Button" Canvas.Left="355" Canvas.Top="226" Width="100" Height="100" Visibility="Hidden" Click="heroImg3_Click"/>

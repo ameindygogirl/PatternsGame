@@ -13,6 +13,7 @@ namespace DesignPatternsGame
         {
             Amount = 1;
         }
+
         public HealthPotion(int quantity): base(quantity) {}
 
         public override void use()
