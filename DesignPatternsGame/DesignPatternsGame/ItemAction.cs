@@ -32,7 +32,9 @@ namespace DesignPatternsGame
 
         public override String toString()
         {
-            return Primary.Name + " uses " + item.Name + " on " + item.Target.Name;
+            String s = Primary.Name + " uses " + item.Name + " on " + item.Target.Name;
+            s += "\n" + item.ToString();
+            return s;
         }
     }
 }

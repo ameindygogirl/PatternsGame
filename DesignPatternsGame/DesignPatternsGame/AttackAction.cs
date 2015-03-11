@@ -19,13 +19,12 @@ namespace DesignPatternsGame
             int random = new Random().Next(1, 100);
             if (primary.HitChance >= random)
             {
-                int hit = new Random().Next(primary.MinDamage, primary.MaxDamage);
-                damage = Target.HP - hit;
+                damage = new Random().Next(primary.MinDamage, primary.MaxDamage);
 
                 if (Target.Action is DefendAction)
                     damage = damage / 2;
 
-                Target.HP = damage;
+                Target.HP = Target.HP - damage;
             }
         }
 

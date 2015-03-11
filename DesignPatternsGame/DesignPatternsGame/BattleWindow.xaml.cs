@@ -22,9 +22,6 @@ namespace DesignPatternsGame
 
     public partial class BattleWindow : Window, INotifyPropertyChanged
     {
-        delegate void PromptDelegate(string s);
-        //PromptDelegate prompt = updatePrompt;
-        int PAUSE = 500;
         HeroParty heroes;
         MonsterParty monsters;
         GameCharacter myTurn;
@@ -32,7 +29,7 @@ namespace DesignPatternsGame
         LinkedListNode<GameCharacter> cur;
         String prompt = "";
 
-        public BattleWindow(HeroParty heroes2, MonsterParty monsters2) //incoming parameter = parties?
+        public BattleWindow(HeroParty heroes2, MonsterParty monsters2)
         {
             HealthPotion potion = new HealthPotion(5);
             heroes2.addItem(potion);
@@ -44,14 +41,13 @@ namespace DesignPatternsGame
             cur = turnList.First;
 
             InitializeComponent();
+            this.DataContext = this;
+            this.Show();
             actionSwitch(0);
             prompt = "Let the battle begin!";
             addPrompt(prompt);
             showHeroes();
             showMonsters();
-            this.Show();
-            System.Threading.Thread.Sleep(PAUSE);
-            beginTurn();
         }
 
         // BEGINTURN
@@ -69,17 +65,17 @@ namespace DesignPatternsGame
             }
             myTurn = cur.Value;
 
-
             if (myTurn is Monster)
-            {
                 monsterStart();
-            }
+
             else
             {
-                prompt += "\n" + myTurn.Name + ": please choose an action";
+                prompt = myTurn.Name + ": please choose an action";
                 addPrompt(prompt);
+                continueButton.IsEnabled = false;
                 actionSwitch(1);
             }
+            endCondition();
         }
 
         // ENDCONDITION
@@ -87,20 +83,30 @@ namespace DesignPatternsGame
         {
             if (heroes.isDead())
             {
-                prompt += "Game Over";
+                prompt = "Game Over";
                 addPrompt(prompt);
-                System.Threading.Thread.Sleep(PAUSE * 2);
-                Environment.Exit(0);
+                continueButton.Content = "END";
             }
             else if (monsters.isDead())
             {
-                prompt += "Enemies defeated";
+                prompt = "Enemies defeated";
                 addPrompt(prompt);
-                System.Threading.Thread.Sleep(PAUSE*2);
-                Environment.Exit(0);
+                continueButton.Content = "END";
             }
         }
+        
+        // ISFINISHED
+        private bool isFinished()
+        {
+            if (heroes.isDead())
+                return true;
+            
+            else if(monsters.isDead())
+                return true;
 
+            return false;
+        }
+        
         // INITTURNLIST
         private GameCharacterList initTurnList(Party heroes, Party monsters)
         {
@@ -129,15 +135,54 @@ namespace DesignPatternsGame
             myTurn.Action = m.pickAction();
             myTurn.Action.Target = m.pickTarget(heroes.Characters);
             myTurn.Action.execute();
-            prompt += myTurn.Action.toString();
+            prompt = myTurn.Action.toString();
+            addPrompt(prompt);
             
             if(myTurn.Action.Target.HP <= 0)
             {
-                prompt += myTurn.Action.Target.Name + " has collapsed!";
+                prompt = myTurn.Action.Target.Name + " has collapsed!";
+                addPrompt(prompt);
+                heroTint(myTurn.Action.Target, 1);
             }
             myTurn = null;
-            endCondition();
-            beginTurn();
+        }
+
+        // HEROTINT
+        private void heroTint(GameCharacter gc, int i)
+        {
+            LinkedListNode<GameCharacter> cur = heroes.Characters.First;
+
+            int index = 0;
+            while(cur.Value != gc)
+            {
+                cur = cur.Next;
+                index++;
+            }
+            switch(index)
+            {
+                case 0:
+                    if (i > 0)
+                        heroTint1.Visibility = Visibility.Visible;
+                    else
+                        heroTint1.Visibility = Visibility.Hidden;
+                    break;
+
+                case 1:
+                    if (i > 0)
+                        heroTint2.Visibility = Visibility.Visible;
+                    else
+                        heroTint2.Visibility = Visibility.Hidden;
+                    break;
+
+                case 2:
+                    if (i > 0)
+                        heroTint3.Visibility = Visibility.Visible;
+                    else
+                        heroTint3.Visibility = Visibility.Hidden;
+                    break;
+            }
+
+
         }
 
         // PICKITEM
@@ -149,7 +194,7 @@ namespace DesignPatternsGame
         // ACTIONSWITCH
         private void actionSwitch(int i)
         {
-            if (i < 0)
+            if (i <= 0)
             {
                 attackButton.IsEnabled  = false;
                 defendButton.IsEnabled  = false;
@@ -237,8 +282,6 @@ namespace DesignPatternsGame
                 heroB1.Background = new ImageBrush(heroes.Characters.ElementAt(0).Img);
                 heroImg1.Visibility = Visibility.Visible;
                 heroImg1.Source = heroes.Characters.ElementAt(0).Img;
-                
-                
             }
             if (heroes.Characters.Count >= 2)
             {
@@ -283,6 +326,7 @@ namespace DesignPatternsGame
             heroSwitch(0);
             myTurn.Action = new AttackAction();
             prompt = "Please choose a target";
+            addPrompt(prompt);
             monsterSwitch(1);
         }
 
@@ -295,8 +339,7 @@ namespace DesignPatternsGame
             myTurn.Action.execute();
             prompt = myTurn.Action.toString();
             addPrompt(prompt);
-            System.Threading.Thread.Sleep(PAUSE);
-            beginTurn();
+            
         }
 
         // SPECIALBUTTON_CLICK
@@ -305,6 +348,7 @@ namespace DesignPatternsGame
             heroSwitch(0);
             myTurn.Action = new FireBallSpecial();
             prompt = "Please choose a target";
+            addPrompt(prompt);
             monsterSwitch(1);
         }
 
@@ -362,13 +406,14 @@ namespace DesignPatternsGame
         private void enemyClick()
         {
             prompt = myTurn.Action.toString();
-            
-            if (myTurn.Action.Target.HP <= 0)
-                prompt += "\n" + myTurn.Action.Target.Name + " is slain!";
+            addPrompt(prompt);
 
-            System.Threading.Thread.Sleep(PAUSE);
+            if (myTurn.Action.Target.HP <= 0)
+            {
+                prompt = myTurn.Action.Target.Name + " is slain!";
+                addPrompt(prompt);
+            }
             endCondition();
-            beginTurn();
         }
 
         // HEROIMG1_CLICK
@@ -397,32 +442,20 @@ namespace DesignPatternsGame
             myTurn.Action.execute();
             prompt = myTurn.Action.toString();
             addPrompt(prompt);
-            System.Threading.Thread.Sleep(PAUSE);
-            beginTurn();
         }
-
-        // UPDATEPROMPT
-        //public void updatePrompt(string s)
-        //{
-        //    battlePrompt.Text = s;
-        //    battleWindow1.UpdateLayout();
-        //    //System.Threading.Thread.Sleep(PAUSE / 2);
-        //}
 
         public void addPrompt(string s)
         {
-            //UpdatePrompt up = new UpdatePrompt();
-            //up.Prompt = s;
-            //OnUpdatePrompt(up);
-            System.Threading.Thread.Sleep(100);
             PromptData = s;
-
+            actionSwitch(0);
+            continueButton.IsEnabled = true;
         }
 
-        public event PropertyChangedEventHandler PropertyChanged = delegate { };
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public virtual void RaisePropertyChanged(String propName)
         {
+            System.Threading.Thread.Sleep(100);
             if (PropertyChanged != null)
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propName));
@@ -436,12 +469,19 @@ namespace DesignPatternsGame
             set { promptData = value; RaisePropertyChanged("PromptData"); }
         }
 
+        private void continueButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (isFinished())
+                this.Exit(0);
+
+            continueButton.IsEnabled = false;
+            beginTurn();
+        }
+
         // PROMPTCALLBACK
         //public void promptCallBack(UpdatePrompt up)
         //{
         //    callback("Hello World");
         //}
-
-
     }
 }

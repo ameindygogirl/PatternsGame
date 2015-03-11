@@ -11,10 +11,11 @@ namespace DesignPatternsGame
 
         public HealthPotion()
         {
+            this.Name = "Health Potion";
             Amount = 1;
         }
 
-        public HealthPotion(int quantity): base(quantity) {}
+        public HealthPotion(int quantity) : base(quantity) { this.Name = "Health Potion"; }
 
         public override void use()
         {
