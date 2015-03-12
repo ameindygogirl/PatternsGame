@@ -275,11 +275,11 @@ namespace DesignPatternsGame
             MessageBoxResult result = System.Windows.MessageBox.Show("Are you sure?", "Quit Game?", MessageBoxButton.YesNo);
             if (result == MessageBoxResult.Yes)
             {
+                bw.Close();
                 e.Cancel = false;
             }
             else
             {
-                bw.Close();
                 e.Cancel = true;
             }
         }

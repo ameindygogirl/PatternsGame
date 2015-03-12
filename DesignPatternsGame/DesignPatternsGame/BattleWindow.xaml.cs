@@ -57,6 +57,7 @@ namespace DesignPatternsGame
             addPrompt(prompt);
             showHeroes();
             showMonsters();
+            setPlayerHitPoints();
         }
 
         // BEGINTURN
@@ -476,6 +477,7 @@ namespace DesignPatternsGame
             addPrompt(prompt);
         }
 
+        // ADDPROMPT
         public void addPrompt(string s)
         {
             PromptData = s;
@@ -483,6 +485,7 @@ namespace DesignPatternsGame
             continueButton.IsEnabled = true;
         }
 
+        // PROPERTY CHANGE EVENTS
         public event PropertyChangedEventHandler PropertyChanged;
 
         public virtual void RaisePropertyChanged(String propName)
@@ -532,10 +535,5 @@ namespace DesignPatternsGame
             var hwnd = new WindowInteropHelper(this).Handle;
             SetWindowLong(hwnd, GWL_STYLE, GetWindowLong(hwnd, GWL_STYLE) & ~WS_SYSMENU);
         }
-        // PROMPTCALLBACK
-        //public void promptCallBack(UpdatePrompt up)
-        //{
-        //    callback("Hello World");
-        //}
     }
 }
