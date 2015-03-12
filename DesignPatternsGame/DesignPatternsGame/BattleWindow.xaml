@@ -6,7 +6,7 @@
     <Canvas x:Name="battleWindow1"  Background="#FF2D5B61" HorizontalAlignment="Left" Width="487" Margin="0,0,0,0">
         <Button x:Name="attackButton" Content="Attack" BorderBrush="Black" BorderThickness="1" Height="30" Canvas.Top="232" Width="100" Background="White" Canvas.Left="24" Click="attackButton_Click" />
         <Button x:Name="defendButton" Content="Defend" BorderBrush="Black" BorderThickness="1" Height="30" Canvas.Left="135" Canvas.Top="232" Width="100" Background="White" Click="defendButton_Click"/>
-        <Button x:Name="specialButton" Content="Special" BorderBrush="Black" BorderThickness="1" Height="30" Canvas.Left="355" Canvas.Top="232" Width="100" Background="White"/>
+        <Button x:Name="specialButton" Content="Special" BorderBrush="Black" BorderThickness="1" Height="30" Canvas.Left="355" Canvas.Top="232" Width="100" Background="White" Click="specialButton_Click"/>
         <Button x:Name="itemButton" Content="Item" BorderBrush="Black" BorderThickness="1" Height="30" Canvas.Left="245" Canvas.Top="232" Width="100" Background="White" Click="itemButton_Click"/>
         <Image x:Name="enemyImg1" Height="100" Canvas.Left="192" Canvas.Top="111" Width="100" Visibility="Hidden" />
         <Image x:Name="enemyImg2" Height="100" Canvas.Left="304" Canvas.Top="111" Width="100" Visibility="Hidden" />

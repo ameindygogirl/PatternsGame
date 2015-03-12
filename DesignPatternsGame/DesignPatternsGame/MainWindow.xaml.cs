@@ -31,15 +31,12 @@ namespace DesignPatternsGame
         Room[,] ara;
         Player player;
         int mazeSize;
-        int level = 3;
 
         public MainWindow()
         {
-
-            
-
             InitializeComponent();
             cbSize.SelectionChanged += cbSize_SelectionChanged;
+            player = new Player(1);
            
         }
 
@@ -90,21 +87,21 @@ namespace DesignPatternsGame
                     {
                         if (this.ara[i, j].Entrance)
                         {
-                            rect.Fill = new ImageBrush(ImageFactory.findImage("enter_"+level));
+                            rect.Fill = new ImageBrush(ImageFactory.findImage("enter_"+player.Level));
                             enter = true;
                         }
                         else if (this.ara[i, j].Exit)
                         {
-                            rect.Fill = new ImageBrush(ImageFactory.findImage("exit_"+level));
+                            rect.Fill = new ImageBrush(ImageFactory.findImage("exit_"+player.Level));
                         }
                         else
                         {
-                            rect.Fill = new ImageBrush(ImageFactory.findImage("path_"+level));
+                            rect.Fill = new ImageBrush(ImageFactory.findImage("path_"+player.Level));
                         }
                     }
                     else
                     {
-                        rect.Fill = new ImageBrush(ImageFactory.findImage("wall_"+level));
+                        rect.Fill = new ImageBrush(ImageFactory.findImage("wall_"+player.Level));
                     }
                     board.Children.Add(rect);
                     Canvas.SetLeft(rect, overlapLeft);
@@ -116,7 +113,10 @@ namespace DesignPatternsGame
                         Canvas.SetLeft(partyMarker, overlapLeft);
                         Canvas.SetTop(partyMarker, overlapTop);
                         enter = false;
-                        player = new Player(i, j, overlapLeft, overlapTop);
+                        player.Row = i;
+                        player.Column = j;
+                        player.CurLeft = overlapLeft;
+                        player.CurTop = overlapTop;
                     }
                     overlapLeft += tile;
                 }
@@ -223,6 +223,35 @@ namespace DesignPatternsGame
             cbSize.IsEnabled = true;
             board.Children.Clear();
             disableNavigation();
+            player.Level = 1;
+        }
+
+        private void levelUpMaze()
+        {
+            board.Children.Clear();
+            int tile;
+            if (cbSize.SelectedIndex == 0)
+            {
+                path = new PathGen(0);
+                tile = SMALL_MAZE;
+                mazeSize = 0;
+            }
+            else if (cbSize.SelectedIndex == 1)
+            {
+                path = new PathGen(1);
+                tile = MEDIUM_MAZE;
+                mazeSize = 1;
+            }
+            else
+            {
+                path = new PathGen(2);
+                tile = LARGE_MAZE;
+                mazeSize = 2;
+            }
+
+
+            ara = path.getPath();
+            printPath(tile);
         }
 
         private void Close_Click(object sender, RoutedEventArgs e)
@@ -363,22 +392,33 @@ namespace DesignPatternsGame
 
         private void checkWon()
         {
-            if(player.HasRobot && ara[player.Row, player.Column].Exit)
+            if(player.HasRobot && ara[player.Row, player.Column].Exit && player.Level == 3)
             {
                 Results r = new Results(true);
                 if(r.ShowDialog() == true)
                 {
                     Create_Click(null, null);
                 }
+                else
+                {
+                    disableNavigation();
+                }
             }
             else if(!player.HasRobot && ara[player.Row, player.Column].Exit)
             {
-                MessageBox.Show("Must have a robot to win the game!");
+                MessageBox.Show("Must have a robot to move on!");
+            }
+            else if(player.HasRobot && ara[player.Row, player.Column].Exit)
+            {
+                player.Level = player.Level + 1;
+                levelUpMaze();
             }
             else
             {
-                //No action, player not at exit
+                //Nothing occurs, player not at exit
             }
         }
+
+       
     }
 }

@@ -67,6 +67,8 @@
     </Compile>
     <Compile Include="ChubbyChipmunk.cs" />
     <Compile Include="ActionFactory.cs" />
+    <Compile Include="CutenessSpecial.cs" />
+    <Compile Include="ExtraStrengthSpecial.cs" />
     <Compile Include="ImageFactory.cs" />
     <Compile Include="CrookedVulture.cs" />
     <Compile Include="CuddlyKitten.cs" />

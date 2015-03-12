@@ -346,7 +346,21 @@ namespace DesignPatternsGame
         private void specialButton_Click(object sender, RoutedEventArgs e)
         {
             heroSwitch(0);
-            myTurn.Action = new FireBallSpecial();
+            Random rnd = new Random();
+            int choice = rnd.Next(1, 4);
+            switch(choice)
+            {
+                case 1:
+                    myTurn.Action = new FireBallSpecial();
+                    break;
+                case 2:
+                    myTurn.Action = new CutenessSpecial();
+                    break;
+                case 3:
+                    myTurn.Action = new ExtraStrengthSpecial();
+                    break;
+            }
+            
             prompt = "Please choose a target";
             addPrompt(prompt);
             monsterSwitch(1);
@@ -472,7 +486,7 @@ namespace DesignPatternsGame
         private void continueButton_Click(object sender, RoutedEventArgs e)
         {
             if (isFinished())
-                this.Exit(0);
+                this.Close();
 
             continueButton.IsEnabled = false;
             beginTurn();
