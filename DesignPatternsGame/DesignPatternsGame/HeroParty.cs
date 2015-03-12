@@ -16,6 +16,13 @@ namespace DesignPatternsGame
             items = new ItemList();
         }
 
+        public HeroParty(int a, int b, int c)
+        {
+            makeHero = new HeroFactory();
+            items = new ItemList();
+            initParty(a, b, c);
+        }
+
         public ItemList Items
         {
             get { return this.items; }
@@ -30,28 +37,11 @@ namespace DesignPatternsGame
         public override void initParty()
         {
             GameCharacterList list = new GameCharacterList();
-            ActionList alist       = new ActionList();
-
-            ItemAction item       = null;
-            SpecialAction special = null;
-            DefendAction defend   = new DefendAction();
-            AttackAction attack   = new AttackAction();
-
+            
             GameCharacter gc1 = makeHero.createCharacter(1);
             GameCharacter gc2 = makeHero.createCharacter(2);
             GameCharacter gc3 = makeHero.createCharacter(3);
             
-            alist.AddFirst(item);
-            alist.AddFirst(special);
-            alist.AddFirst(defend);
-            alist.AddFirst(attack);
-
-            if(alist != null)
-            {
-                gc1.Actions = alist;
-                gc2.Actions = alist;
-                gc3.Actions = alist;
-            }
             list.AddFirst(gc3);
             list.AddFirst(gc2);
             list.AddFirst(gc1);
@@ -59,31 +49,14 @@ namespace DesignPatternsGame
             Characters = list;
         }
 
-        public void initParty(int a, int b, int c)
+        private void initParty(int a, int b, int c)
         {
             GameCharacterList list = new GameCharacterList();
-            ActionList alist       = new ActionList();
-
-            ItemAction item       = null;
-            SpecialAction special = null;
-            DefendAction defend   = new DefendAction();
-            AttackAction attack   = new AttackAction();
-
+            
             GameCharacter gc1 = makeHero.createCharacter(a);
             GameCharacter gc2 = makeHero.createCharacter(b);
             GameCharacter gc3 = makeHero.createCharacter(c);
             
-            alist.AddFirst(item);
-            alist.AddFirst(special);
-            alist.AddFirst(defend);
-            alist.AddFirst(attack);
-
-            if(alist != null)
-            {
-                gc1.Actions = alist;
-                gc2.Actions = alist;
-                gc3.Actions = alist;
-            }
             list.AddFirst(gc3);
             list.AddFirst(gc2);
             list.AddFirst(gc1);
