@@ -15,7 +15,7 @@ namespace DesignPatternsGame
         }
         public override String toString()
         {
-            return primary.Name + " hurls a fireball at " + target.Name + " for " + dmg + "dmg!";
+            return primary.Name + " hurls a fireball at " + target.Name + " for " + dmg + " damage!";
         }
     }
 }

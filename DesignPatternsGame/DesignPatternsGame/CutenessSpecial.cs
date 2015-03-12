@@ -16,7 +16,7 @@ namespace DesignPatternsGame
 
         public override string toString()
         {
-            return primary.Name + " overwhelms " + target.Name + " with cuteness for " + dmg + "dmg!";
+            return primary.Name + " overwhelms " + target.Name + " with cuteness for " + dmg + " damage!";
         }
     }
 }

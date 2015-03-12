@@ -16,7 +16,7 @@ namespace DesignPatternsGame
 
         public override string toString()
         {
-            return primary.Name + " gained extra strength and attacked " + target.Name + " for " + dmg + "dmg!";
+            return primary.Name + " gained extra strength and attacked " + target.Name + " for " + dmg + " damage!";
         }
     }
 }
