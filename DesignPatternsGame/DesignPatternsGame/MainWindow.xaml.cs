@@ -25,8 +25,8 @@ namespace DesignPatternsGame
         private readonly int LARGE_MAZE = 70;
 
         Ellipse partyMarker;
-        HeroParty hparty = new HeroParty();
-        MonsterParty mparty = new MonsterParty();
+        HeroParty hparty;
+        MonsterParty mparty;
         PathGen path;
         Room[,] ara;
         Player player;
@@ -37,6 +37,10 @@ namespace DesignPatternsGame
             InitializeComponent();
             cbSize.SelectionChanged += cbSize_SelectionChanged;
             player = new Player(1);
+
+            this.hparty = new HeroParty();
+            this.mparty = new MonsterParty();
+
            
         }
 
@@ -155,15 +159,21 @@ namespace DesignPatternsGame
         private void btnPickCharacters_Click(object sender, RoutedEventArgs e)
         {
             pickCharacters();
-            this.hparty.initParty();
+           
         }
 
-        private static void pickCharacters()
+        private void pickCharacters()
         {
             CharacterPicker cp = new CharacterPicker();
             if (cp.ShowDialog() == true)
             {
-                //New up the characters here
+                int char1, char2, char3;
+
+                char1 = cp.heros[0];
+                char2 = cp.heros[1];
+                char3 = cp.heros[2];
+
+                this.hparty = new HeroParty(char1, char2, char3);
             }
         }
 
@@ -278,6 +288,12 @@ namespace DesignPatternsGame
             r.ShowDialog();
         }
 
+        private void enterRoom()
+        {
+            if (this.ara[this.player.Row, this.player.Column].Event != null)
+                this.ara[this.player.Row, this.player.Column].Event.execute(this.hparty);
+        }
+
         private void btnUp_Click(object sender, RoutedEventArgs e)
         { 
             int newCord = player.Row - 1;
@@ -302,8 +318,7 @@ namespace DesignPatternsGame
                 player.CurTop = move;
                 player.Row = newCord;
 
-                if (this.ara[this.player.Row, this.player.Column].Event != null)
-                    this.ara[this.player.Row, this.player.Column].Event.execute(this.hparty);
+                enterRoom();
 
                 checkWon();
             }       
@@ -331,6 +346,9 @@ namespace DesignPatternsGame
                 Canvas.SetZIndex(partyMarker, 1);
                 player.CurLeft = move;
                 player.Column = newCord;
+
+                enterRoom();
+
                 checkWon();
             }
             
@@ -358,6 +376,9 @@ namespace DesignPatternsGame
                 Canvas.SetZIndex(partyMarker, 1);
                 player.CurLeft = move;
                 player.Column = newCord;
+
+                enterRoom();
+
                 checkWon();
             }
             
@@ -385,6 +406,9 @@ namespace DesignPatternsGame
                 Canvas.SetZIndex(partyMarker, 1);
                 player.CurTop = move;
                 player.Row = newCord;
+
+                enterRoom();
+
                 checkWon();
             }
             

@@ -13,8 +13,6 @@ namespace DesignPatternsGame
 
         public BattleEvent()
         {
-            
-
             this.mparty = new MonsterParty();
             this.mparty.initParty();
         }
