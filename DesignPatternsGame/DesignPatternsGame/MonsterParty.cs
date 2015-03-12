@@ -16,9 +16,13 @@ namespace DesignPatternsGame
 
         public override void initParty()
         {
-            GameCharacter m1 = monsters.createCharacter(new Random().Next(6)+1);
-            GameCharacter m2 = monsters.createCharacter(new Random().Next(6)+1);
-            GameCharacter m3 = monsters.createCharacter(new Random().Next(6)+1);
+            Random random = new Random();
+            int i = random.Next(6) + 1;
+            GameCharacter m1 = monsters.createCharacter(i);
+            i = random.Next(6) + 1;
+            GameCharacter m2 = monsters.createCharacter(i);
+            i = random.Next(6) + 1;
+            GameCharacter m3 = monsters.createCharacter(i);
 
             Characters.AddFirst(m3);
             Characters.AddFirst(m2);

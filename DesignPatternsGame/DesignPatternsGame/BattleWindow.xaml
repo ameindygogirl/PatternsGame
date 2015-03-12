@@ -31,10 +31,13 @@
         <Image Name="heroImg1" Canvas.Left="24" Canvas.Top="278" Width="100" Height="100" Visibility="Hidden" />
         <Image Name="heroImg2" Canvas.Left="192" Canvas.Top="278" Width="100" Height="100" Visibility="Hidden" />
         <Image Name="heroImg3" Canvas.Left="355" Canvas.Top="278" Width="100" Height="100" Visibility="Hidden" />
+        <TextBlock x:Name="hero1hp" Height="20" Width="100" Canvas.Left="355" TextWrapping="Wrap" Canvas.Top="358" Foreground="White" Text="{Binding Path=Hero1hp, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBlock x:Name="hero2hp" Height="20" Width="100" Canvas.Left="192" TextWrapping="Wrap" Canvas.Top="358" Foreground="White" Text="{Binding Path=Hero2hp, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBlock x:Name="hero3hp" Height="20" Width="100" Canvas.Left="24" TextWrapping="Wrap" Canvas.Top="358" Foreground="White" Text="{Binding Path=Hero3hp, UpdateSourceTrigger=PropertyChanged}" />
 
         <Rectangle x:Name="enemyTint1" Height="100" Canvas.Left="192" Canvas.Top="111" Width="100" Fill="Black" Opacity="0.5" Visibility="Hidden"/>
-        <Rectangle x:Name="enemyTint2" Height="100" Canvas.Left="304" Canvas.Top="111" Width="100" Fill="Black" Opacity="0.5" Visibility="Hidden"/>
-        <Rectangle x:Name="enemyTint3" Height="100" Canvas.Left="80" Canvas.Top="111" Width="100" Fill="Black" Opacity="0.5" Visibility="Hidden"/>
+        <Rectangle x:Name="enemyTint3" Height="100" Canvas.Left="304" Canvas.Top="111" Width="100" Fill="Black" Opacity="0.5" Visibility="Hidden"/>
+        <Rectangle x:Name="enemyTint2" Height="100" Canvas.Left="80" Canvas.Top="111" Width="100" Fill="Black" Opacity="0.5" Visibility="Hidden"/>
         <Rectangle x:Name="heroTint1" Height="100" Canvas.Left="192" Canvas.Top="278" Width="100" Fill="Black" Opacity="0.5" Visibility="Hidden"/>
         <Rectangle x:Name="heroTint2" Height="100" Canvas.Left="355" Canvas.Top="278" Width="100" Fill="Black" Opacity="0.5" Visibility="Hidden"/>
         <Rectangle x:Name="heroTint3" Height="100" Canvas.Left="24" Canvas.Top="278" Width="100" Fill="Black" Opacity="0.5" Visibility="Hidden"/>

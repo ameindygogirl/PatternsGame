@@ -84,6 +84,7 @@ namespace DesignPatternsGame
                 continueButton.IsEnabled = false;
                 actionSwitch(1);
             }
+            System.Threading.Thread.Sleep(100);
             endCondition();
         }
 
@@ -154,6 +155,15 @@ namespace DesignPatternsGame
                 heroTint(myTurn.Action.Target, 1);
             }
             myTurn = null;
+            setPlayerHitPoints();
+        }
+
+        // SETPLAYERHITPOINTS
+        private void setPlayerHitPoints()
+        {
+            Hero1hp = heroes.Characters.ElementAt(0).HP;
+            Hero2hp = heroes.Characters.ElementAt(1).HP;
+            Hero3hp = heroes.Characters.ElementAt(2).HP;
         }
 
         // HEROTINT
@@ -348,7 +358,6 @@ namespace DesignPatternsGame
             myTurn.Action.execute();
             prompt = myTurn.Action.toString();
             addPrompt(prompt);
-            
         }
 
         // SPECIALBUTTON_CLICK
@@ -483,6 +492,23 @@ namespace DesignPatternsGame
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propName));
             }
+        }
+
+        private int herohp1, herohp2, herohp3;
+        public int Hero1hp
+        {
+            get { return herohp1; }
+            set { herohp1 = heroes.Characters.ElementAt(0).HP; RaisePropertyChanged("Hero1hp"); }
+        }
+        public int Hero2hp
+        {
+            get { return herohp2; }
+            set { herohp2 = heroes.Characters.ElementAt(1).HP; RaisePropertyChanged("Hero2hp"); }
+        }
+        public int Hero3hp
+        {
+            get { return herohp1; }
+            set { herohp3 = heroes.Characters.ElementAt(2).HP; RaisePropertyChanged("Hero3hp"); }
         }
 
         private string promptData;

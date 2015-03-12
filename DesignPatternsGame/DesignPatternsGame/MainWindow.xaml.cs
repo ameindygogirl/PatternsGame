@@ -24,6 +24,7 @@ namespace DesignPatternsGame
         private readonly int MEDIUM_MAZE = 105;
         private readonly int LARGE_MAZE = 70;
 
+        BattleWindow bw;
         Ellipse partyMarker;
         HeroParty hparty;
         MonsterParty mparty;
@@ -152,7 +153,7 @@ namespace DesignPatternsGame
             hparty.initParty();
             mparty.initParty();
 
-            BattleWindow bw = new BattleWindow(hparty, mparty);
+            bw = new BattleWindow(hparty, mparty);
             bw.Show();
         }
 
@@ -278,6 +279,7 @@ namespace DesignPatternsGame
             }
             else
             {
+                bw.Close();
                 e.Cancel = true;
             }
         }
