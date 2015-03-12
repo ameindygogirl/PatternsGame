@@ -84,6 +84,9 @@
     <Compile Include="Hero.cs" />
     <Compile Include="HeroFactory.cs" />
     <Compile Include="HeroParty.cs" />
+    <Compile Include="Inventory.xaml.cs">
+      <DependentUpon>Inventory.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Item.cs" />
     <Compile Include="ItemAction.cs" />
     <Compile Include="ItemEvent.cs" />
@@ -110,6 +113,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CharacterPicker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Inventory.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

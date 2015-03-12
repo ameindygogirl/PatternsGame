@@ -445,6 +445,12 @@ namespace DesignPatternsGame
             }
         }
 
+        private void inventoryBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Inventory inv = new Inventory(this.hparty.Items);
+           
+        }
+
        
     }
 }

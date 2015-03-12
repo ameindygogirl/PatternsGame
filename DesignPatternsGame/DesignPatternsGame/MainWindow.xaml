@@ -3,6 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Fuzzy Critter Battles" Height="911.194" Width="1256.343" Closing="Window_Closing" ResizeMode="NoResize" WindowState="Maximized">
     <Grid Background="#FF4FB29B" Name="container">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="143*"/>
+            <ColumnDefinition Width="1107*"/>
+        </Grid.ColumnDefinitions>
         <DockPanel Grid.ColumnSpan="2">
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="_File">
@@ -11,13 +15,13 @@
                 </MenuItem>
             </Menu>
             <StackPanel>
-                
+
                 <Canvas x:Name="board" Height="100" Width="100" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Top"/>
 
-                
+
             </StackPanel>
         </DockPanel>
-        <Grid Name="rightContainer" Width=" 516" HorizontalAlignment="Right">
+        <Grid Name="rightContainer" Width=" 516" HorizontalAlignment="Right" Grid.Column="1">
             <Label Content="Fuzzy Critter Battles" Margin="31,28,33,0" Canvas.Right ="10" FontSize="41" FontFamily="Rosewood Std Regular" Width="452" VerticalAlignment="Top" HorizontalAlignment="Center"/>
             <Button x:Name="btnStartGame" Content="Start Game" Width="159" HorizontalAlignment="Right" Margin="0,102,50,0" RenderTransformOrigin="-1.095,-11.529" Click="btnStartGame_Click" Background="#FF3DD810" IsEnabled="False" VerticalAlignment="Top"/>
             <Button x:Name="btnBattle" Content="BATTLE!" Margin="0,10,0,70" Canvas.Left="80" Canvas.Top="150" Width="159" Height="69" FontSize="36" FontFamily="Rosewood Std Regular" Click="battle_Click" VerticalAlignment="Bottom" HorizontalAlignment="Center" />
@@ -77,6 +81,7 @@
                 <ComboBoxItem Content="Hard"/>
             </ComboBox>
             <Label Content="Maze Difficulty" HorizontalAlignment="Left" Margin="85,76,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.474,-0.077"/>
+            <Button x:Name="inventoryBtn" Content="Inventory" HorizontalAlignment="Left" Margin="220,125,0,0" VerticalAlignment="Top" Width="75" Click="inventoryBtn_Click"/>
         </Grid>
 
 
