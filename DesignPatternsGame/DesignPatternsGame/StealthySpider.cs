@@ -12,13 +12,13 @@ namespace DesignPatternsGame
         public StealthySpider()
         {
             Name = "Stealthy Spider";
-            TotalHP = 100;
+            TotalHP = 40;
             HP = TotalHP;
             Speed = 20;
-            MaxDamage = 50;
+            MaxDamage = 35;
             MinDamage = 20;
-            HitChance = 90;
-            Defense = 5;
+            HitChance = 85;
+            Defense = 1;
             img = ImageFactory.findImage("spider");
         }
 

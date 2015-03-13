@@ -12,13 +12,13 @@ namespace DesignPatternsGame
         public CuddlyKitten()
         {
             Name = "Cuddly Kitten";
-            TotalHP = 100;
+            TotalHP = 140;
             HP = TotalHP;
-            Speed = 20;
-            MaxDamage = 50;
+            Speed = 30;
+            MaxDamage = 40;
             MinDamage = 20;
-            HitChance = 90;
-            Defense = 5;
+            HitChance = 85;
+            Defense = 2;
             img = ImageFactory.findImage("kitten");
         }
 

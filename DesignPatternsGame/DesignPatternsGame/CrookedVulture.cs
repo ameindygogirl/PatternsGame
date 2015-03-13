@@ -12,13 +12,13 @@ namespace DesignPatternsGame
         public CrookedVulture()
         {
             Name = "Crooked Vulture";
-            TotalHP = 100;
+            TotalHP = 65;
             HP = TotalHP;
-            Speed = 20;
-            MaxDamage = 50;
-            MinDamage = 20;
+            Speed = 50;
+            MaxDamage = 35;
+            MinDamage = 15;
             HitChance = 90;
-            Defense = 5;
+            Defense = 2;
             img = ImageFactory.findImage("vulture");
         }
 

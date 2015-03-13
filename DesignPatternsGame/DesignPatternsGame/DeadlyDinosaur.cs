@@ -14,10 +14,10 @@ namespace DesignPatternsGame
             Name = "Deadly Dinosaur";
             TotalHP = 100;
             HP = TotalHP;
-            Speed = 20;
+            Speed = 10;
             MaxDamage = 50;
-            MinDamage = 20;
-            HitChance = 90;
+            MinDamage = 30;
+            HitChance = 70;
             Defense = 5;
             img = ImageFactory.findImage("dinosaur");
         }

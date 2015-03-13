@@ -12,13 +12,13 @@ namespace DesignPatternsGame
         public FuzzyPuppy()
         {
             Name = "Fuzzy Puppy";
-            TotalHP = 100;
+            TotalHP = 150;
             HP = TotalHP;
             Speed = 20;
-            MaxDamage = 50;
-            MinDamage = 20;
-            HitChance = 90;
-            Defense = 5;
+            MaxDamage = 60;
+            MinDamage = 30;
+            HitChance = 80;
+            Defense = 6;
             img = ImageFactory.findImage("puppy");
         }
         

@@ -12,13 +12,13 @@ namespace DesignPatternsGame
         public SlitheringSnake()
         {
             Name = "Slithering Snake";
-            TotalHP = 100;
+            TotalHP = 50;
             HP = TotalHP;
-            Speed = 20;
-            MaxDamage = 50;
+            Speed = 35;
+            MaxDamage = 45;
             MinDamage = 20;
             HitChance = 90;
-            Defense = 5;
+            Defense = 1;
             img = ImageFactory.findImage("snake");
         }
 

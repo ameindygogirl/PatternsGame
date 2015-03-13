@@ -12,13 +12,13 @@ namespace DesignPatternsGame
         public FierceLion()
         {
             Name = "Fierce Lion";
-            TotalHP = 100;
+            TotalHP = 90;
             HP = TotalHP;
-            Speed = 20;
+            Speed = 35;
             MaxDamage = 50;
-            MinDamage = 20;
+            MinDamage = 30;
             HitChance = 90;
-            Defense = 5;
+            Defense = 3;
             img = ImageFactory.findImage("lion");
         }
 

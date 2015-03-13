@@ -12,13 +12,13 @@ namespace DesignPatternsGame
         public TinyTurtle()
         {
             Name = "Tiny Turtle";
-            TotalHP = 100;
+            TotalHP = 200;
             HP = TotalHP;
-            Speed = 20;
-            MaxDamage = 50;
-            MinDamage = 20;
-            HitChance = 90;
-            Defense = 5;
+            Speed = 10;
+            MaxDamage = 40;
+            MinDamage = 30;
+            HitChance = 80;
+            Defense = 10;
             img = ImageFactory.findImage("turtle");
         }
 

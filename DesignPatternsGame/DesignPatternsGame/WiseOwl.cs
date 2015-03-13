@@ -14,11 +14,11 @@ namespace DesignPatternsGame
             Name = "Wise Owl";
             TotalHP = 100;
             HP = TotalHP;
-            Speed = 20;
-            MaxDamage = 50;
+            Speed = 30;
+            MaxDamage = 45;
             MinDamage = 20;
             HitChance = 90;
-            Defense = 5;
+            Defense = 3;
             img = ImageFactory.findImage("owl");
         }
 

@@ -12,11 +12,11 @@ namespace DesignPatternsGame
         public DarlingDuckling()
         {
             Name = "Darling Duckling";
-            TotalHP = 100;
+            TotalHP = 150;
             HP = TotalHP;
             Speed = 20;
             MaxDamage = 50;
-            MinDamage = 20;
+            MinDamage = 30;
             HitChance = 90;
             Defense = 5;
             img = ImageFactory.findImage("duck");

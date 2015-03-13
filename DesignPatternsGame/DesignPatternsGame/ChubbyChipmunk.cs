@@ -12,13 +12,13 @@ namespace DesignPatternsGame
         public ChubbyChipmunk()
         {
             Name = "Chubby Chipmunk";
-            TotalHP = 100;
+            TotalHP = 130;
             HP = TotalHP;
-            Speed = 20;
-            MaxDamage = 50;
+            Speed = 30;
+            MaxDamage = 40;
             MinDamage = 20;
             HitChance = 90;
-            Defense = 5;
+            Defense = 4;
             img = ImageFactory.findImage("chipmunk");
         }
 

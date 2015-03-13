@@ -12,13 +12,13 @@ namespace DesignPatternsGame
         public ScaryShark()
         {
             Name = "Scary Shark";
-            TotalHP = 100;
+            TotalHP = 80;
             HP = TotalHP;
-            Speed = 20;
-            MaxDamage = 50;
+            Speed = 30;
+            MaxDamage = 60;
             MinDamage = 20;
-            HitChance = 90;
-            Defense = 5;
+            HitChance = 80;
+            Defense = 3;
             img = ImageFactory.findImage("shark");
         }
 
