@@ -40,8 +40,8 @@ namespace DesignPatternsGame
 
         public BattleWindow(HeroParty heroes2, MonsterParty monsters2)
         {
-            HealthPotion potion = new HealthPotion(5);
-            heroes2.addItem(potion);
+            //HealthPotion potion = new HealthPotion(5);
+            //heroes2.addItem(potion);
 
             heroes = heroes2;
             monsters = monsters2;
@@ -94,9 +94,13 @@ namespace DesignPatternsGame
         {
             if (heroes.isDead())
             {
-                prompt = "Game Over";
-                addPrompt(prompt);
-                continueButton.Content = "END";
+                //prompt = "Game Over";
+                //addPrompt(prompt);
+                //continueButton.Content = "END";
+                this.Close();
+                Results r = new Results(false);
+                r.ShowDialog();
+                
             }
             else if (monsters.isDead())
             {
@@ -388,10 +392,24 @@ namespace DesignPatternsGame
         // ITEMBUTTON_CLICK
         private void itemButton_Click(object sender, RoutedEventArgs e)
         {
+            Item item = null;
             monsterSwitch(0);
             heroSwitch(0);
             prompt = "Please select an item";
-            Item item = new HealthPotion(1);
+            PickItem pi = new PickItem(heroes.Items);
+            pi.ShowDialog();
+            switch(pi.Item)
+            {
+                case 1:
+                    item = new HealthPotion(1);
+                    break;
+                case 2:
+                    item = new CollarOfPower(1);
+                    break;
+                case 3:
+                    item = new SnackPack(1);
+                    break;
+            }
             myTurn.Action = new ItemAction(item);
             prompt = "Please choose a target";
             heroSwitch(1);

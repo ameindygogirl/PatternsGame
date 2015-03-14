@@ -24,7 +24,6 @@ namespace DesignPatternsGame
         private readonly int MEDIUM_MAZE = 105;
         private readonly int LARGE_MAZE = 70;
 
-        BattleWindow bw;
         Ellipse partyMarker;
         HeroParty hparty;
         MonsterParty mparty;
@@ -40,9 +39,7 @@ namespace DesignPatternsGame
             player = new Player(1);
 
             this.hparty = new HeroParty();
-            this.mparty = new MonsterParty();
-
-           
+            this.mparty = new MonsterParty();       
         }
 
         void cbSize_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -153,7 +150,7 @@ namespace DesignPatternsGame
             hparty.initParty();
             mparty.initParty();
 
-            bw = new BattleWindow(hparty, mparty);
+            BattleWindow bw = new BattleWindow(hparty, mparty);
             bw.Show();
         }
 
@@ -275,10 +272,6 @@ namespace DesignPatternsGame
             MessageBoxResult result = System.Windows.MessageBox.Show("Are you sure?", "Quit Game?", MessageBoxButton.YesNo);
             if (result == MessageBoxResult.Yes)
             {
-                if(bw != null)
-                {
-                    bw.Close();
-                }
                 e.Cancel = false;
             }
             else
@@ -448,18 +441,10 @@ namespace DesignPatternsGame
             }
         }
 
-        private void inventoryBtn_Click(object sender, RoutedEventArgs e)
-        {
-            Inventory inv = new Inventory(this.hparty.Items);
-           
-        }
-
         private void btnItemAwarded_Click(object sender, RoutedEventArgs e)
         {
             ItemAwarded ia = new ItemAwarded("Health Potion");
             ia.ShowDialog();
         }
-
-       
     }
 }
