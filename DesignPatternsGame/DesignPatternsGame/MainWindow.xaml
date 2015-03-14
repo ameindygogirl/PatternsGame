@@ -82,6 +82,7 @@
             </ComboBox>
             <Label Content="Maze Difficulty" HorizontalAlignment="Left" Margin="85,76,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.474,-0.077"/>
             <Button x:Name="inventoryBtn" Content="Inventory" HorizontalAlignment="Left" Margin="220,125,0,0" VerticalAlignment="Top" Width="75" Click="inventoryBtn_Click"/>
+            <Button x:Name="btnItemAwarded" Content="Item Awarded" HorizontalAlignment="Left" Margin="198,664,0,0" VerticalAlignment="Top" Width="75" Click="btnItemAwarded_Click"/>
         </Grid>
 
 

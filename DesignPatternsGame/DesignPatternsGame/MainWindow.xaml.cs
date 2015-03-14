@@ -275,7 +275,10 @@ namespace DesignPatternsGame
             MessageBoxResult result = System.Windows.MessageBox.Show("Are you sure?", "Quit Game?", MessageBoxButton.YesNo);
             if (result == MessageBoxResult.Yes)
             {
-                bw.Close();
+                if(bw != null)
+                {
+                    bw.Close();
+                }
                 e.Cancel = false;
             }
             else
@@ -449,6 +452,12 @@ namespace DesignPatternsGame
         {
             Inventory inv = new Inventory(this.hparty.Items);
            
+        }
+
+        private void btnItemAwarded_Click(object sender, RoutedEventArgs e)
+        {
+            ItemAwarded ia = new ItemAwarded("Health Potion");
+            ia.ShowDialog();
         }
 
        

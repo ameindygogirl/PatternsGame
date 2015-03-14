@@ -2,24 +2,25 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace DesignPatternsGame
 {
-    public class HealthPotion : Item
+    class SnackPack: Item
     {
         private int healed;
 
-        public HealthPotion()
+        public SnackPack()
         {
-            this.Name = "Health Potion";
+            this.Name = "Snack Pack";
             Amount = 1;
         }
 
-        public HealthPotion(int quantity) : base(quantity) { this.Name = "Health Potion"; }
+        public SnackPack(int quantity) : base(quantity) { this.Name = "Snack Pack"; }
 
         public override void use()
         {
-            int newHealth = Target.HP + 30;
+            int newHealth = Target.HP + 10;
 
             if (newHealth > Target.TotalHP)
             {
@@ -28,7 +29,7 @@ namespace DesignPatternsGame
             }
             else
             {
-                healed = 30;
+                healed = 10;
                 Target.HP = newHealth;
             }
             this.Amount--;
@@ -36,7 +37,7 @@ namespace DesignPatternsGame
 
         public override string ToString()
         {
-            return Target.Name + " is healed " + healed + " hp!";
+            return Target.Name + " enjoyed a delicious Snack Pack and gained " + healed + " hp!";
         }
     }
 }

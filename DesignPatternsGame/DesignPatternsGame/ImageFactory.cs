@@ -93,6 +93,17 @@ namespace DesignPatternsGame
                     img = new BitmapImage(new Uri("pack://application:,,,/Images/beachExit.png", UriKind.Absolute));
                     break;
 
+                //Items
+                case "Health Potion":
+                    img = new BitmapImage(new Uri("pack://application:,,,/Images/health.png", UriKind.Absolute));
+                    break;
+                case "Snack Pack":
+                    img = new BitmapImage(new Uri("pack://application:,,,/Images/snack.png", UriKind.Absolute));
+                    break;
+                case "Collar of Power":
+                    img = new BitmapImage(new Uri("pack://application:,,,/Images/collar.png", UriKind.Absolute));
+                    break;
+
             }
             return img;
         }

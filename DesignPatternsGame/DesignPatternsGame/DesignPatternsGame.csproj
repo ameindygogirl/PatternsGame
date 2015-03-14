@@ -67,6 +67,7 @@
     </Compile>
     <Compile Include="ChubbyChipmunk.cs" />
     <Compile Include="ActionFactory.cs" />
+    <Compile Include="CollarOfPower.cs" />
     <Compile Include="CutenessSpecial.cs" />
     <Compile Include="ExtraStrengthSpecial.cs" />
     <Compile Include="ImageFactory.cs" />
@@ -89,6 +90,9 @@
     </Compile>
     <Compile Include="Item.cs" />
     <Compile Include="ItemAction.cs" />
+    <Compile Include="ItemAwarded.xaml.cs">
+      <DependentUpon>ItemAwarded.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ItemEvent.cs" />
     <Compile Include="ItemList.cs" />
     <Compile Include="Monster.cs" />
@@ -104,6 +108,7 @@
     <Compile Include="ScaryShark.cs" />
     <Compile Include="SlitheringSnake.cs" />
     <Compile Include="FireBallSpecial.cs" />
+    <Compile Include="SnackPack.cs" />
     <Compile Include="SpecialAction.cs" />
     <Compile Include="StealthySpider.cs" />
     <Compile Include="TinyTurtle.cs" />
@@ -117,6 +122,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Inventory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ItemAwarded.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -212,6 +221,9 @@
     <Resource Include="Images\beachExit.png" />
     <Resource Include="Images\sand.png" />
     <Resource Include="Images\waves.png" />
+    <Resource Include="Images\collar.png" />
+    <Resource Include="Images\health.png" />
+    <Resource Include="Images\snack.png" />
     <Content Include="Sounds\Lost.mp3" />
     <Content Include="Sounds\Won.mp3" />
   </ItemGroup>

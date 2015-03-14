@@ -14,20 +14,27 @@ namespace DesignPatternsGame
 
         public ItemEvent()
         {
-            
-            this.loot = new HealthPotion(1);
+            Random rnd = new Random();
+            int num = rnd.Next(1, 4);
+            switch(num)
+            {
+                case 1:
+                    this.loot = new HealthPotion(1);
+                    break;
+                case 2:
+                    this.loot = new SnackPack(1);
+                    break;
+                case 3:
+                    this.loot = new CollarOfPower(1);
+                    break;
+            }
         }
 
         void RoomEvent.execute(HeroParty hparty)
         {
             hparty.addItem(loot);
-
-            string message = "Found a " + loot.Name + "!";
-            string caption = "Loot!";
-
-            MessageBox.Show(message, caption);
-
+            ItemAwarded ia = new ItemAwarded(loot.Name);
+            ia.ShowDialog();
         }
-
     }
 }

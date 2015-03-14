@@ -33,7 +33,7 @@ namespace DesignPatternsGame
             if(damage == 0)
                 return primary.Name + " missed!";
 
-            return primary.Name + " deals " + damage + " to " + target.Name;
+            return primary.Name + " deals " + damage + " damage to " + target.Name;
         }
 
         public void undo()
