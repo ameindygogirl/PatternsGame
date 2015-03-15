@@ -9,10 +9,8 @@ namespace DesignPatternsGame
     {
         private int damage;
 
-        public AttackAction() : base()
-        {
-            this.name = "Attack";
-        }
+        public AttackAction()
+            : base("Attack") { }
 
         public override void execute()
         {

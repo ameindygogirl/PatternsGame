@@ -12,6 +12,7 @@ namespace DesignPatternsGame
         public MonsterParty()
         {
             monsters = new MonsterFactory();
+            initParty();
         }
 
         public override void initParty()

@@ -24,10 +24,11 @@ namespace DesignPatternsGame
         private readonly int MEDIUM_MAZE = 105;
         private readonly int LARGE_MAZE = 70;
 
+        BattleWindow bw;
         Ellipse partyMarker;
         HeroParty hparty;
-        MonsterParty mparty;
         PathGen path;
+        //Random rand = new Random();
         Room[,] ara;
         Player player;
         int mazeSize;
@@ -38,8 +39,7 @@ namespace DesignPatternsGame
             cbSize.SelectionChanged += cbSize_SelectionChanged;
             player = new Player(1);
 
-            this.hparty = new HeroParty();
-            this.mparty = new MonsterParty();       
+            this.hparty = new HeroParty();   
         }
 
         void cbSize_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -148,9 +148,8 @@ namespace DesignPatternsGame
         private void battle_Click(object sender, RoutedEventArgs e)
         {
             hparty.initParty();
-            mparty.initParty();
 
-            BattleWindow bw = new BattleWindow(hparty, mparty);
+            bw = new BattleWindow(hparty, new MonsterParty());
             bw.Show();
         }
 
@@ -272,6 +271,9 @@ namespace DesignPatternsGame
             MessageBoxResult result = System.Windows.MessageBox.Show("Are you sure?", "Quit Game?", MessageBoxButton.YesNo);
             if (result == MessageBoxResult.Yes)
             {
+                if(bw != null)
+                    bw.Close();
+    
                 e.Cancel = false;
             }
             else
@@ -288,8 +290,16 @@ namespace DesignPatternsGame
 
         private void enterRoom()
         {
+            //disableNavigation();
             if (this.ara[this.player.Row, this.player.Column].Event != null)
+            {
+                if (this.ara[this.player.Row, this.player.Column].Event is BattleEvent)
+                    bw = new BattleWindow(hparty, new MonsterParty());
                 this.ara[this.player.Row, this.player.Column].Event.execute(this.hparty);
+            
+            
+            }
+                //enableNavigation();
         }
 
         private void btnUp_Click(object sender, RoutedEventArgs e)

@@ -24,6 +24,7 @@ namespace DesignPatternsGame
 
     public partial class BattleWindow : Window, INotifyPropertyChanged
     {
+        bool endTurn = true;
         HeroParty heroes;
         MonsterParty monsters;
         GameCharacter myTurn;
@@ -80,10 +81,9 @@ namespace DesignPatternsGame
 
             else
             {
+                endTurn = false;
                 prompt = myTurn.Name + ": please choose an action";
                 addPrompt(prompt);
-                continueButton.IsEnabled = false;
-                actionSwitch(1);
             }
             System.Threading.Thread.Sleep(100);
             endCondition();
@@ -464,6 +464,7 @@ namespace DesignPatternsGame
                 prompt = myTurn.Action.Target.Name + " is slain!";
                 addPrompt(prompt);
             }
+            endTurn = true;
             endCondition();
         }
 
@@ -493,6 +494,7 @@ namespace DesignPatternsGame
             myTurn.Action.execute();
             prompt = myTurn.Action.toString();
             addPrompt(prompt);
+            endTurn = true;
         }
 
         // ADDPROMPT
@@ -501,6 +503,23 @@ namespace DesignPatternsGame
             PromptData = s;
             actionSwitch(0);
             continueButton.IsEnabled = true;
+        }
+
+        // CONTINUE BUTTON CLICK
+        private void continueButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (isFinished())
+                this.Close();
+
+            continueButton.IsEnabled = false;
+
+            if (endTurn == true)
+            {
+                beginTurn();
+                actionSwitch(0);
+            }
+            else
+                actionSwitch(1);
         }
 
         // PROPERTY CHANGE EVENTS
@@ -515,6 +534,13 @@ namespace DesignPatternsGame
             }
         }
 
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            var hwnd = new WindowInteropHelper(this).Handle;
+            SetWindowLong(hwnd, GWL_STYLE, GetWindowLong(hwnd, GWL_STYLE) & ~WS_SYSMENU);
+        }
+
+        // TEXT METHODS -------------------------------------------------------------------------
         private int herohp1, herohp2, herohp3;
         public int Hero1hp
         {
@@ -539,19 +565,5 @@ namespace DesignPatternsGame
             set { promptData = value; RaisePropertyChanged("PromptData"); }
         }
 
-        private void continueButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (isFinished())
-                this.Close();
-
-            continueButton.IsEnabled = false;
-            beginTurn();
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            var hwnd = new WindowInteropHelper(this).Handle;
-            SetWindowLong(hwnd, GWL_STYLE, GetWindowLong(hwnd, GWL_STYLE) & ~WS_SYSMENU);
-        }
     }
 }

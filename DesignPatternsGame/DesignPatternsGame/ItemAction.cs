@@ -7,9 +7,11 @@ namespace DesignPatternsGame
 {
     public class ItemAction: Action
     {
+        public ItemAction() : base("Item") { }
+
         private Item item;
 
-        public ItemAction(Item that)
+        public ItemAction(Item that) : base("Item")
         {
             this.item = that;
             item.Target = this.target;

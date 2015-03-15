@@ -8,7 +8,9 @@ namespace DesignPatternsGame
 {
     class PathGen
     {
+        private int FINDFREQ = 8;
         private Room entrance;
+        private Random rand = new Random();
         int x;
         int y;
         private Room[,] grid;
@@ -34,7 +36,6 @@ namespace DesignPatternsGame
 
         public void setEasy()
         {
-            Random rand = new Random();
             this.x = 5;
             this.y = 5;
             this.grid = new Room[x, y];
@@ -46,7 +47,6 @@ namespace DesignPatternsGame
 
         public void setMedium()
         {
-            Random rand = new Random();
             this.x = 8;
             this.y = 8;
             this.grid = new Room[x, y];
@@ -58,7 +58,6 @@ namespace DesignPatternsGame
 
         public void setHard()
         {
-            Random rand = new Random();
             this.x = 12;
             this.y = 12;
             this.grid = new Room[x, y];
@@ -73,7 +72,6 @@ namespace DesignPatternsGame
             this.tempRooms = 0;
             this.entrance = new Room();
             this.entrance.Entrance = true;
-            Random rand = new Random();
             int i = rand.Next(this.x);
             int j = rand.Next(this.y);
 
@@ -88,7 +86,6 @@ namespace DesignPatternsGame
 
         private void buildPath(Room cur, int i, int j)
         {
-            Random rand = new Random();
             int r;
             Room next;
 
@@ -136,10 +133,9 @@ namespace DesignPatternsGame
 
         private void setEvent(Room cur)
         {
-            Random rand = new Random();
             int r = 0;
 
-            r = rand.Next(4);
+            r = rand.Next(0, FINDFREQ);
 
             switch (r)
             {

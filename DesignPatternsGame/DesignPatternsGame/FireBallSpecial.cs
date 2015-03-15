@@ -8,6 +8,8 @@ namespace DesignPatternsGame
 {
     class FireBallSpecial : SpecialAction
     {
+        public FireBallSpecial() : base("Fireball") { }
+
         public override void execute()
         {
             dmg = new Random().Next(primary.MaxDamage, primary.MaxDamage * 2);

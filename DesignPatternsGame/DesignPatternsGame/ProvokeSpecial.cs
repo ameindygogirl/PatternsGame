@@ -2,21 +2,21 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace DesignPatternsGame
 {
-    public class DefendAction : Action
+    class ProvokeSpecial : SpecialAction
     {
-        public DefendAction() : base("Defend") { }
+        public ProvokeSpecial() : base("Provoke") { }
 
         public override void execute()
         {
-            //Primary.Defends = true;
+            // see enemy.chooseAction()
         }
-
         public override String toString()
         {
-            return Primary.Name + " defends";
+            return primary.Name + " tells the monsters to go suck an egg!";
         }
     }
 }

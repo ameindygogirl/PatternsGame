@@ -8,6 +8,8 @@ namespace DesignPatternsGame
 {
     class CutenessSpecial : SpecialAction
     {
+        public CutenessSpecial() : base("Cuteness") { }
+
         public override void execute()
         {
             dmg = new Random().Next(primary.MaxDamage, primary.MaxDamage * 3);

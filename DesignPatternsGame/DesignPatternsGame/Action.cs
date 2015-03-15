@@ -12,6 +12,11 @@ namespace DesignPatternsGame
         protected GameCharacter target;
         protected GameCharacterList characters;
 
+        public Action(string name)
+        {
+            this.name = name;
+        }
+
         public String Name
         {
             get { return name; }
