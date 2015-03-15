@@ -20,11 +20,7 @@ namespace DesignPatternsGame
             HitChance = 80;
             Defense = 3;
             img = ImageFactory.findImage("shark");
-        }
-
-        public override void useSpecial(GameCharacter target)
-        {
-            throw new NotImplementedException();
+            special = new QuackSpecial();
         }
     }
 }

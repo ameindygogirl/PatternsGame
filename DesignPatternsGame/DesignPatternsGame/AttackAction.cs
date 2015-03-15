@@ -18,11 +18,8 @@ namespace DesignPatternsGame
             if (primary.HitChance >= random)
             {
                 damage = new Random().Next(primary.MinDamage, primary.MaxDamage);
-
-                if (Target.Action is DefendAction)
+                if (Target.subtractHP(damage))
                     damage = damage / 2;
-
-                Target.HP = Target.HP - damage;
             }
         }
 

@@ -77,10 +77,14 @@ namespace DesignPatternsGame
             myTurn = cur.Value;
 
             if (myTurn is Monster)
+            {
+                specialButton.Content = "Special";
                 monsterStart();
+            }
 
             else
             {
+                specialButton.Content = myTurn.Special.Name;
                 endTurn = false;
                 prompt = myTurn.Name + ": please choose an action";
                 addPrompt(prompt);
@@ -94,9 +98,6 @@ namespace DesignPatternsGame
         {
             if (heroes.isDead())
             {
-                //prompt = "Game Over";
-                //addPrompt(prompt);
-                //continueButton.Content = "END";
                 this.Close();
                 Results r = new Results(false);
                 r.ShowDialog();

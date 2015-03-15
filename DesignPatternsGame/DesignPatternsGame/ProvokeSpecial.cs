@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DesignPatternsGame
 {
-    class ProvokeSpecial : SpecialAction
+    class ProvokeSpecial : DefensiveSpecial
     {
         public ProvokeSpecial() : base("Provoke") { }
 

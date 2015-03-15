@@ -8,17 +8,17 @@ namespace DesignPatternsGame
     public abstract class Monster: GameCharacter
     {
         protected ItemList items;
+        private ActionList actions;
 
         public Action takeAction()
         {
             double random = new Random().NextDouble();
-            int index = (int) (random * Actions.Count);
+            int index = (int) (random * actions.Count);
 
-            return Actions.getData(index);
+            return actions.getData(index);
         }
-        public override abstract void useSpecial(GameCharacter target);
-        
-        public override ItemList getItems()
+
+        public ItemList getItems()
         {
             return items;
         }
@@ -37,6 +37,16 @@ namespace DesignPatternsGame
         {
             int random;
             GameCharacter target = null;
+
+            LinkedListNode<GameCharacter> cur = theList.First;
+            while(cur != theList.Last.Next)
+            {
+                if(cur.Value.Action is ProvokeSpecial && cur.Value.HP > 0)
+                {
+                    return cur.Value;
+                }
+            }
+
             while (target == null)
             {
                 random = new Random().Next(1, 3);

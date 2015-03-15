@@ -8,7 +8,7 @@ namespace DesignPatternsGame
 {
     class ActionFactory
     {
-        private int COUNT = 4;
+        private int COUNT = 3;
 
         public int Count
         {
@@ -24,16 +24,7 @@ namespace DesignPatternsGame
                 case 1:
                     return new DefendAction();
                 case 2:
-                    //return new SpecialAction();
-                    return new AttackAction();
-                case 3:
-                    ItemList items = gc.getItems();
-                    if (items == null)
-                        return new AttackAction();
-
-                    int random = new Random().Next(0, items.Count);
-                    Item item = items.ElementAt(random);
-                    return new ItemAction(item);
+                    return gc.Special;
             }
             return null;
         }

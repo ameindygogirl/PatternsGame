@@ -16,9 +16,10 @@ namespace DesignPatternsGame
         protected int minDamage;
         protected double hitChance;
         protected double defense;
-        protected ActionList actions;
         protected Action action;
         protected BitmapImage img;
+        protected SpecialAction special;
+        protected GameCharacterList allies;
 
         public string Name
         {
@@ -68,12 +69,6 @@ namespace DesignPatternsGame
             set { defense = value; }
         }
         
-        public ActionList Actions
-        {
-            get { return actions; }
-            set { actions = value; }
-        }
-
         public Action Action
         {
             get { return action; }
@@ -89,21 +84,54 @@ namespace DesignPatternsGame
             get { return img; }
         }
 
-        public abstract ItemList getItems();
-
-        public abstract void useSpecial(GameCharacter target);
-        /*public bool defense(GameCharacter d)
+        public SpecialAction Special
         {
-            if (defenseChance >= new Random().NextDouble())
+            get { return special; }
+            set { this.special = value; }
+        }
+
+        public GameCharacterList Allies
+        {
+            get { return allies; }
+            set { allies = value; }
+        }
+
+        public void useSpecial(GameCharacter target)
+        {
+            this.special.execute();
+        }
+
+        /* returns true if this character defended on last turn, false otherwise */
+        public bool subtractHP(int damage)
+        {
+            if (hp - damage < 0)
+                hp = 0;
+            else if (action is DefendAction)
             {
-                Console.WriteLine("Defense was successful.");
+                hp = hp / 2;
                 return true;
             }
             else
-            {
-                Console.WriteLine("The defense was not successful.");
+                hp = hp - damage;
+
+            return false;
+        }
+
+        public void addHP(int heal)
+        {
+            if (hp + heal > totalHP)
+                hp = totalHP;
+            else
+                hp = hp + heal;
+        }
+
+        public bool revive(int health)
+        {
+            if (hp != 0)
                 return false;
-            }
-        }*/
+
+            hp = health;
+            return true;
+        }
     }
 }

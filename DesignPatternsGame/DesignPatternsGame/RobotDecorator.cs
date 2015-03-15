@@ -15,15 +15,15 @@ namespace DesignPatternsGame
             this.pilot = pilot;
         }
 
-        public override ItemList getItems()
-        {
-            return this.pilot.getItems();
-        }
+        //public override ItemList getItems()
+        //{
+        //    return this.pilot.getItems();
+        //}
 
-        public override void useSpecial(GameCharacter target)
-        {
-            this.pilot.useSpecial(target);
-        }
+        //public override void useSpecial(GameCharacter target)
+        //{
+        //    this.pilot.useSpecial(target);
+        //}
 
     }
 }

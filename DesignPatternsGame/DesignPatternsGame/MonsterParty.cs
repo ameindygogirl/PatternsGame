@@ -15,7 +15,7 @@ namespace DesignPatternsGame
             initParty();
         }
 
-        public override void initParty()
+        private void initParty()
         {
             Random random = new Random();
             int i = random.Next(6) + 1;

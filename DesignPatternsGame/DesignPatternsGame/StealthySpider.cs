@@ -20,11 +20,7 @@ namespace DesignPatternsGame
             HitChance = 85;
             Defense = 1;
             img = ImageFactory.findImage("spider");
-        }
-
-        public override void useSpecial(GameCharacter target)
-        {
-            throw new NotImplementedException();
+            special = new ExtraStrengthSpecial();
         }
     }
 }

@@ -147,7 +147,7 @@ namespace DesignPatternsGame
 
         private void battle_Click(object sender, RoutedEventArgs e)
         {
-            hparty.initParty();
+            hparty = new HeroParty();
 
             bw = new BattleWindow(hparty, new MonsterParty());
             bw.Show();

@@ -20,11 +20,7 @@ namespace DesignPatternsGame
             HitChance = 90;
             Defense = 2;
             img = ImageFactory.findImage("vulture");
-        }
-
-        public override void useSpecial(GameCharacter target)
-        {
-            throw new NotImplementedException();
+            special = new VultureSpecial();
         }
     }
 }

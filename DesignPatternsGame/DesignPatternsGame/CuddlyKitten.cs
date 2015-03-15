@@ -20,11 +20,7 @@ namespace DesignPatternsGame
             HitChance = 85;
             Defense = 2;
             img = ImageFactory.findImage("kitten");
-        }
-
-        public override void useSpecial(GameCharacter target)
-        {
-            throw new NotImplementedException();
+            special = new CutenessSpecial();
         }
     }
 }

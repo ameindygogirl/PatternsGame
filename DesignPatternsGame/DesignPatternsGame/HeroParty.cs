@@ -14,6 +14,7 @@ namespace DesignPatternsGame
         {
             makeHero = new HeroFactory();
             items = new ItemList();
+            initParty();
         }
 
         public HeroParty(int a, int b, int c)
@@ -34,7 +35,7 @@ namespace DesignPatternsGame
             items.AddFirst(item);
         }
 
-        public override void initParty()
+        private void initParty()
         {
             GameCharacterList list = new GameCharacterList();
             
@@ -47,6 +48,11 @@ namespace DesignPatternsGame
             list.AddFirst(gc1);
 
             Characters = list;
+
+            gc1.Allies = list;
+            gc2.Allies = list;
+            gc3.Allies = list;
+            items.AddFirst(new HealthPotion(5));
         }
 
         private void initParty(int a, int b, int c)
@@ -61,7 +67,11 @@ namespace DesignPatternsGame
             list.AddFirst(gc2);
             list.AddFirst(gc1);
 
-            Characters = list;
+            characters = list;
+            gc1.Allies = list;
+            gc2.Allies = list;
+            gc3.Allies = list;
+            items.AddFirst(new HealthPotion(5));
         }
     }
 }

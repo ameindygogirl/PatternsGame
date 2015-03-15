@@ -14,8 +14,6 @@ namespace DesignPatternsGame
             get { return characters; }
             set { characters = value; }
         }
-
-        public abstract void initParty();
         
         public Boolean isEmpty()
         {
