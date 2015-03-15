@@ -295,7 +295,11 @@ namespace DesignPatternsGame
             if (this.ara[this.player.Row, this.player.Column].Event != null)
             {
                 if (this.ara[this.player.Row, this.player.Column].Event is BattleEvent)
+                {
                     bw = new BattleWindow(hparty, new MonsterParty());
+                    disableNavigation();
+                    navigationController.Visibility = Visibility.Visible;
+                }
                 this.ara[this.player.Row, this.player.Column].Event.execute(this.hparty);
 
                 this.ara[this.player.Row, this.player.Column].Event = null;
@@ -456,6 +460,23 @@ namespace DesignPatternsGame
         {
             ItemAwarded ia = new ItemAwarded("Health Potion");
             ia.ShowDialog();
+        }
+
+        private void navigationController_Click(object sender, RoutedEventArgs e)
+        {
+            if (!bw.IsLoaded) //PresentationSource.FromVisual(bw) == null
+            {
+                enableNavigation();
+                navigationController.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                this.Topmost = false;
+                bw.Topmost = true;
+                ContinueNavigationWindow w = new ContinueNavigationWindow();
+                w.ShowDialog();
+            }
+                
         }
     }
 }

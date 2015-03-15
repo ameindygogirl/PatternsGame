@@ -124,6 +124,9 @@
     <Compile Include="TinyTurtle.cs" />
     <Compile Include="Unit01Robot.cs" />
     <Compile Include="VultureSpecial.cs" />
+    <Compile Include="ContinueNavigationWindow.xaml.cs">
+      <DependentUpon>ContinueNavigationWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WiseOwl.cs" />
     <Page Include="BattleWindow.xaml">
       <SubType>Designer</SubType>
@@ -158,6 +161,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="RobotAwarded.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ContinueNavigationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
