@@ -25,6 +25,7 @@ namespace DesignPatternsGame
     public partial class BattleWindow : Window, INotifyPropertyChanged
     {
         bool endTurn = true;
+        bool isFinished = false;
         HeroParty heroes;
         MonsterParty monsters;
         GameCharacter myTurn;
@@ -41,9 +42,6 @@ namespace DesignPatternsGame
 
         public BattleWindow(HeroParty heroes2, MonsterParty monsters2)
         {
-            //HealthPotion potion = new HealthPotion(5);
-            //heroes2.addItem(potion);
-
             heroes = heroes2;
             monsters = monsters2;
 
@@ -58,7 +56,6 @@ namespace DesignPatternsGame
             addPrompt(prompt);
             showHeroes();
             showMonsters();
-            setPlayerHitPoints();
         }
 
         // BEGINTURN
@@ -89,8 +86,6 @@ namespace DesignPatternsGame
                 prompt = myTurn.Name + ": please choose an action";
                 addPrompt(prompt);
             }
-            System.Threading.Thread.Sleep(100);
-            endCondition();
         }
 
         // ENDCONDITION
@@ -98,29 +93,21 @@ namespace DesignPatternsGame
         {
             if (heroes.isDead())
             {
-                this.Close();
-                Results r = new Results(false);
-                r.ShowDialog();
-                
+                //this.Close();
+                //Results r = new Results(false);
+                //r.ShowDialog();
+                prompt = "Heroes defeated";
+                addPrompt(prompt);
+                continueButton.Content = "END";
+                isFinished = true;
             }
             else if (monsters.isDead())
             {
                 prompt = "Enemies defeated";
                 addPrompt(prompt);
                 continueButton.Content = "END";
+                isFinished = true;
             }
-        }
-        
-        // ISFINISHED
-        private bool isFinished()
-        {
-            if (heroes.isDead())
-                return true;
-            
-            else if(monsters.isDead())
-                return true;
-
-            return false;
         }
         
         // INITTURNLIST
@@ -153,14 +140,6 @@ namespace DesignPatternsGame
             myTurn.Action.execute();
             prompt = myTurn.Action.toString();
             addPrompt(prompt);
-            
-            if(myTurn.Action.Target.HP <= 0)
-            {
-                prompt = myTurn.Action.Target.Name + " has collapsed!";
-                addPrompt(prompt);
-                heroTint(myTurn.Action.Target, 1);
-            }
-            myTurn = null;
             setPlayerHitPoints();
         }
 
@@ -451,15 +430,7 @@ namespace DesignPatternsGame
         {
             prompt = myTurn.Action.toString();
             addPrompt(prompt);
-
-            if (myTurn.Action.Target.HP <= 0)
-            {
-                System.Threading.Thread.Sleep(100);
-                prompt = myTurn.Action.Target.Name + " is slain!";
-                addPrompt(prompt);
-            }
             endTurn = true;
-            endCondition();
         }
 
         // HEROIMG1_CLICK
@@ -494,6 +465,7 @@ namespace DesignPatternsGame
         // ADDPROMPT
         public void addPrompt(string s)
         {
+            setPlayerHitPoints();
             PromptData = s;
             actionSwitch(0);
             continueButton.IsEnabled = true;
@@ -502,8 +474,12 @@ namespace DesignPatternsGame
         // CONTINUE BUTTON CLICK
         private void continueButton_Click(object sender, RoutedEventArgs e)
         {
-            if (isFinished())
+            if (isFinished)
                 this.Close();
+            
+            endCondition();
+            if(checkDeath())
+                return;
 
             continueButton.IsEnabled = false;
 
@@ -516,6 +492,37 @@ namespace DesignPatternsGame
                 actionSwitch(1);
         }
 
+        // CHECK DEATH
+        private bool checkDeath()
+        {
+            if (myTurn != null && myTurn.Action != null && myTurn.Action.Target != null)
+            {
+                if (myTurn.HP <= 0) return false;
+
+                if (myTurn is Monster)
+                {
+                    if (myTurn.Action.Target.HP <= 0)
+                    {
+                        prompt = myTurn.Action.Target.Name + " has collapsed!";
+                        addPrompt(prompt);
+                        heroTint(myTurn.Action.Target, 1);
+                        myTurn.Action.Target = null;
+                        return true;
+                    }
+                }
+                else
+                {
+                    if (myTurn.Action.Target.HP <= 0)
+                    {
+                        prompt = myTurn.Action.Target.Name + " is slain!";
+                        addPrompt(prompt);
+                        myTurn.Action.Target = null;
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
         // PROPERTY CHANGE EVENTS
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -539,7 +546,7 @@ namespace DesignPatternsGame
         public int Hero1hp
         {
             get { return herohp1; }
-            set { herohp1 = heroes.Characters.ElementAt(0).HP; RaisePropertyChanged("Hero1hp"); }
+            set { herohp1 = heroes.Characters.ElementAt(2).HP; RaisePropertyChanged("Hero1hp"); }
         }
         public int Hero2hp
         {
@@ -548,8 +555,8 @@ namespace DesignPatternsGame
         }
         public int Hero3hp
         {
-            get { return herohp1; }
-            set { herohp3 = heroes.Characters.ElementAt(2).HP; RaisePropertyChanged("Hero3hp"); }
+            get { return herohp3; }
+            set { herohp3 = heroes.Characters.ElementAt(0).HP; RaisePropertyChanged("Hero3hp"); }
         }
 
         private string promptData;

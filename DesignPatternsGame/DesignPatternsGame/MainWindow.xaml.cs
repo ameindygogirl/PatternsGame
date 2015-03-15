@@ -269,6 +269,7 @@ namespace DesignPatternsGame
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            bw.Topmost = false;
             MessageBoxResult result = System.Windows.MessageBox.Show("Are you sure?", "Quit Game?", MessageBoxButton.YesNo);
             if (result == MessageBoxResult.Yes)
             {
@@ -279,6 +280,7 @@ namespace DesignPatternsGame
             }
             else
             {
+                bw.Topmost = true;
                 e.Cancel = true;
             }
         }
