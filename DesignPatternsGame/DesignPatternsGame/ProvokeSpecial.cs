@@ -12,7 +12,7 @@ namespace DesignPatternsGame
 
         public override void execute()
         {
-            // see enemy.chooseAction()
+            // see pickTarget() in Monster class
         }
         public override String toString()
         {

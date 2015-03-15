@@ -15,13 +15,7 @@ namespace DesignPatternsGame
             LinkedListNode<GameCharacter> cur = primary.Allies.First;
             while(cur != primary.Allies.Last.Next)
             {
-                if (cur.Value.HP > 0)
-                    cur.Value.HP += 20;
-
-                if (cur.Value.HP > cur.Value.TotalHP)
-                    cur.Value.HP = cur.Value.TotalHP;
-
-                cur = cur.Next;
+                cur.Value.addHP(20);
             }
         }
         public override String toString()

@@ -20,18 +20,9 @@ namespace DesignPatternsGame
 
         public override void use()
         {
-            int newHealth = Target.HP + 10;
-
-            if (newHealth > Target.TotalHP)
-            {
-                healed = Target.TotalHP - Target.HP;
-                Target.HP = Target.TotalHP;
-            }
-            else
-            {
-                healed = 10;
-                Target.HP = newHealth;
-            }
+            int prevHP = Target.HP;
+            Target.addHP(10);
+            healed = Target.HP - prevHP;
             this.Amount--;
         }
 

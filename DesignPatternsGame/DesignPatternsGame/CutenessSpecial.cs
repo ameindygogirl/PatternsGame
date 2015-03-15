@@ -13,7 +13,7 @@ namespace DesignPatternsGame
         public override void execute()
         {
             dmg = new Random().Next(primary.MaxDamage, primary.MaxDamage * 3);
-            target.HP = target.HP - dmg;
+            target.subtractHP(dmg);
         }
 
         public override string toString()

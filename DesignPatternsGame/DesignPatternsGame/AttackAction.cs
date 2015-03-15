@@ -30,10 +30,5 @@ namespace DesignPatternsGame
 
             return primary.Name + " deals " + damage + " damage to " + target.Name;
         }
-
-        public void undo()
-        {
-            throw new InvalidOperationException();
-        }
     }
 }

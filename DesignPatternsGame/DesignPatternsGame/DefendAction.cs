@@ -11,7 +11,7 @@ namespace DesignPatternsGame
 
         public override void execute()
         {
-            //Primary.Defends = true;
+            //see subtractHP in GameCharacter
         }
 
         public override String toString()
