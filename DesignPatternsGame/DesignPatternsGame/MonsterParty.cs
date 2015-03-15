@@ -27,7 +27,11 @@ namespace DesignPatternsGame
 
             Characters.AddFirst(m3);
             Characters.AddFirst(m2);
-            Characters.AddFirst(m1);                        
+            Characters.AddFirst(m1);
+
+            m1.Allies = characters;
+            m2.Allies = characters;
+            m3.Allies = characters;
         }
     }
 }

@@ -45,6 +45,7 @@ namespace DesignPatternsGame
                 {
                     return cur.Value;
                 }
+                cur = cur.Next;
             }
 
             while (target == null)

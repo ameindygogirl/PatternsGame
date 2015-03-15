@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DesignPatternsGame
 {
-    class QuackSpecial : SpecialAction
+    class QuackSpecial : DefensiveSpecial
     {
         public QuackSpecial() : base("Quack") { }
 
@@ -20,6 +20,8 @@ namespace DesignPatternsGame
 
                 if (cur.Value.HP > cur.Value.TotalHP)
                     cur.Value.HP = cur.Value.TotalHP;
+
+                cur = cur.Next;
             }
         }
         public override String toString()

@@ -23,6 +23,7 @@ namespace DesignPatternsGame
                     target = cur.Value;
                     break;
                 }
+                cur = cur.Next;
             }
         }
 

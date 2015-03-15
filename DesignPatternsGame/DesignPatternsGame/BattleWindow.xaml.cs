@@ -370,24 +370,21 @@ namespace DesignPatternsGame
         private void specialButton_Click(object sender, RoutedEventArgs e)
         {
             heroSwitch(0);
-            Random rnd = new Random();
-            int choice = rnd.Next(1, 4);
-            switch(choice)
-            {
-                case 1:
-                    myTurn.Action = new FireBallSpecial();
-                    break;
-                case 2:
-                    myTurn.Action = new CutenessSpecial();
-                    break;
-                case 3:
-                    myTurn.Action = new ExtraStrengthSpecial();
-                    break;
-            }
+            myTurn.Action = myTurn.Special;
             
-            prompt = "Please choose a target";
-            addPrompt(prompt);
-            monsterSwitch(1);
+            if(myTurn.Action is DefensiveSpecial)
+            {
+                myTurn.Action.execute();
+                prompt = myTurn.Action.toString();
+                endTurn = true;
+                addPrompt(prompt);
+            }
+            else
+            {
+                prompt = "Please choose a target";
+                addPrompt(prompt);
+                monsterSwitch(1);
+            }
         }
 
         // ITEMBUTTON_CLICK
