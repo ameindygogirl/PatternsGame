@@ -210,12 +210,6 @@ namespace DesignPatternsGame
 
         }
 
-        // PICKITEM
-        private void pickItem()
-        {
-
-        }
-
         // ACTIONSWITCH
         private void actionSwitch(int i)
         {
@@ -363,6 +357,7 @@ namespace DesignPatternsGame
             myTurn.Action = new DefendAction();
             myTurn.Action.execute();
             prompt = myTurn.Action.toString();
+            endTurn = true;
             addPrompt(prompt);
         }
 
@@ -459,6 +454,7 @@ namespace DesignPatternsGame
 
             if (myTurn.Action.Target.HP <= 0)
             {
+                System.Threading.Thread.Sleep(100);
                 prompt = myTurn.Action.Target.Name + " is slain!";
                 addPrompt(prompt);
             }

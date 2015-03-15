@@ -119,7 +119,9 @@ namespace DesignPatternsGame
 
         public void addHP(int heal)
         {
-            if (hp + heal > totalHP)
+            if (hp == 0) return;
+
+            else if (hp + heal > totalHP)
                 hp = totalHP;
             else
                 hp = hp + heal;

@@ -20,9 +20,9 @@ namespace DesignPatternsGame
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly int SMALL_MAZE = 167;
-        private readonly int MEDIUM_MAZE = 105;
-        private readonly int LARGE_MAZE = 70;
+        private readonly int SMALL_MAZE = 120;
+        private readonly int MEDIUM_MAZE = 80;
+        private readonly int LARGE_MAZE = 50;
 
         BattleWindow bw;
         Ellipse partyMarker;
@@ -300,7 +300,7 @@ namespace DesignPatternsGame
 
                 this.ara[this.player.Row, this.player.Column].Event = null;
             }
-                //enableNavigation();
+            //enableNavigation();
         }
 
         private void btnUp_Click(object sender, RoutedEventArgs e)

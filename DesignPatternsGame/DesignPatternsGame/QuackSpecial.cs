@@ -16,6 +16,7 @@ namespace DesignPatternsGame
             while(cur != primary.Allies.Last.Next)
             {
                 cur.Value.addHP(20);
+                cur = cur.Next;
             }
         }
         public override String toString()

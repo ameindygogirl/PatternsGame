@@ -13,17 +13,7 @@ namespace DesignPatternsGame
         public RobotDecorator(GameCharacter pilot) : base()
         {
             this.pilot = pilot;
+            this.special = pilot.Special;
         }
-
-        //public override ItemList getItems()
-        //{
-        //    return this.pilot.getItems();
-        //}
-
-        //public override void useSpecial(GameCharacter target)
-        //{
-        //    this.pilot.useSpecial(target);
-        //}
-
     }
 }
