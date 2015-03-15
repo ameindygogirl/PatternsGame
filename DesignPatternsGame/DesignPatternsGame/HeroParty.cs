@@ -9,11 +9,14 @@ namespace DesignPatternsGame
     {
         private ItemList items;
         private HeroFactory makeHero;
+        private bool hasRobot;
+
 
         public HeroParty()
         {
             makeHero = new HeroFactory();
             items = new ItemList();
+            this.hasRobot = false;
             initParty();
         }
 
@@ -21,6 +24,7 @@ namespace DesignPatternsGame
         {
             makeHero = new HeroFactory();
             items = new ItemList();
+            this.hasRobot = false;
             initParty(a, b, c);
         }
 
@@ -72,6 +76,12 @@ namespace DesignPatternsGame
             gc2.Allies = list;
             gc3.Allies = list;
             items.AddFirst(new HealthPotion(5));
+        }
+
+        public bool HasRobot
+        {
+            get { return hasRobot; }
+            set { hasRobot = value; }
         }
     }
 }

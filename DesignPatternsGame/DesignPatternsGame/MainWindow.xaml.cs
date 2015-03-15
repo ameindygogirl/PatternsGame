@@ -236,6 +236,7 @@ namespace DesignPatternsGame
         private void levelUpMaze()
         {
             board.Children.Clear();
+            this.hparty.HasRobot = false;
             int tile;
             if (cbSize.SelectedIndex == 0)
             {
@@ -424,7 +425,7 @@ namespace DesignPatternsGame
 
         private void checkWon()
         {
-            if(player.HasRobot && ara[player.Row, player.Column].Exit && player.Level == 3)
+            if(hparty.HasRobot && ara[player.Row, player.Column].Exit && player.Level == 3)
             {
                 Results r = new Results(true);
                 if(r.ShowDialog() == true)
@@ -436,11 +437,11 @@ namespace DesignPatternsGame
                     disableNavigation();
                 }
             }
-            else if(!player.HasRobot && ara[player.Row, player.Column].Exit)
+            else if(!hparty.HasRobot && ara[player.Row, player.Column].Exit)
             {
                 MessageBox.Show("Must have a robot to move on!");
             }
-            else if(player.HasRobot && ara[player.Row, player.Column].Exit)
+            else if(hparty.HasRobot && ara[player.Row, player.Column].Exit)
             {
                 player.Level = player.Level + 1;
                 levelUpMaze();

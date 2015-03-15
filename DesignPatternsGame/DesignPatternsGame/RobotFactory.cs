@@ -53,9 +53,9 @@ namespace DesignPatternsGame
                     break;
                 default:
                     break;
-
             }
 
+            hparty.HasRobot = true;
             level ++;
         }
 
