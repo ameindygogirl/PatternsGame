@@ -19,7 +19,7 @@ namespace DesignPatternsGame
             MinDamage = 30;
             HitChance = 80;
             Defense = 6;
-            img = ImageFactory.findImage("puppy");
+            img = ImageFactory.findImage("dog");
         }
         
         public override void useSpecial(GameCharacter target)

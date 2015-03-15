@@ -8,6 +8,7 @@ namespace DesignPatternsGame
 {
     class ExtraStrengthSpecial : SpecialAction
     {
+        public ExtraStrengthSpecial() : base("Strong Attack") { }
         public override void execute()
         {
             dmg = new Random().Next(primary.MaxDamage, primary.MaxDamage * 5);

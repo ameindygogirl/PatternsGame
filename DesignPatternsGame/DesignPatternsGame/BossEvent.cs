@@ -10,7 +10,8 @@ namespace DesignPatternsGame
     {
         void RoomEvent.execute(HeroParty hparty)
         {
-            int i = 0;
+            //add boss event
+
         }
     }
 }
