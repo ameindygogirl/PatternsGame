@@ -10,10 +10,42 @@ namespace DesignPatternsGame
     {
         private static RobotFactory instance;
         int level;
+        MonsterFactory monsters;
 
         private RobotFactory()
         {
             this.level = 1;
+            this.monsters = new MonsterFactory();
+        }
+
+        public MonsterParty getBossParty()
+        {
+            RobotDecorator robot = null;
+            MonsterParty mparty;
+            GameCharacter a, b, c;
+            Random rand = new Random();
+
+            a = monsters.createCharacter(rand.Next(6) + 1);
+            b = monsters.createCharacter(rand.Next(6) + 1);
+            c = monsters.createCharacter(rand.Next(6) + 1);
+
+            switch(level)
+            {
+                case 1:
+                    robot = new EscaflowneRobot(a);
+                    break;
+                case 2:
+                    robot = new Unit01Robot(a);
+                    break;
+                case 3:
+                    robot = new GaoGaiGarRobot(a);
+                    break;
+            }
+
+            mparty = new MonsterParty(robot, b, c);
+
+            return mparty;
+
         }
 
         public void getRobot(HeroParty hparty)

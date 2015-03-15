@@ -15,6 +15,17 @@ namespace DesignPatternsGame
             initParty();
         }
 
+        public MonsterParty(GameCharacter first, GameCharacter second, GameCharacter third)
+        {
+            characters.AddLast(first);
+            characters.AddLast(second);
+            characters.AddLast(third);
+
+            first.Allies = characters;
+            second.Allies = characters;
+            third.Allies = characters;
+        }
+
         private void initParty()
         {
             Random random = new Random();

@@ -291,7 +291,6 @@ namespace DesignPatternsGame
 
         private void enterRoom()
         {
-            //disableNavigation();
             if (this.ara[this.player.Row, this.player.Column].Event != null)
             {
                 if (this.ara[this.player.Row, this.player.Column].Event is BattleEvent)
@@ -300,11 +299,19 @@ namespace DesignPatternsGame
                     disableNavigation();
                     navigationController.Visibility = Visibility.Visible;
                 }
+
+                else if (this.ara[this.player.Row, this.player.Column].Event is RobotEvent)
+                {
+                    RobotFactory rfact = RobotFactory.getInstance();
+                    bw = new BattleWindow(hparty, rfact.getBossParty());
+                }
+
                 this.ara[this.player.Row, this.player.Column].Event.execute(this.hparty);
+                
+                    
 
                 this.ara[this.player.Row, this.player.Column].Event = null;
             }
-            //enableNavigation();
         }
 
         private void btnUp_Click(object sender, RoutedEventArgs e)
