@@ -296,7 +296,15 @@ namespace DesignPatternsGame
             {
                 if (this.ara[this.player.Row, this.player.Column].Event is BattleEvent)
                     bw = new BattleWindow(hparty, new MonsterParty());
+                else if (this.ara[this.player.Row, this.player.Column].Event is RobotEvent)
+                {
+                    RobotFactory rfact = RobotFactory.getInstance();
+                    bw = new BattleWindow(hparty, rfact.getBossParty());
+                }
+                    
                 this.ara[this.player.Row, this.player.Column].Event.execute(this.hparty);
+                
+                    
 
                 this.ara[this.player.Row, this.player.Column].Event = null;
             }

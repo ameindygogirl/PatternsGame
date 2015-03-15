@@ -19,7 +19,7 @@ namespace DesignPatternsGame
             this.MinDamage = 10 + pilot.MinDamage;
             this.HitChance = 0.7 * pilot.HitChance;
             this.Defense = 9 + pilot.Defense;
-            this.img = ImageFactory.findImage("gaogaigar");
+            this.img = ImageFactory.findImage("unit01");
         }
     }
 }

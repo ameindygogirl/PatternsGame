@@ -217,7 +217,9 @@
     <Resource Include="Images\lost.png" />
     <Resource Include="Images\won.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\partyLarge.png" />
     <Resource Include="Images\partyMedium.png" />
@@ -242,7 +244,6 @@
     <Resource Include="Images\escaflowne.png" />
     <Resource Include="Images\gaogaigar.png" />
     <Resource Include="Images\unit01.png" />
-    <None Include="Resources\gaogaigar.bmp" />
     <Content Include="Sounds\Lost.mp3" />
     <Content Include="Sounds\Won.mp3" />
   </ItemGroup>
