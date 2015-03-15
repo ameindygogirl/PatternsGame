@@ -33,13 +33,5 @@ namespace DesignPatternsGame
             }
             return hero;
         }
-
-        public String getName()
-        {
-            String name = Console.ReadLine();
-            if (name.Length > 8)
-                return name.Substring(0, 8);
-            return name;
-        }
     }
 }
