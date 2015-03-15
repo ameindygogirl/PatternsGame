@@ -163,6 +163,16 @@ namespace DesignPatternsGame.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap escaflowne {
+            get {
+                object obj = ResourceManager.GetObject("escaflowne", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap exit {
             get {
                 object obj = ResourceManager.GetObject("exit", resourceCulture);
@@ -176,6 +186,16 @@ namespace DesignPatternsGame.Properties {
         internal static System.Drawing.Bitmap exitMan {
             get {
                 object obj = ResourceManager.GetObject("exitMan", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap gaogaigar {
+            get {
+                object obj = ResourceManager.GetObject("gaogaigar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -376,6 +396,16 @@ namespace DesignPatternsGame.Properties {
         internal static System.Drawing.Bitmap tinyTurtle {
             get {
                 object obj = ResourceManager.GetObject("tinyTurtle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap unit01 {
+            get {
+                object obj = ResourceManager.GetObject("unit01", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

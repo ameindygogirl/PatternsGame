@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace DesignPatternsGame
 {
-    class BossEvent : RoomEvent
+    class RobotEvent : RoomEvent
     {
         void RoomEvent.execute(HeroParty hparty)
         {
-            //add boss event
+            RobotFactory rfact = RobotFactory.getInstance();
 
+            rfact.getRobot(hparty);
         }
     }
 }

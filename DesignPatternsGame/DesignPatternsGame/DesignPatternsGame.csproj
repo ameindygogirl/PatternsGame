@@ -61,12 +61,13 @@
     <Compile Include="BattleWindow.xaml.cs">
       <DependentUpon>BattleWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="BossEvent.cs" />
     <Compile Include="CharacterPicker.xaml.cs">
       <DependentUpon>CharacterPicker.xaml</DependentUpon>
     </Compile>
     <Compile Include="ChubbyChipmunk.cs" />
     <Compile Include="ActionFactory.cs" />
+    <Compile Include="EscaflowneRobot.cs" />
+    <Compile Include="GaoGaiGarRobot.cs" />
     <Compile Include="ProvokeSpecial.cs" />
     <Compile Include="CollarOfPower.cs" />
     <Compile Include="CutenessSpecial.cs" />
@@ -104,6 +105,12 @@
     <Compile Include="Results.xaml.cs">
       <DependentUpon>Results.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RobotAwarded.xaml.cs">
+      <DependentUpon>RobotAwarded.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RobotDecorator.cs" />
+    <Compile Include="RobotEvent.cs" />
+    <Compile Include="RobotFactory.cs" />
     <Compile Include="Room.cs" />
     <Compile Include="RoomEvent.cs" />
     <Compile Include="ScaryShark.cs" />
@@ -113,6 +120,7 @@
     <Compile Include="SpecialAction.cs" />
     <Compile Include="StealthySpider.cs" />
     <Compile Include="TinyTurtle.cs" />
+    <Compile Include="Unit01Robot.cs" />
     <Compile Include="WiseOwl.cs" />
     <Page Include="BattleWindow.xaml">
       <SubType>Designer</SubType>
@@ -143,6 +151,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Results.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RobotAwarded.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -224,6 +236,10 @@
     <Resource Include="Images\collar.png" />
     <Resource Include="Images\health.png" />
     <Resource Include="Images\snack.png" />
+    <Resource Include="Images\escaflowne.png" />
+    <Resource Include="Images\gaogaigar.png" />
+    <Resource Include="Images\unit01.png" />
+    <None Include="Resources\gaogaigar.bmp" />
     <Content Include="Sounds\Lost.mp3" />
     <Content Include="Sounds\Won.mp3" />
   </ItemGroup>

@@ -81,8 +81,12 @@ namespace DesignPatternsGame
                 buildPath(this.entrance, i, j);
             }
 
+            setRobot();
+
             return this.grid;
         }
+
+        
 
         private void buildPath(Room cur, int i, int j)
         {
@@ -148,6 +152,18 @@ namespace DesignPatternsGame
                 default:
                     break;
             }
+        }
+
+        private void setRobot()
+        { 
+            int i, j;
+            do
+            {
+                i = this.rand.Next(this.x);
+                j = this.rand.Next(this.y);
+            } while (this.grid[i,j] == null || this.grid[i,j].Entrance || this.grid[i,j].Exit);
+
+            this.grid[i, j].Event = new RobotEvent();
         }
 
         private Room attachNorth(Room cur, int i, int j)

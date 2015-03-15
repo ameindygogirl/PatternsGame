@@ -296,8 +296,8 @@ namespace DesignPatternsGame
                 if (this.ara[this.player.Row, this.player.Column].Event is BattleEvent)
                     bw = new BattleWindow(hparty, new MonsterParty());
                 this.ara[this.player.Row, this.player.Column].Event.execute(this.hparty);
-            
-            
+
+                this.ara[this.player.Row, this.player.Column].Event = null;
             }
                 //enableNavigation();
         }

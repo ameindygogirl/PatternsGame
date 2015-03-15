@@ -104,6 +104,17 @@ namespace DesignPatternsGame
                     img = new BitmapImage(new Uri("pack://application:,,,/Images/collar.png", UriKind.Absolute));
                     break;
 
+                //Robots
+                case "escaflowne":
+                    img = new BitmapImage(new Uri("pack://application:,,,/Images/escaflowne.png", UriKind.Absolute));
+                    break;
+                case "unit01":
+                    img = new BitmapImage(new Uri("pack://application:,,,/Images/unit01.png", UriKind.Absolute));
+                    break;
+                case "gaogaigar":
+                    img = new BitmapImage(new Uri("pack://application:,,,/Images/gaogaigar.png", UriKind.Absolute));
+                    break;
+
             }
             return img;
         }
