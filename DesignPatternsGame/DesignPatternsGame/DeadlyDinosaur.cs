@@ -20,7 +20,7 @@ namespace DesignPatternsGame
             HitChance = 70;
             Defense = 5;
             img = ImageFactory.findImage("dinosaur");
-            special = new ExtraStrengthSpecial();
+            special = new DinosaurSpecial();
         }
     }
 }

@@ -20,7 +20,7 @@ namespace DesignPatternsGame
             HitChance = 90;
             Defense = 1;
             img = ImageFactory.findImage("snake");
-            special = new ExtraStrengthSpecial();
+            special = new SnakeSpecial();
         }
     }
 }

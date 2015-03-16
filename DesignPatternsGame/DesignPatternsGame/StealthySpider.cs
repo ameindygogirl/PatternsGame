@@ -20,7 +20,7 @@ namespace DesignPatternsGame
             HitChance = 85;
             Defense = 1;
             img = ImageFactory.findImage("spider");
-            special = new ExtraStrengthSpecial();
+            special = new SpiderSpecial();
         }
     }
 }

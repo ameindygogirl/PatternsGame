@@ -64,12 +64,15 @@
     <Compile Include="CharacterPicker.xaml.cs">
       <DependentUpon>CharacterPicker.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CharmingPurrSpecial.cs" />
     <Compile Include="ChubbyChipmunk.cs" />
     <Compile Include="ActionFactory.cs" />
     <Compile Include="DeathSpecial.cs" />
     <Compile Include="DefensiveSpecial.cs" />
+    <Compile Include="DinosaurSpecial.cs" />
     <Compile Include="EscaflowneRobot.cs" />
     <Compile Include="GaoGaiGarRobot.cs" />
+    <Compile Include="LionSpecial.cs" />
     <Compile Include="ProvokeSpecial.cs" />
     <Compile Include="CollarOfPower.cs" />
     <Compile Include="CutenessSpecial.cs" />
@@ -117,10 +120,13 @@
     <Compile Include="Room.cs" />
     <Compile Include="RoomEvent.cs" />
     <Compile Include="ScaryShark.cs" />
+    <Compile Include="SharkSpecial.cs" />
     <Compile Include="SlitheringSnake.cs" />
     <Compile Include="FireBallSpecial.cs" />
     <Compile Include="SnackPack.cs" />
+    <Compile Include="SnakeSpecial.cs" />
     <Compile Include="SpecialAction.cs" />
+    <Compile Include="SpiderSpecial.cs" />
     <Compile Include="StealthySpider.cs" />
     <Compile Include="TinyTurtle.cs" />
     <Compile Include="Unit01Robot.cs" />

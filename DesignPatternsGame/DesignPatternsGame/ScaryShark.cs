@@ -20,7 +20,7 @@ namespace DesignPatternsGame
             HitChance = 80;
             Defense = 3;
             img = ImageFactory.findImage("shark");
-            special = new QuackSpecial();
+            special = new SharkSpecial();
         }
     }
 }

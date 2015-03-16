@@ -20,7 +20,7 @@ namespace DesignPatternsGame
             HitChance = 90;
             Defense = 3;
             img = ImageFactory.findImage("lion");
-            special = new ExtraStrengthSpecial();
+            special = new LionSpecial();
         }
     }
 }

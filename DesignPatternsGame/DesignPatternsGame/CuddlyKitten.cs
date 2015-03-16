@@ -20,7 +20,7 @@ namespace DesignPatternsGame
             HitChance = 85;
             Defense = 2;
             img = ImageFactory.findImage("kitten");
-            special = new CutenessSpecial();
+            special = new CharmingPurrSpecial();
         }
     }
 }
