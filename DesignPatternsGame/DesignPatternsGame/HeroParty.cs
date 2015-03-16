@@ -80,6 +80,8 @@ namespace DesignPatternsGame
             gc2.Allies = list;
             gc3.Allies = list;
             this.addItem(new HealthPotion(5));
+            
+            
         }
 
         private void initParty(int a, int b, int c)

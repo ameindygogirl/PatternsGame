@@ -11,7 +11,7 @@ namespace DesignPatternsGame
         {
             this.AddFirst(new HealthPotion(0));
             this.AddFirst(new CollarOfPower(0));
-            this.AddFirst(new SnackPack(0));
+            this.AddFirst(new SnackPack(2));
         }
         public void sort() //alphabetic
         {

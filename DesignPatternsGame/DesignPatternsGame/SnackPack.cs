@@ -21,7 +21,7 @@ namespace DesignPatternsGame
         public override void use()
         {
             int prevHP = Target.HP;
-            Target.addHP(10);
+            Target.revive(10);
             healed = Target.HP - prevHP;
             this.Amount--;
         }
