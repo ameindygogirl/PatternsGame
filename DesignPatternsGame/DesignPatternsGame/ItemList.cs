@@ -7,6 +7,12 @@ namespace DesignPatternsGame
 {
     public class ItemList: LinkedList<Item>
     {
+        public ItemList()
+        {
+            this.AddFirst(new HealthPotion(10));
+            this.AddFirst(new CollarOfPower(0));
+            this.AddFirst(new SnackPack(0));
+        }
         public void sort() //alphabetic
         {
             if (this.Count <= 0)

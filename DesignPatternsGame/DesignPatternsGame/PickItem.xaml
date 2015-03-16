@@ -1,26 +1,32 @@
 ﻿<Window x:Class="DesignPatternsGame.PickItem"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="PickItem" Height="202.627" Width="383.582" ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+        Title="PickItem" Height="267.627" Width="383.582" ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Grid Background="#FF4FB29B">
         <Button x:Name="btnCollar" Content="" HorizontalAlignment="Left" Margin="15,10,0,0" VerticalAlignment="Top" Width="100" Height="100" Click="btnCollar_Click">
             <Button.Background>
                 <ImageBrush ImageSource="Images/collar.png"/>
             </Button.Background>
         </Button>
-        <Label x:Name="lblCollar" Content="Collar of Power" HorizontalAlignment="Left" Margin="15,0,0,5" VerticalAlignment="Bottom" Cursor="None"/>
+        <Label x:Name="lblCollar" Content="Collar of Power" HorizontalAlignment="Left" Margin="15,0,0,80" VerticalAlignment="Bottom" Cursor="None"/>
         <Button x:Name="btnHealth" Content="" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Width="100" Height="100" Click="btnHealth_Click">
             <Button.Background>
                 <ImageBrush ImageSource="Images/health.png"/>
             </Button.Background>
         </Button>
-        <Label x:Name="lblHealth" Content="Health Potion" HorizontalAlignment="Center" Margin="0,0,0,5" VerticalAlignment="Bottom"/>
+        <Rectangle x:Name="btnHealthTint" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Width="100" Height="100" Opacity=".5" Fill="Black" Visibility="Hidden"/>
+        <Label x:Name="lblHealth" Content="Health Potion" HorizontalAlignment="Center" Margin="0,0,0,80" VerticalAlignment="Bottom"/>
+        
         <Button x:Name="btnSnack" Content="" HorizontalAlignment="Right" Margin="0,10,15,0" VerticalAlignment="Top" Width="100" Height="101" Click="btnSnack_Click">
             <Button.Background>
                 <ImageBrush ImageSource="Images/snack.png"/>
             </Button.Background>
         </Button>
-        <Label x:Name="lblSnack" Content="Snack Pack" HorizontalAlignment="Right" Margin="0,0,33,5" VerticalAlignment="Bottom"/>
+        <Label x:Name="lblSnack" Content="Snack Pack" HorizontalAlignment="Right" Margin="0,0,33,80" VerticalAlignment="Bottom"/>
 
+        <Rectangle x:Name="btnSnackTint" HorizontalAlignment="Right" Opacity=".5" Margin="0,10,15,0" VerticalAlignment="Top" Width="100" Height="101" Fill="Black" Visibility="Hidden"/>
+
+        <Rectangle x:Name="btnCollarTint" Opacity=".5" HorizontalAlignment="Left" Margin="15,10,0,0" VerticalAlignment="Top" Width="100" Height="100" Fill="Black" Visibility="Hidden"/>
+        <Button Content="Nevermind" HorizontalAlignment="Center" Margin="0,0,0,15" VerticalAlignment="Bottom" Width="93" Height="37" Click="Button_Click"/>
     </Grid>
 </Window>

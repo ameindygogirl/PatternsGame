@@ -42,30 +42,38 @@ namespace DesignPatternsGame
             {
                 if(cur.Value.Name == "Health Potion")
                 {
-                    if(cur.Value.Amount == 0)
+                    if (cur.Value.Amount == 0)
                     {
-                        btnHealth.IsEnabled = false;
-                        lblHealth.Content = "0";
+                        btnHealthTint.Visibility = Visibility.Visible;
                     }
-                    lblHealth.Content = cur.Value.Amount;
+                    else
+                    {
+                        btnHealthTint.Visibility = Visibility.Hidden;
+                    }
+                    lblHealth.Content = cur.Value.toString();
                 }
                 else if(cur.Value.Name == "Snack Pack")
                 {
                     if (cur.Value.Amount == 0)
                     {
-                        btnSnack.IsEnabled = false;
-                        lblSnack.Content = "0";
+                        btnSnackTint.Visibility = Visibility.Visible;
                     }
-                    lblSnack.Content = cur.Value.Amount;
+                    else
+                        btnSnackTint.Visibility = Visibility.Hidden;
+                    
+                    lblSnack.Content = cur.Value.toString();
                 }
                 else
                 {
                     if (cur.Value.Amount == 0)
                     {
-                        btnCollar.IsEnabled = false;
-                        lblCollar.Content = "0";
+                        btnCollarTint.Visibility = Visibility.Visible;
                     }
-                    lblCollar.Content = cur.Value.Amount;
+                    else
+                    {
+                        btnCollarTint.Visibility = Visibility.Hidden;
+                    }
+                    lblCollar.Content = cur.Value.toString();
                 }
                 cur = cur.Next;
             }
@@ -92,6 +100,12 @@ namespace DesignPatternsGame
         private void btnSnack_Click(object sender, RoutedEventArgs e)
         {
             item = 3;
+            DialogResult = true;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            item = 0;
             DialogResult = true;
         }
     }

@@ -40,5 +40,9 @@ namespace DesignPatternsGame
         }
 
         public abstract void use();
+        public string toString()
+        {
+            return name + " " + amount;
+        }
     }
 }

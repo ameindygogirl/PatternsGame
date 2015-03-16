@@ -438,10 +438,16 @@ namespace DesignPatternsGame
                 case 3:
                     item = new SnackPack(1);
                     break;
+                default:
+                    item = null;
+                    break;
             }
-            myTurn.Action = new ItemAction(item);
-            prompt = "Please choose a target";
-            heroSwitch(1);
+            if (item != null)
+            {
+                myTurn.Action = new ItemAction(item);
+                prompt = "Please choose a target";
+                heroSwitch(1);
+            }
         }
 
         // ENEMYB1_CLICK
