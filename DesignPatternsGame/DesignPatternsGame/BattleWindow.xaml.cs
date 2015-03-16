@@ -104,9 +104,6 @@ namespace DesignPatternsGame
         {
             if (heroes.isDead())
             {
-                //this.Close();
-                //Results r = new Results(false);
-                //r.ShowDialog();
                 prompt = "Heroes defeated";
                 addPrompt(prompt);
                 continueButton.Content = "END";
@@ -561,8 +558,15 @@ namespace DesignPatternsGame
         {
             if (myTurn != null && myTurn.Action != null && myTurn.Action.Target != null)
             {
-                if (myTurn.HP <= 0) return false;
+                if (myTurn.HP <= 0)
+                {
+                    if (myTurn.Allies.ElementAt(2) is Monster)
+                        monsterTint(myTurn, 1);
+                    else
+                        heroTint(myTurn, 1);
 
+                    return false;
+                }
                 if (myTurn is Monster)
                 {
                     if (myTurn.Action.Target.HP <= 0)
