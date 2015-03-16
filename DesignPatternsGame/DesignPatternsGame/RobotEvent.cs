@@ -8,8 +8,8 @@ namespace DesignPatternsGame
 {
     class RobotEvent : RoomEvent
     {
-        public RobotEvent(BattleWindow bw) : base(bw) { }
-        public RobotEvent(int level, BattleWindow bw) : base(level, bw) { }
+        public RobotEvent() : base() { }
+        public RobotEvent(int level) : base(level) { }
 
         public override void execute(HeroParty hparty)
         {

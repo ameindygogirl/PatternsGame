@@ -8,7 +8,7 @@ namespace DesignPatternsGame
 {
     class BattleEvent: RoomEvent
     {
-        public BattleEvent(BattleWindow bw) : base(bw) { }
+        public BattleEvent() : base() { }
         
         public override void execute(HeroParty hparty)
         {

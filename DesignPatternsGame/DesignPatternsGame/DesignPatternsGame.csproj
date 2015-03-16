@@ -66,7 +66,7 @@
     </Compile>
     <Compile Include="ChubbyChipmunk.cs" />
     <Compile Include="ActionFactory.cs" />
-    <Compile Include="Class1.cs" />
+    <Compile Include="DeathSpecial.cs" />
     <Compile Include="DefensiveSpecial.cs" />
     <Compile Include="EscaflowneRobot.cs" />
     <Compile Include="GaoGaiGarRobot.cs" />

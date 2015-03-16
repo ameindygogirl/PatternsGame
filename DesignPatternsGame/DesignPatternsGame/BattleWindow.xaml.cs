@@ -157,7 +157,6 @@ namespace DesignPatternsGame
                 myTurn.Action = m.pickAction();
                 myTurn.Action.Target = m.pickTarget(heroes.Characters);
             }
-
             myTurn.Action.execute();
             prompt = myTurn.Action.toString();
             addPrompt(prompt);
@@ -206,8 +205,42 @@ namespace DesignPatternsGame
                         heroTint3.Visibility = Visibility.Hidden;
                     break;
             }
+        }
 
+        // MONSTERTINT
+        private void monsterTint(GameCharacter gc, int i)
+        {
+            LinkedListNode<GameCharacter> cur = monsters.Characters.First;
 
+            int index = 0;
+            while (cur.Value != gc)
+            {
+                cur = cur.Next;
+                index++;
+            }
+            switch (index)
+            {
+                case 0:
+                    if (i > 0)
+                        enemyTint1.Visibility = Visibility.Visible;
+                    else
+                        enemyTint1.Visibility = Visibility.Hidden;
+                    break;
+
+                case 1:
+                    if (i > 0)
+                        enemyTint2.Visibility = Visibility.Visible;
+                    else
+                        enemyTint2.Visibility = Visibility.Hidden;
+                    break;
+
+                case 2:
+                    if (i > 0)
+                        enemyTint3.Visibility = Visibility.Visible;
+                    else
+                        enemyTint3.Visibility = Visibility.Hidden;
+                    break;
+            }
         }
 
         // ACTIONSWITCH
@@ -270,16 +303,19 @@ namespace DesignPatternsGame
                 {
                     enemyImg1.Visibility = Visibility.Hidden;
                     enemyB1.Visibility = Visibility.Visible;
+                    monsterTint(monsters.Characters.ElementAt(0), 0);
                 }
                 if (monsters.Characters.ElementAt(1).HP > 0)
                 {
                     enemyImg2.Visibility = Visibility.Hidden;
                     enemyB2.Visibility = Visibility.Visible;
+                    monsterTint(monsters.Characters.ElementAt(1), 0);
                 }
                 if (monsters.Characters.ElementAt(2).HP > 0)
                 {
                     enemyImg3.Visibility = Visibility.Hidden;
                     enemyB3.Visibility = Visibility.Visible;
+                    monsterTint(monsters.Characters.ElementAt(2), 0);
                 }
             }
             else
