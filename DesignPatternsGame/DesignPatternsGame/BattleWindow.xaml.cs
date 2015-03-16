@@ -262,7 +262,6 @@ namespace DesignPatternsGame
         // HEROSWITCH
         private void heroSwitch(int i)
         {
-            deadHeroSwitch(0);
             if (i > 0)
             {
                 if (heroes.Characters.ElementAt(0).HP > 0)
@@ -300,26 +299,30 @@ namespace DesignPatternsGame
                 {
                     heroB1.Visibility = Visibility.Visible;
                     heroImg1.Visibility = Visibility.Hidden;
+                    heroTint1.Visibility = Visibility.Hidden;
                 }
                 if (!(heroes.Characters.ElementAt(1).HP > 0))
                 {
                     heroB2.Visibility = Visibility.Visible;
                     heroImg2.Visibility = Visibility.Hidden;
+                    heroTint2.Visibility = Visibility.Hidden;
                 }
                 if (!(heroes.Characters.ElementAt(2).HP > 0))
                 {
                     heroB3.Visibility = Visibility.Visible;
                     heroImg3.Visibility = Visibility.Hidden;
+                    heroTint3.Visibility = Visibility.Hidden;
                 }
             }
             else
             {
-                heroImg1.Visibility = Visibility.Visible;
-                heroImg2.Visibility = Visibility.Visible;
-                heroImg3.Visibility = Visibility.Visible;
-                heroB1.Visibility = Visibility.Hidden;
-                heroB2.Visibility = Visibility.Hidden;
-                heroB3.Visibility = Visibility.Hidden;
+                heroSwitch(0);
+                if (heroes.Characters.ElementAt(0).HP <= 0)
+                    heroTint1.Visibility = Visibility.Visible;
+                if (heroes.Characters.ElementAt(1).HP <= 0)
+                    heroTint2.Visibility = Visibility.Visible;
+                if (heroes.Characters.ElementAt(2).HP <= 0)
+                    heroTint3.Visibility = Visibility.Visible;
             }
         }
 
@@ -407,7 +410,7 @@ namespace DesignPatternsGame
         // ATTACKBUTTON_CLICK
         private void attackButton_Click(object sender, RoutedEventArgs e)
         {
-            heroSwitch(0);
+            deadHeroSwitch(0);
             myTurn.Action = new AttackAction();
             prompt = "Please choose a target";
             addPrompt(prompt);
@@ -417,7 +420,7 @@ namespace DesignPatternsGame
         // DEFENDBUTTON_CLICK
         private void defendButton_Click(object sender, RoutedEventArgs e)
         {
-            heroSwitch(0);
+            deadHeroSwitch(0);
             monsterSwitch(0);
             myTurn.Action = new DefendAction();
             myTurn.Action.execute();
@@ -429,7 +432,7 @@ namespace DesignPatternsGame
         // SPECIALBUTTON_CLICK
         private void specialButton_Click(object sender, RoutedEventArgs e)
         {
-            heroSwitch(0);
+            deadHeroSwitch(0);
             myTurn.Action = myTurn.Special;
             
             if(myTurn.Action is DefensiveSpecial)
@@ -485,7 +488,6 @@ namespace DesignPatternsGame
                     case 3:
                         deadHeroSwitch(1);
                         break;
-
                 }
                 
             }
