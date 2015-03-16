@@ -33,6 +33,7 @@ namespace DesignPatternsGame
         public BattleWindow BW
         {
             get { return bw; }
+            set { bw = value; }
         }
 
         public abstract void execute(HeroParty hparty);
