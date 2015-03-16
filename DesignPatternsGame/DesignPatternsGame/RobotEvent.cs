@@ -15,6 +15,7 @@ namespace DesignPatternsGame
         {
             if (triggered == true) return;
 
+            hparty.HasRobot = true;
             RobotFactory rfact = RobotFactory.getInstance();
             bw = new BattleWindow(hparty, rfact.getBossParty());
             bw.Show();

@@ -305,9 +305,12 @@ namespace DesignPatternsGame
             if (myEvent != null)
             {
                 myEvent.execute(hparty);
-                bw = myEvent.BW;
-                disableNavigation();
-                navigationController.Visibility = Visibility.Visible;
+                if (!(myEvent is ItemEvent))
+                {
+                    bw = myEvent.BW;
+                    disableNavigation();
+                    navigationController.Visibility = Visibility.Visible;
+                }
             }
         }
 
@@ -477,11 +480,11 @@ namespace DesignPatternsGame
             {
                 if (!bw.IsLoaded)
                 {
-                    if (myEvent is RobotEvent)
+                    if (hparty.HasRobot)
                     {
                         rfact.getRobot(hparty, level);
+                        hparty.HasRobot = false;
                     }
-                    myEvent = null;
                     enableNavigation();
                     navigationController.Visibility = Visibility.Hidden;
                 }
@@ -495,10 +498,10 @@ namespace DesignPatternsGame
             }
             else
             {
-                myEvent = null;
                 enableNavigation();
                 navigationController.Visibility = Visibility.Hidden;
             }
+            myEvent = null;
         }
 
         private String getRobotName()
