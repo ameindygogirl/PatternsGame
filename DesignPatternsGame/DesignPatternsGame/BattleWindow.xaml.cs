@@ -444,6 +444,7 @@ namespace DesignPatternsGame
             }
             if (item != null)
             {
+                heroes.reduceItem(item);
                 myTurn.Action = new ItemAction(item);
                 prompt = "Please choose a target";
                 heroSwitch(1);

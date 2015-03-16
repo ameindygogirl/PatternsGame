@@ -36,7 +36,30 @@ namespace DesignPatternsGame
 
         public void addItem(Item item)
         {
-            items.AddFirst(item);
+            LinkedListNode<Item> cur = items.First;
+            while(cur != items.Last.Next)
+            {
+                if (cur.Value.Name == item.Name)
+                {
+                    cur.Value.Amount += item.Amount;
+                    break;
+                }
+                cur = cur.Next;
+            }
+        }
+
+        public void reduceItem(Item item)
+        {
+            LinkedListNode<Item> cur = items.First;
+            while (cur != items.Last.Next)
+            {
+                if (cur.Value.Name == item.Name)
+                {
+                    cur.Value.Amount -= 1;
+                    break;
+                }
+                cur = cur.Next;
+            }
         }
 
         private void initParty()
@@ -56,7 +79,7 @@ namespace DesignPatternsGame
             gc1.Allies = list;
             gc2.Allies = list;
             gc3.Allies = list;
-            items.AddFirst(new HealthPotion(5));
+            this.addItem(new HealthPotion(5));
         }
 
         private void initParty(int a, int b, int c)
@@ -75,7 +98,7 @@ namespace DesignPatternsGame
             gc1.Allies = list;
             gc2.Allies = list;
             gc3.Allies = list;
-            items.AddFirst(new HealthPotion(5));
+            this.addItem(new HealthPotion(5));
         }
 
         public bool HasRobot

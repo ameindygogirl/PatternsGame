@@ -9,7 +9,7 @@ namespace DesignPatternsGame
     {
         public ItemList()
         {
-            this.AddFirst(new HealthPotion(10));
+            this.AddFirst(new HealthPotion(0));
             this.AddFirst(new CollarOfPower(0));
             this.AddFirst(new SnackPack(0));
         }
