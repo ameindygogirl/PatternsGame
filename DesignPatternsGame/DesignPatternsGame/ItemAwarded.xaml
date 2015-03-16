@@ -5,7 +5,7 @@
     <Grid Background="#FF4FB29B">
         <Image x:Name="imgLoot" HorizontalAlignment="Left" Height="100" Margin="10,10,0,10" VerticalAlignment="Top" Width="100"/>
         <Label x:Name="lblName" Content="Found a Collar of Power!" HorizontalAlignment="Left" Margin="140,10,0,0" VerticalAlignment="Top" Width="162" FontSize="14"/>
-        <Button Content="Okay!" HorizontalAlignment="Left" Margin="176,90,0,0" VerticalAlignment="Top" Width="75" Background="#FF48C92B" IsCancel="True" IsDefault="True"/>
+        <Button Content="Okay!" HorizontalAlignment="Right" Margin="0,0,30,20" VerticalAlignment="Bottom" Width="75" Background="#FF48C92B" IsCancel="True" IsDefault="True" Height="30"/>
 
     </Grid>
 </Window>

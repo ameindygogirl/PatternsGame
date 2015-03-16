@@ -28,9 +28,9 @@
             <TextBlock x:Name="battlePrompt" Canvas.Left="67" TextWrapping="Wrap" Canvas.Top="23"  Margin="5" Foreground="White" Text="{Binding Path=PromptData, UpdateSourceTrigger=PropertyChanged}" />
         </Border>
         <Button Name="continueButton" Content="Continue" Height="50" Width="84" Canvas.Left="371" Canvas.Top="19" IsEnabled="False" Click="continueButton_Click"/>
-        <Button Name="heroB1" Content="Button" Canvas.Left="24" Canvas.Top="278" Width="100" Height="100" Visibility="Hidden" Click="heroImg1_Click"/>
-        <Button Name="heroB2" Content="Button" Canvas.Left="192" Canvas.Top="278" Width="100" Height="100" Visibility="Hidden" Click="heroImg2_Click"/>
-        <Button Name="heroB3" Content="Button" Canvas.Left="355" Canvas.Top="278" Width="100" Height="100" Visibility="Hidden" Click="heroImg3_Click"/>
+        <Button Name="heroB1" Content="" Canvas.Left="24" Canvas.Top="278" Width="100" Height="100" Visibility="Hidden" Click="heroImg1_Click"/>
+        <Button Name="heroB2" Content="" Canvas.Left="192" Canvas.Top="278" Width="100" Height="100" Visibility="Hidden" Click="heroImg2_Click"/>
+        <Button Name="heroB3" Content="" Canvas.Left="355" Canvas.Top="278" Width="100" Height="100" Visibility="Hidden" Click="heroImg3_Click"/>
         <Image Name="heroImg1" Canvas.Left="24" Canvas.Top="278" Width="100" Height="100" Visibility="Hidden" />
         <Image Name="heroImg2" Canvas.Left="192" Canvas.Top="278" Width="100" Height="100" Visibility="Hidden" />
         <Image Name="heroImg3" Canvas.Left="355" Canvas.Top="278" Width="100" Height="100" Visibility="Hidden" />
