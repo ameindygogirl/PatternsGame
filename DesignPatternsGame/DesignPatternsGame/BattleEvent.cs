@@ -6,11 +6,16 @@ using System.Threading.Tasks;
 
 namespace DesignPatternsGame
 {
-    class BattleEvent : RoomEvent
+    class BattleEvent: RoomEvent
     {
-        void RoomEvent.execute(HeroParty hparty)
+        public BattleEvent(BattleWindow bw) : base(bw) { }
+        
+        public override void execute(HeroParty hparty)
         {
-            //BattleWindow battle = new BattleWindow(hparty, new MonsterParty());
+            if (triggered == true) return;
+            bw = new BattleWindow(hparty, new MonsterParty());
+            bw.Show();
+            triggered = true;
         }
     }
 }

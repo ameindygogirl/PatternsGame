@@ -8,11 +8,17 @@ namespace DesignPatternsGame
 {
     class RobotEvent : RoomEvent
     {
-        void RoomEvent.execute(HeroParty hparty)
-        {
-            RobotFactory rfact = RobotFactory.getInstance();
+        public RobotEvent(BattleWindow bw) : base(bw) { }
+        public RobotEvent(int level, BattleWindow bw) : base(level, bw) { }
 
-            rfact.getRobot(hparty);
+        public override void execute(HeroParty hparty)
+        {
+            if (triggered == true) return;
+
+            RobotFactory rfact = RobotFactory.getInstance();
+            bw = new BattleWindow(hparty, rfact.getBossParty());
+            bw.Show();
+            triggered = true;
         }
     }
 }

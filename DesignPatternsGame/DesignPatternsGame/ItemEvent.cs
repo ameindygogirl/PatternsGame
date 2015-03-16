@@ -10,9 +10,8 @@ namespace DesignPatternsGame
     class ItemEvent : RoomEvent
     {
         Item loot;
-       
 
-        public ItemEvent()
+        public ItemEvent() : base()
         {
             Random rnd = new Random();
             int num = rnd.Next(1, 4);
@@ -30,11 +29,13 @@ namespace DesignPatternsGame
             }
         }
 
-        void RoomEvent.execute(HeroParty hparty)
+        public override void execute(HeroParty hparty)
         {
+            if (triggered == true) return;
             hparty.addItem(loot);
             ItemAwarded ia = new ItemAwarded(loot.Name);
             ia.ShowDialog();
+            triggered = true;
         }
     }
 }

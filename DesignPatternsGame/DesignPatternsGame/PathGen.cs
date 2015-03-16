@@ -9,17 +9,18 @@ namespace DesignPatternsGame
     class PathGen
     {
         private int FINDFREQ = 8;
+        private BattleWindow bw;
+        private Room[,] grid;
         private Room entrance;
         private Random rand = new Random();
-        int x;
-        int y;
-        private Room[,] grid;
-        int tempRooms;
-        int goalRooms;
+        int x, y, tempRooms, goalRooms, level;
 
-        public PathGen(int type)
+        public PathGen(int type, int level, BattleWindow bw)
         {
+            this.bw       = bw;
             this.entrance = null;
+            this.level    = level;
+            
             if(type == 0)
             {
                 setEasy();
@@ -138,13 +139,12 @@ namespace DesignPatternsGame
         private void setEvent(Room cur)
         {
             int r = 0;
-
             r = rand.Next(0, FINDFREQ);
 
             switch (r)
             {
                 case 0:
-                    cur.Event = new BattleEvent();
+                    cur.Event = new BattleEvent(bw);
                     break;
                 case 1:
                     cur.Event = new ItemEvent();
@@ -163,7 +163,7 @@ namespace DesignPatternsGame
                 j = this.rand.Next(this.y);
             } while (this.grid[i,j] == null || this.grid[i,j].Entrance || this.grid[i,j].Exit);
 
-            this.grid[i, j].Event = new RobotEvent();
+            this.grid[i, j].Event = new RobotEvent(level, bw);
         }
 
         private Room attachNorth(Room cur, int i, int j)

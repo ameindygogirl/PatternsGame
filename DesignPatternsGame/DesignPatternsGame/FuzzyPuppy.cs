@@ -20,7 +20,7 @@ namespace DesignPatternsGame
             HitChance = 80;
             Defense = 6;
             img = ImageFactory.findImage("dog");
-            special = new ExtraStrengthSpecial();
+            special = new DeathSpecial();
         }
     }
 }

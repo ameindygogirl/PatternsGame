@@ -22,12 +22,13 @@ namespace DesignPatternsGame
         {
             RobotDecorator robot = null;
             MonsterParty mparty;
-            GameCharacter a, b, c;
+            Monster a, b, c;
+            MonsterFactory mf = new MonsterFactory();
             Random rand = new Random();
 
-            a = monsters.createCharacter(rand.Next(6) + 1);
-            b = monsters.createCharacter(rand.Next(6) + 1);
-            c = monsters.createCharacter(rand.Next(6) + 1);
+            a = (Monster) mf.createCharacter(rand.Next(6) + 1);
+            b = (Monster) mf.createCharacter(rand.Next(6) + 1);
+            c = (Monster) mf.createCharacter(rand.Next(6) + 1);
 
             switch(level)
             {
@@ -48,20 +49,23 @@ namespace DesignPatternsGame
 
         }
 
-        public void getRobot(HeroParty hparty)
+        public void getRobot(HeroParty hparty, int level)
         {
+            //if (level < 0)
+            //    return;
+
             RobotDecorator robot;
             GameCharacter temp;
             RobotAwarded ra;
 
-            switch(level)
+            switch (level)
             {
                 case 1:
                     temp = hparty.Characters.ElementAt(0);
                     robot = new EscaflowneRobot(temp);
                     hparty.Characters.Remove(temp);
                     hparty.Characters.AddLast(robot);
-
+                    ra = new RobotAwarded(hparty.Characters.ElementAt(level-1).Name, "Escaflowne", "escaflowne");
                     ra = new RobotAwarded(temp.Name, "Escaflowne", "escaflowne");
                     ra.ShowDialog();
                     break;
@@ -88,7 +92,7 @@ namespace DesignPatternsGame
             }
 
             hparty.HasRobot = true;
-            level ++;
+            //           level = -1;
         }
 
         public static RobotFactory getInstance()

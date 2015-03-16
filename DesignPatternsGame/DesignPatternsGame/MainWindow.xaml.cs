@@ -24,17 +24,21 @@ namespace DesignPatternsGame
         private readonly int MEDIUM_MAZE = 80;
         private readonly int LARGE_MAZE = 50;
 
+        int level;
         BattleWindow bw;
         Ellipse partyMarker;
         HeroParty hparty;
         PathGen path;
-        //Random rand = new Random();
         Room[,] ara;
+        RoomEvent myEvent;
+        RobotFactory rfact;
         Player player;
         int mazeSize;
 
         public MainWindow()
         {
+            level = 1;
+            rfact = RobotFactory.getInstance();
             InitializeComponent();
             cbSize.SelectionChanged += cbSize_SelectionChanged;
             player = new Player(1);
@@ -179,19 +183,19 @@ namespace DesignPatternsGame
             int tile;
             if(cbSize.SelectedIndex == 0)
             {
-                path = new PathGen(0);
+                path = new PathGen(0, level, bw);
                 tile = SMALL_MAZE;
                 mazeSize = 0;
             }
             else if(cbSize.SelectedIndex == 1)
             {
-                path = new PathGen(1);
+                path = new PathGen(1, level, bw);
                 tile = MEDIUM_MAZE;
                 mazeSize = 1;
             }
             else
             {
-                path = new PathGen(2);
+                path = new PathGen(2, level, bw);
                 tile = LARGE_MAZE;
                 mazeSize = 2; 
             }
@@ -235,24 +239,25 @@ namespace DesignPatternsGame
 
         private void levelUpMaze()
         {
+            level++;
             board.Children.Clear();
             this.hparty.HasRobot = false;
             int tile;
             if (cbSize.SelectedIndex == 0)
             {
-                path = new PathGen(0);
+                path = new PathGen(0, level, bw);
                 tile = SMALL_MAZE;
                 mazeSize = 0;
             }
             else if (cbSize.SelectedIndex == 1)
             {
-                path = new PathGen(1);
+                path = new PathGen(1, level, bw);
                 tile = MEDIUM_MAZE;
                 mazeSize = 1;
             }
             else
             {
-                path = new PathGen(2);
+                path = new PathGen(2, level, bw);
                 tile = LARGE_MAZE;
                 mazeSize = 2;
             }
@@ -269,7 +274,9 @@ namespace DesignPatternsGame
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            bw.Topmost = false;
+            if(bw != null)
+                bw.Topmost = false;
+    
             MessageBoxResult result = System.Windows.MessageBox.Show("Are you sure?", "Quit Game?", MessageBoxButton.YesNo);
             if (result == MessageBoxResult.Yes)
             {
@@ -291,28 +298,16 @@ namespace DesignPatternsGame
             r.ShowDialog();
         }
 
+        // WHERE EVENTS HAPPEN
         private void enterRoom()
         {
-            if (this.ara[this.player.Row, this.player.Column].Event != null)
+            myEvent = this.ara[this.player.Row, this.player.Column].Event;
+            if (myEvent != null)
             {
-                if (this.ara[this.player.Row, this.player.Column].Event is BattleEvent)
-                {
-                    bw = new BattleWindow(hparty, new MonsterParty());
-                    disableNavigation();
-                    navigationController.Visibility = Visibility.Visible;
-                }
-
-                else if (this.ara[this.player.Row, this.player.Column].Event is RobotEvent)
-                {
-                    RobotFactory rfact = RobotFactory.getInstance();
-                    bw = new BattleWindow(hparty, rfact.getBossParty());
-                }
-
-                this.ara[this.player.Row, this.player.Column].Event.execute(this.hparty);
-                
-                    
-
-                this.ara[this.player.Row, this.player.Column].Event = null;
+                myEvent.execute(hparty);
+                bw = myEvent.BW;
+                disableNavigation();
+                navigationController.Visibility = Visibility.Visible;
             }
         }
 
@@ -473,19 +468,48 @@ namespace DesignPatternsGame
 
         private void navigationController_Click(object sender, RoutedEventArgs e)
         {
-            if (!bw.IsLoaded) //PresentationSource.FromVisual(bw) == null
+            if(hparty.isDead())
             {
-                enableNavigation();
-                navigationController.Visibility = Visibility.Hidden;
+                Results r = new Results(false);
+                r.ShowDialog();
+            }
+            else if (bw != null)
+            {
+                if (!bw.IsLoaded)
+                {
+                    if (myEvent is RobotEvent)
+                    {
+                        rfact.getRobot(hparty, level);
+                    }
+                    myEvent = null;
+                    enableNavigation();
+                    navigationController.Visibility = Visibility.Hidden;
+                }
+                else
+                {
+                    this.Topmost = false;
+                    bw.Topmost = true;
+                    ContinueNavigationWindow w = new ContinueNavigationWindow();
+                    w.ShowDialog();
+                }
             }
             else
             {
-                this.Topmost = false;
-                bw.Topmost = true;
-                ContinueNavigationWindow w = new ContinueNavigationWindow();
-                w.ShowDialog();
+                myEvent = null;
+                enableNavigation();
+                navigationController.Visibility = Visibility.Hidden;
             }
-                
+        }
+
+        private String getRobotName()
+        {
+            if (level == 1)
+                return "Escaflowne";
+            if (level == 2)
+                return "Unit 01";
+            if (level == 3)
+                return "GaoGaiGar";
+            return null;
         }
     }
 }

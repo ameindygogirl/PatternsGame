@@ -40,6 +40,7 @@ namespace DesignPatternsGame
         [DllImport("user32.dll")]
         private static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
 
+        public BattleWindow() { }
         public BattleWindow(HeroParty heroes2, MonsterParty monsters2)
         {
             heroes = heroes2;
@@ -50,12 +51,22 @@ namespace DesignPatternsGame
 
             InitializeComponent();
             this.DataContext = this;
-            this.Show();
             actionSwitch(0);
             prompt = "Let the battle begin!";
             addPrompt(prompt);
             showHeroes();
             showMonsters();
+        }
+
+        public HeroParty Heroes
+        {
+            get { return heroes; }
+            set { heroes = value; }
+        }
+        public MonsterParty Monsters
+        {
+            get { return monsters; }
+            set { monsters = value; }
         }
 
         // BEGINTURN
@@ -73,7 +84,7 @@ namespace DesignPatternsGame
             }
             myTurn = cur.Value;
 
-            if (myTurn is Monster)
+            if (myTurn.Allies.ElementAt(2) is Monster)
             {
                 specialButton.Content = "Special";
                 monsterStart();
@@ -134,9 +145,19 @@ namespace DesignPatternsGame
         // MONSTERSTART
         private void monsterStart()
         {
-            Monster m = (Monster)myTurn;
-            myTurn.Action = m.pickAction();
-            myTurn.Action.Target = m.pickTarget(heroes.Characters);
+            if (myTurn is RobotDecorator)
+            {
+                RobotDecorator m = (RobotDecorator)myTurn;
+                myTurn.Action = m.pickAction();
+                myTurn.Action.Target = m.pickTarget(heroes.Characters);
+            }
+            else
+            {
+                Monster m = (Monster)myTurn;
+                myTurn.Action = m.pickAction();
+                myTurn.Action.Target = m.pickTarget(heroes.Characters);
+            }
+
             myTurn.Action.execute();
             prompt = myTurn.Action.toString();
             addPrompt(prompt);
