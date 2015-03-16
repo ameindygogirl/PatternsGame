@@ -9,7 +9,6 @@ namespace DesignPatternsGame
     class RobotEvent : RoomEvent
     {
         public RobotEvent() : base() { }
-        public RobotEvent(int level) : base(level) { }
 
         public override void execute(HeroParty hparty)
         {

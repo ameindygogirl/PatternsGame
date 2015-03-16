@@ -12,23 +12,7 @@ namespace DesignPatternsGame
         protected int level;
         protected BattleWindow bw;
 
-        public RoomEvent() { }
-        public RoomEvent(int level)
-        {
-            this.level = level;
-            triggered  = false;
-        }
-        public RoomEvent(BattleWindow bw)
-        {
-            this.bw = bw;
-            triggered = false;
-        }
-        public RoomEvent(int level, BattleWindow bw)
-        {
-            this.bw = bw;
-            this.level = level;
-            triggered  = false;
-        }
+        public RoomEvent() { triggered = false; }
         
         public BattleWindow BW
         {

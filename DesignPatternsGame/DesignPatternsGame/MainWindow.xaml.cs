@@ -183,19 +183,19 @@ namespace DesignPatternsGame
             int tile;
             if(cbSize.SelectedIndex == 0)
             {
-                path = new PathGen(0, level, bw);
+                path = new PathGen(0);
                 tile = SMALL_MAZE;
                 mazeSize = 0;
             }
             else if(cbSize.SelectedIndex == 1)
             {
-                path = new PathGen(1, level, bw);
+                path = new PathGen(1);
                 tile = MEDIUM_MAZE;
                 mazeSize = 1;
             }
             else
             {
-                path = new PathGen(2, level, bw);
+                path = new PathGen(2);
                 tile = LARGE_MAZE;
                 mazeSize = 2; 
             }
@@ -245,24 +245,22 @@ namespace DesignPatternsGame
             int tile;
             if (cbSize.SelectedIndex == 0)
             {
-                path = new PathGen(0, level, bw);
+                path = new PathGen(0);
                 tile = SMALL_MAZE;
                 mazeSize = 0;
             }
             else if (cbSize.SelectedIndex == 1)
             {
-                path = new PathGen(1, level, bw);
+                path = new PathGen(1);
                 tile = MEDIUM_MAZE;
                 mazeSize = 1;
             }
             else
             {
-                path = new PathGen(2, level, bw);
+                path = new PathGen(2);
                 tile = LARGE_MAZE;
                 mazeSize = 2;
             }
-
-
             ara = path.getPath();
             printPath(tile);
         }

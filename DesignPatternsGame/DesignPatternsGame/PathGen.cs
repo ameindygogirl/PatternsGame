@@ -12,12 +12,11 @@ namespace DesignPatternsGame
         private Room[,] grid;
         private Room entrance;
         private Random rand = new Random();
-        int x, y, tempRooms, goalRooms, level;
+        int x, y, tempRooms, goalRooms, level = 1;
 
-        public PathGen(int type, int level, BattleWindow bw)
+        public PathGen(int type)
         {
             this.entrance = null;
-            this.level    = level;
             
             if(type == 0)
             {
@@ -161,7 +160,7 @@ namespace DesignPatternsGame
                 j = this.rand.Next(this.y);
             } while (this.grid[i,j] == null || this.grid[i,j].Entrance || this.grid[i,j].Exit);
 
-            this.grid[i, j].Event = new RobotEvent(level);
+            this.grid[i, j].Event = new RobotEvent();
         }
 
         private Room attachNorth(Room cur, int i, int j)
