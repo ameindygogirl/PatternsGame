@@ -28,7 +28,7 @@ namespace DesignPatternsGame
 
         public override string ToString()
         {
-            return Target.Name + " enjoyed a delicious Snack Pack and gained " + healed + " hp!";
+            return Target.Name + " was revived by the deliciousness of the snack pack!";
         }
     }
 }

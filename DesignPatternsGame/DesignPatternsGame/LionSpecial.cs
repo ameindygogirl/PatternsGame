@@ -15,9 +15,19 @@ namespace DesignPatternsGame
         public override void execute()
         {
             Random rand = new Random();
-            hits = rand.Next(2, 6);
+            int i = rand.Next(101);
+
+            if (i < 50)
+                hits = 2;
+            if (i < 75)
+                hits = 3;
+            if (i < 90)
+                hits = 4;
+            else
+                hits = 5;
+
             dmg = 0;
-            for (int i = 0; i < hits; i ++ )
+            for (i = 0; i < hits; i ++ )
             {
                 dmg += rand.Next(primary.MinDamage/2, primary.MaxDamage /2);
             }
