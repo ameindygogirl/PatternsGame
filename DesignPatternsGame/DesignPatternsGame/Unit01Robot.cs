@@ -11,7 +11,7 @@ namespace DesignPatternsGame
 
         public Unit01Robot(GameCharacter pilot) : base(pilot)
         {
-            this.name = "Unit01 pilot " + pilot.Name;
+            this.name = "Unit 01 pilot " + pilot.Name;
             this.TotalHP = 55 + pilot.TotalHP;
             this.HP = this.TotalHP;
             this.Speed = 20 + pilot.TotalHP;

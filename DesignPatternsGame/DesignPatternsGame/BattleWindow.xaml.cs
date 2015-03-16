@@ -262,6 +262,7 @@ namespace DesignPatternsGame
         // HEROSWITCH
         private void heroSwitch(int i)
         {
+            deadHeroSwitch(0);
             if (i > 0)
             {
                 if (heroes.Characters.ElementAt(0).HP > 0)
@@ -288,6 +289,37 @@ namespace DesignPatternsGame
                 heroB1.Visibility   = Visibility.Hidden;
                 heroB2.Visibility   = Visibility.Hidden;
                 heroB3.Visibility   = Visibility.Hidden;
+            }
+        }
+
+        private void deadHeroSwitch(int i)
+        {
+            if (i > 0)
+            {
+                if (!(heroes.Characters.ElementAt(0).HP > 0))
+                {
+                    heroB1.Visibility = Visibility.Visible;
+                    heroImg1.Visibility = Visibility.Hidden;
+                }
+                if (!(heroes.Characters.ElementAt(1).HP > 0))
+                {
+                    heroB2.Visibility = Visibility.Visible;
+                    heroImg2.Visibility = Visibility.Hidden;
+                }
+                if (!(heroes.Characters.ElementAt(2).HP > 0))
+                {
+                    heroB3.Visibility = Visibility.Visible;
+                    heroImg3.Visibility = Visibility.Hidden;
+                }
+            }
+            else
+            {
+                heroImg1.Visibility = Visibility.Visible;
+                heroImg2.Visibility = Visibility.Visible;
+                heroImg3.Visibility = Visibility.Visible;
+                heroB1.Visibility = Visibility.Hidden;
+                heroB2.Visibility = Visibility.Hidden;
+                heroB3.Visibility = Visibility.Hidden;
             }
         }
 
@@ -444,7 +476,18 @@ namespace DesignPatternsGame
                 heroes.reduceItem(item);
                 myTurn.Action = new ItemAction(item);
                 prompt = "Please choose a target";
-                heroSwitch(1);
+                switch (pi.Item)
+                {
+                    case 1:
+                    case 2:
+                        heroSwitch(1);
+                        break;
+                    case 3:
+                        deadHeroSwitch(1);
+                        break;
+
+                }
+                
             }
         }
 
