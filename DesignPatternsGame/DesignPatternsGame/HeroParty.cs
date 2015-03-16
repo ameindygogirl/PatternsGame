@@ -83,5 +83,15 @@ namespace DesignPatternsGame
             get { return hasRobot; }
             set { hasRobot = value; }
         }
+
+        public void refresh()
+        {
+            LinkedListNode<GameCharacter> cur = characters.First;
+            while(cur != characters.Last.Next)
+            {
+                cur.Value.HP = cur.Value.TotalHP;
+                cur = cur.Next;
+            }
+        }
     }
 }

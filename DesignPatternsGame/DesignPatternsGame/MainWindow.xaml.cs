@@ -487,6 +487,7 @@ namespace DesignPatternsGame
                     {
                         rfact.getRobot(hparty, level);
                     }
+                    hparty.refresh();
                     enableNavigation();
                     navigationController.Visibility = Visibility.Hidden;
                 }
