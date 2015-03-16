@@ -12,7 +12,7 @@ namespace DesignPatternsGame
 
         public override void execute()
         {
-            target.subtractHP(target.TotalHP);
+            target.subtractHP(target.TotalHP * 2);
         }
 
         public override string toString()

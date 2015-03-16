@@ -30,7 +30,7 @@ namespace DesignPatternsGame
             b = (Monster) mf.createCharacter(rand.Next(6) + 1);
             c = (Monster) mf.createCharacter(rand.Next(6) + 1);
 
-            switch(level)
+            switch(level++)
             {
                 case 1:
                     robot = new EscaflowneRobot(a);
@@ -42,7 +42,6 @@ namespace DesignPatternsGame
                     robot = new GaoGaiGarRobot(a);
                     break;
             }
-
             mparty = new MonsterParty(robot, b, c);
 
             return mparty;
